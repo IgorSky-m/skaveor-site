@@ -1,0 +1,60 @@
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
+      defaultZone: http://localhost:8760/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    config:
+      enabled: false
+  #  datasource props
+  datasource:
+    url: 'jdbc:h2:mem:junit_db'
+    driverClassName: 'org.h2.Driver'
+    username: 'sa'
+    password: 'pass'
+  #    jpa props
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: 'org.hibernate.dialect.H2Dialect'
+    show_sql: true
+  # /h2-console
+  h2:
+    console:
+      enabled: true
+  mail:
+    host: 'smtp.gmail.com'
+    port: 587
+    username: ${SMTP-USER}
+    password: ${SMTP-PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# logging props
+logging:
+  custom:
+    smtp:
+      username: ${SMTP-USER}
+      password: ${SMTP-PASS}
+      from: ${SMTP-USER}
+      recipients:
+        SMTP-EMAIL-RECIPIENT-1: ${SMTP-USER}
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.example: ERROR
+    org.hibernate: INFO
+  pattern:
+    console: '[%d{yyyy-MM-dd HH:mm:ss}] [%thread] [%-5level] %logger{36} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{100} - %msg%n'

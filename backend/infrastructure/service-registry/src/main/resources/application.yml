@@ -1,0 +1,92 @@
+
+server:
+  port: 8760
+spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  config:
+    activate:
+      on-profile:
+        - default
+#  profiles: default
+  application:
+    name: REGISTRY-SERVER
+eureka:
+  instance:
+    hostname: localhost
+  server:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+
+---
+
+server:
+  port: 8761
+spring:
+  config:
+    activate:
+      on-profile:
+        - eureka-1
+#  profiles: eureka-1
+  application:
+    name: REGISTRY-SERVER-clustered
+eureka:
+  instance:
+    hostname: registry-server-1.com
+  server:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
+
+---
+
+server:
+  port: 8762
+spring:
+  config:
+    activate:
+      on-profile:
+        - eureka-2
+#  profiles: eureka-2
+  application:
+    name: REGISTRY-SERVER-clustered
+eureka:
+  instance:
+    hostname: registry-server-2.com
+  server:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone:  http://registry-server-1.com:8761/eureka,  http://registry-server-3.com:8763/eureka #redirect from these hosts to localhost - C:\Windows\System32\drivers\etc\hosts
+
+
+---
+
+server:
+  port: 8763
+spring:
+  config:
+    activate:
+      on-profile:
+        - eureka-3
+#  profiles: eureka-3
+  application:
+    name: REGISTRY-SERVER-clustered
+eureka:
+  instance:
+    hostname: registry-server-3.com
+  server:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone:  http://registry-server-1.com:8761/eureka,  http://registry-server-2.com:8762/eureka

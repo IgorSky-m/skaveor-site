@@ -1,0 +1,1063 @@
+2022-12-13 10:25:48,214 INFO o.s.b.StartupInfoLogger [main] Starting AccountService using Java 17.0.5 with PID 8412 (C:\GEN_SPARK\PROJECT\training_diary\Backend\services\account-service\target\classes started by User in C:\GEN_SPARK\PROJECT\training_diary\Backend\services\account-service)
+2022-12-13 10:25:48,223 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-12-13 10:25:49,279 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 10:25:49,430 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 141 ms. Found 1 JPA repository interfaces.
+2022-12-13 10:25:49,750 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=52e6fbe9-a58a-398a-85cd-90eaf660fff5
+2022-12-13 10:25:50,252 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 10:25:50,267 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 10:25:50,267 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 10:25:50,405 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 10:25:50,407 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2135 ms
+2022-12-13 10:25:50,441 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 10:25:50,757 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 10:25:50,759 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 10:25:50,786 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 10:25:50,952 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 10:25:51,030 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 10:25:51,259 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 10:25:51,422 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 10:25:52,222 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 10:25:52,233 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 10:25:52,705 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 10:25:53,401 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 10:25:53,647 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 10:25:53,670 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 10:25:53,749 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 10:25:53,753 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 10:25:53,776 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 10:25:53,776 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 10:25:53,776 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 10:25:53,776 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 10:25:53,776 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 10:25:53,777 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 10:25:53,777 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 10:25:54,192 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 10:25:54,195 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 10:25:54,197 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 10:25:54,203 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670948754202 with initial instances count: 2
+2022-12-13 10:25:54,205 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 10:25:54,206 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670948754206, current=UP, previous=STARTING]
+2022-12-13 10:25:54,208 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 10:25:54,239 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 10:25:54,240 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 10:25:54,260 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 10:25:54,440 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 7.044 seconds (process running for 7.86)
+2022-12-13 10:26:21,892 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:26:21,892 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:26:21,894 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Completed initialization in 1 ms
+2022-12-13 10:26:31,930 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 10:28:40,072 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-2] TEST EP
+2022-12-13 10:29:22,803 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-6] TEST EP
+2022-12-13 10:30:19,583 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-9] TEST EP
+2022-12-13 10:30:53,780 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:32:50,845 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 10:35:53,781 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:40:53,791 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:45:53,803 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:47:32,211 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-7] TEST EP
+2022-12-13 10:50:53,811 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:51:06,527 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-2] TEST EP
+2022-12-13 10:51:45,289 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-3] TEST EP
+2022-12-13 10:52:22,680 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-7] TEST EP
+2022-12-13 10:52:36,073 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-8] TEST EP
+2022-12-13 10:53:11,654 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 10:53:19,065 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 10:53:19,066 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670950399066, current=DOWN, previous=UP]
+2022-12-13 10:53:19,066 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 10:53:19,074 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 10:53:19,114 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 10:53:19,115 INFO o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-13 10:53:23,505 INFO o.s.b.StartupInfoLogger [main] Starting AccountService using Java 17.0.5 with PID 22212 (C:\GEN_SPARK\PROJECT\training_diary\Backend\services\account-service\target\classes started by User in C:\GEN_SPARK\PROJECT\training_diary\Backend\services\account-service)
+2022-12-13 10:53:23,512 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-12-13 10:53:24,372 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 10:53:24,572 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 188 ms. Found 1 JPA repository interfaces.
+2022-12-13 10:53:24,904 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=52e6fbe9-a58a-398a-85cd-90eaf660fff5
+2022-12-13 10:53:25,411 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 10:53:25,420 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 10:53:25,421 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 10:53:25,550 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 10:53:25,552 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1979 ms
+2022-12-13 10:53:25,602 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 10:53:25,848 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 10:53:25,851 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 10:53:25,864 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 10:53:26,065 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 10:53:26,139 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 10:53:26,360 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 10:53:26,547 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 10:53:27,554 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 10:53:27,564 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 10:53:28,067 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 10:53:28,726 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 10:53:28,997 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 10:53:29,031 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 10:53:29,124 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 10:53:29,129 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 10:53:29,155 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 10:53:29,155 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 10:53:29,156 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 10:53:29,156 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 10:53:29,156 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 10:53:29,156 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 10:53:29,156 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 10:53:29,609 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 10:53:29,612 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 10:53:29,616 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 10:53:29,621 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670950409620 with initial instances count: 3
+2022-12-13 10:53:29,624 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 10:53:29,625 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670950409625, current=UP, previous=STARTING]
+2022-12-13 10:53:29,627 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 10:53:29,661 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 10:53:29,663 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 10:53:29,684 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 10:53:29,896 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 7.143 seconds (process running for 8.082)
+2022-12-13 10:53:33,132 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:53:33,132 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:53:33,134 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Completed initialization in 1 ms
+2022-12-13 10:54:03,027 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-6] TEST EP
+2022-12-13 10:56:50,920 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 10:57:02,482 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-2] TEST EP
+2022-12-13 10:58:25,719 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-8] TEST EP
+2022-12-13 10:58:29,172 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 10:58:30,811 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 11:01:54,638 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-3] TEST EP
+2022-12-13 11:03:19,964 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-7] TEST EP
+2022-12-13 11:03:29,180 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:06:32,140 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-10] TEST EP
+2022-12-13 11:08:29,186 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:12:53,339 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-9] TEST EP
+2022-12-13 11:13:29,190 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:18:29,195 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:23:29,206 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:28:29,222 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:33:29,235 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:38:29,243 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:43:29,249 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:48:29,260 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:53:29,264 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 11:58:29,281 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:03:29,288 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:08:29,299 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:13:29,305 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:18:29,309 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:23:29,317 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:28:29,325 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:33:29,329 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:38:29,335 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:43:29,346 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:48:29,356 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:53:29,364 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 12:58:29,370 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 13:03:29,374 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 13:08:29,377 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 13:13:29,382 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 13:15:00,306 ERROR o.s.b.d.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+No spring.config.import property has been defined
+
+Action:
+
+Add a spring.config.import=configserver: property to your configuration.
+	If configuration is not required add spring.config.import=optional:configserver: instead.
+	To disable this check, set spring.cloud.config.enabled=false or 
+	spring.cloud.config.import-check.enabled=false.
+
+2022-12-13 14:06:55,096 ERROR o.s.b.d.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+No spring.config.import property has been defined
+
+Action:
+
+Add a spring.config.import=configserver: property to your configuration.
+	If configuration is not required add spring.config.import=optional:configserver: instead.
+	To disable this check, set spring.cloud.config.enabled=false or 
+	spring.cloud.config.import-check.enabled=false.
+
+2022-12-13 14:08:55,598 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:08:55,786 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Connect Timeout Exception on Url - http://localhost:9296. Will try the next url if available
+2022-12-13 14:08:55,809 ERROR o.s.b.SpringApplication [main] Application run failed
+java.lang.IllegalStateException: Could not locate PropertySource and the fail fast property is set, failing
+	at org.springframework.cloud.config.client.ConfigServicePropertySourceLocator.locate(ConfigServicePropertySourceLocator.java:150)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:50)
+	at org.springframework.cloud.config.client.ConfigServicePropertySourceLocator.locateCollection(ConfigServicePropertySourceLocator.java:161)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:95)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:603)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:383)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.skachko.AccountService.main(AccountService.java:9)
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9296/ACCOUNT-SERVICE/default": Connection refused: no further information
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:888)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:868)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:764)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:646)
+	at org.springframework.cloud.config.client.ConfigServicePropertySourceLocator.getRemoteEnvironment(ConfigServicePropertySourceLocator.java:256)
+	at org.springframework.cloud.config.client.ConfigServicePropertySourceLocator.locate(ConfigServicePropertySourceLocator.java:110)
+	... 9 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636)
+	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:279)
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:384)
+	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:406)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1309)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1057)
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:75)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:862)
+	... 13 common frames omitted
+2022-12-13 14:11:04,958 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:11:05,973 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[default], label=null, version=0ff384c66f67105a594f8dfbf9d49c2d0405bdb5, state=null
+2022-12-13 14:11:05,975 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:11:05,983 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-12-13 14:11:06,926 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:11:07,111 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 170 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:11:07,431 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5fa3f99a-beff-37f8-b869-a18620ea9ed2
+2022-12-13 14:11:07,909 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:11:07,918 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:11:07,919 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:11:08,046 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:11:08,048 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2048 ms
+2022-12-13 14:11:08,245 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:11:08,507 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:8a031ce1-caaf-4ba3-a291-5608a90a536b user=SA
+2022-12-13 14:11:08,509 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:11:08,576 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:11:08,653 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:11:08,907 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:11:09,080 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:11:09,876 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:11:09,884 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:11:10,375 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:11:10,970 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:11:11,250 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:11:11,278 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:11:11,359 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:11:11,365 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:11:11,391 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:11:11,391 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:11:11,391 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:11:11,392 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:11:11,392 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:11:11,393 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:11:11,393 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:11:11,712 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:11:11,715 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:11:11,718 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:11:11,723 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670962271722 with initial instances count: 2
+2022-12-13 14:11:11,727 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:11:11,727 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670962271727, current=UP, previous=STARTING]
+2022-12-13 14:11:11,729 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:11:11,763 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:11:11,764 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:11:11,784 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:11:12,020 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 8.516 seconds (process running for 9.353)
+2022-12-13 14:12:48,289 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 14:12:48,290 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-13 14:12:48,292 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Completed initialization in 2 ms
+2022-12-13 14:12:58,329 ERROR c.s.e.r.a.MyController [http-nio-9000-exec-1] TEST EP
+2022-12-13 14:16:11,405 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2022-12-13 14:16:12,377 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:16:12,378 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670962572378, current=DOWN, previous=UP]
+2022-12-13 14:16:12,378 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:16:12,383 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:16:12,403 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:16:12,404 INFO o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-12-13 14:16:12,407 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:16:12,411 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:16:12,412 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:16:17,273 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:16:18,716 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[default], label=null, version=756564d922755076e8ff0c7b1b77ac4b17975e1f, state=null
+2022-12-13 14:16:18,718 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:16:18,761 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-12-13 14:16:19,345 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:16:19,495 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 141 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:16:19,788 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:16:20,227 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:16:20,238 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:16:20,238 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:16:20,364 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:16:20,365 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1586 ms
+2022-12-13 14:16:20,398 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:16:20,688 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:16:20,690 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:16:20,705 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:16:20,858 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:16:20,923 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:16:21,123 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:16:21,302 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:16:22,083 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:16:22,090 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:16:22,564 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:16:23,159 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:16:23,392 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:16:23,415 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:16:23,490 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:16:23,494 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:16:23,514 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:16:23,515 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:16:23,515 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:16:23,515 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:16:23,515 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:16:23,515 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:16:23,516 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:16:23,795 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:16:23,798 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:16:23,800 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:16:23,804 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670962583803 with initial instances count: 3
+2022-12-13 14:16:23,807 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:16:23,807 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670962583807, current=UP, previous=STARTING]
+2022-12-13 14:16:23,809 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:16:23,828 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:16:23,829 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:16:23,854 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:16:24,004 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 8.13 seconds (process running for 8.878)
+2022-12-13 14:16:39,643 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 14:16:39,644 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-12-13 14:16:39,645 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-2] Completed initialization in 1 ms
+2022-12-13 14:18:43,929 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:18:43,929 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670962723929, current=DOWN, previous=UP]
+2022-12-13 14:18:43,930 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:18:43,935 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:18:43,954 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:18:43,957 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:18:43,960 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:18:43,961 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:18:48,567 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:18:49,635 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[default], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:18:49,636 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:18:49,644 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-12-13 14:18:50,158 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:18:50,316 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 150 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:18:50,639 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5fa3f99a-beff-37f8-b869-a18620ea9ed2
+2022-12-13 14:18:51,069 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:18:51,081 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:18:51,082 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:18:51,217 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:18:51,219 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1561 ms
+2022-12-13 14:18:51,406 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:18:51,690 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:3bfdc972-ac27-44fe-98b2-7525995580ae user=SA
+2022-12-13 14:18:51,692 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:18:51,754 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:18:51,812 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:18:52,004 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:18:52,174 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:19:19,333 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:19:20,223 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[default], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:19:20,224 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:19:20,232 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:19:20,786 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:19:20,950 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 155 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:19:21,257 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5fa3f99a-beff-37f8-b869-a18620ea9ed2
+2022-12-13 14:19:21,720 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:19:21,736 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:19:21,737 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:19:21,889 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:19:21,891 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1647 ms
+2022-12-13 14:19:22,099 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:19:22,334 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:18a2a811-8927-4334-9692-008c9ee604c4 user=SA
+2022-12-13 14:19:22,336 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:19:22,390 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:19:22,447 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:19:22,674 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:19:36,717 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:19:37,509 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:19:37,511 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:19:37,548 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:19:38,169 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:19:38,309 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 131 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:19:38,582 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:19:38,990 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:19:39,000 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:19:39,000 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:19:39,104 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:19:39,105 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1541 ms
+2022-12-13 14:19:39,140 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:19:39,387 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:19:39,390 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:19:39,404 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:19:39,542 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:19:39,620 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:19:39,816 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:19:39,989 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:19:40,739 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:19:40,746 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:19:41,174 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:19:41,723 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:19:42,004 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:19:42,028 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:19:42,106 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:19:42,110 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:19:42,132 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:19:42,133 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:19:42,133 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:19:42,133 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:19:42,134 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:19:42,134 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:19:42,134 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:19:42,441 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:19:42,445 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:19:42,448 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:19:42,453 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670962782452 with initial instances count: 3
+2022-12-13 14:19:42,456 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:19:42,457 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670962782457, current=UP, previous=STARTING]
+2022-12-13 14:19:42,459 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:19:42,485 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:19:42,487 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:19:42,509 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:19:42,684 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:19:42,684 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670962782684, current=DOWN, previous=UP]
+2022-12-13 14:19:42,685 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:19:42,685 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 7.306 seconds (process running for 8.058)
+2022-12-13 14:19:42,691 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:19:42,720 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:19:42,722 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:19:42,725 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:19:42,726 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:22:53,889 ERROR o.s.b.SpringApplication [main] Application run failed
+java.lang.IllegalStateException: Failed to load property source from 'file:/C:/GEN_SPARK/PROJECT/training_diary/Backend/services/account-service/target/classes/bootstrap.yml' (classpath:/bootstrap.yml)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.load(BootstrapConfigFileApplicationListener.java:556)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.loadForFileExtension(BootstrapConfigFileApplicationListener.java:493)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.load(BootstrapConfigFileApplicationListener.java:463)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.lambda$load$6(BootstrapConfigFileApplicationListener.java:442)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.lambda$load$7(BootstrapConfigFileApplicationListener.java:442)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.load(BootstrapConfigFileApplicationListener.java:438)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.loadWithFilteredProperties(BootstrapConfigFileApplicationListener.java:338)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$FilteredPropertySource.apply(BootstrapConfigFileApplicationListener.java:997)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.load(BootstrapConfigFileApplicationListener.java:323)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener.addPropertySources(BootstrapConfigFileApplicationListener.java:217)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener.postProcessEnvironment(BootstrapConfigFileApplicationListener.java:205)
+	at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:109)
+	at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:94)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:352)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:150)
+	at org.springframework.cloud.bootstrap.BootstrapApplicationListener.bootstrapServiceContext(BootstrapApplicationListener.java:195)
+	at org.springframework.cloud.bootstrap.BootstrapApplicationListener.onApplicationEvent(BootstrapApplicationListener.java:114)
+	at org.springframework.cloud.bootstrap.BootstrapApplicationListener.onApplicationEvent(BootstrapApplicationListener.java:77)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:352)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.skachko.AccountService.main(AccountService.java:9)
+Caused by: org.yaml.snakeyaml.scanner.ScannerException: while scanning for the next token
+found character '@' that cannot start any token. (Do not use @ for indentation)
+ in 'reader', line 6, column 12:
+      version: @project.version@
+               ^
+
+	at org.yaml.snakeyaml.scanner.ScannerImpl.fetchMoreTokens(ScannerImpl.java:470)
+	at org.yaml.snakeyaml.scanner.ScannerImpl.checkToken(ScannerImpl.java:263)
+	at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingValue.produce(ParserImpl.java:694)
+	at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:185)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:57)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:43)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:136)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:116)
+	at org.yaml.snakeyaml.composer.Composer.composeScalarNode(Composer.java:239)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:208)
+	at org.yaml.snakeyaml.composer.Composer.composeKeyNode(Composer.java:347)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:332)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:311)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:212)
+	at org.yaml.snakeyaml.composer.Composer.composeValueNode(Composer.java:357)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:336)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:311)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:212)
+	at org.yaml.snakeyaml.composer.Composer.getNode(Composer.java:134)
+	at org.yaml.snakeyaml.constructor.BaseConstructor.getData(BaseConstructor.java:168)
+	at org.springframework.boot.env.OriginTrackedYamlLoader$OriginTrackingConstructor.getData(OriginTrackedYamlLoader.java:98)
+	at org.yaml.snakeyaml.Yaml$1.next(Yaml.java:499)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:198)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:166)
+	at org.springframework.boot.env.OriginTrackedYamlLoader.load(OriginTrackedYamlLoader.java:83)
+	at org.springframework.boot.env.YamlPropertySourceLoader.load(YamlPropertySourceLoader.java:50)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.loadDocuments(BootstrapConfigFileApplicationListener.java:624)
+	at org.springframework.cloud.bootstrap.BootstrapConfigFileApplicationListener$Loader.load(BootstrapConfigFileApplicationListener.java:526)
+	... 47 common frames omitted
+2022-12-13 14:23:10,167 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:23:10,973 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:23:10,975 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:23:11,016 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:23:11,630 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:23:11,807 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 167 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:23:12,175 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:23:12,823 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:23:12,838 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:23:12,839 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:23:12,976 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:23:12,978 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1940 ms
+2022-12-13 14:23:13,016 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:23:13,297 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:23:13,299 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:23:13,316 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:23:13,492 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:23:13,603 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:23:13,852 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:23:13,983 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:23:14,733 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:23:14,740 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:23:15,211 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:23:15,858 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:23:16,151 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:23:16,181 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:23:16,268 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:23:16,272 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:23:16,296 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:23:16,297 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:23:16,297 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:23:16,297 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:23:16,298 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:23:16,298 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:23:16,298 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:23:16,584 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:23:16,587 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:23:16,589 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:23:16,596 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670962996595 with initial instances count: 2
+2022-12-13 14:23:16,600 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:23:16,601 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670962996601, current=UP, previous=STARTING]
+2022-12-13 14:23:16,602 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:23:16,636 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:23:16,637 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:23:16,660 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:23:16,845 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 8.123 seconds (process running for 8.911)
+2022-12-13 14:23:51,388 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:23:51,388 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670963031388, current=DOWN, previous=UP]
+2022-12-13 14:23:51,388 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:23:51,394 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:23:51,415 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:23:51,418 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:23:51,421 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:23:51,421 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:23:56,204 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:23:57,042 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:23:57,043 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:23:57,088 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:23:57,977 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:23:58,187 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 193 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:23:58,553 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:23:59,105 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:23:59,121 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:23:59,121 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:23:59,286 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:23:59,288 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2179 ms
+2022-12-13 14:23:59,340 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:23:59,633 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:23:59,635 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:23:59,655 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:23:59,894 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:23:59,981 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:24:00,223 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:24:00,424 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:24:01,386 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:24:01,394 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:24:01,962 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:24:02,693 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:24:02,992 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:24:03,024 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:24:03,105 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:24:03,109 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:24:03,134 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:24:03,134 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:24:03,135 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:24:03,135 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:24:03,135 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:24:03,135 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:24:03,136 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:24:03,494 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:24:03,499 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:24:03,504 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:24:03,508 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670963043507 with initial instances count: 3
+2022-12-13 14:24:03,511 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:24:03,512 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670963043511, current=UP, previous=STARTING]
+2022-12-13 14:24:03,514 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:24:03,546 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:24:03,546 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:24:03,569 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:24:03,737 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 9.199 seconds (process running for 10.145)
+2022-12-13 14:24:08,902 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:24:08,903 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670963048903, current=DOWN, previous=UP]
+2022-12-13 14:24:08,903 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:24:08,908 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:24:08,926 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:24:08,928 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:24:08,932 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:24:08,932 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:24:14,005 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:24:14,801 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:24:14,802 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:24:14,840 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:24:15,445 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:24:15,634 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 178 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:24:15,988 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:24:16,508 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:24:16,523 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:24:16,523 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:24:16,682 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:24:16,684 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1824 ms
+2022-12-13 14:24:16,736 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:24:17,002 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:24:17,004 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:24:17,019 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:24:17,188 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:26:05,213 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:26:06,017 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:26:06,019 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:26:06,060 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:26:06,692 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:26:06,875 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 172 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:26:07,210 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:26:07,674 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:26:07,725 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:26:07,726 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:26:08,448 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:26:08,449 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2372 ms
+2022-12-13 14:26:08,493 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:26:08,793 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:26:08,795 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:26:08,817 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:26:09,042 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:26:09,139 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:26:09,382 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:26:09,579 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:26:10,522 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:26:10,529 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:26:11,170 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:26:11,958 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:26:12,322 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:26:12,360 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:26:12,453 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:26:12,460 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:26:12,490 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:26:12,490 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:26:12,490 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:26:12,491 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:26:12,491 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:26:12,492 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:26:12,492 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:26:12,911 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:26:12,914 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:26:12,918 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:26:12,925 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670963172924 with initial instances count: 2
+2022-12-13 14:26:12,930 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:26:12,931 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670963172931, current=UP, previous=STARTING]
+2022-12-13 14:26:12,933 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:26:12,968 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:26:12,970 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:26:13,013 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:26:13,217 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 9.453 seconds (process running for 10.296)
+2022-12-13 14:27:20,018 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:27:20,019 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670963240019, current=DOWN, previous=UP]
+2022-12-13 14:27:20,019 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:27:20,027 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:27:20,046 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:27:20,049 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:27:20,052 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:27:20,053 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:27:25,005 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:27:25,838 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:27:25,840 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:27:25,883 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:27:26,529 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:27:26,720 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 181 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:27:27,056 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:27:27,547 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:27:27,560 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:27:27,560 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:27:27,685 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:27:27,686 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1784 ms
+2022-12-13 14:27:27,736 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:27:28,044 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:27:28,048 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:27:28,063 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:27:28,252 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:27:28,331 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:27:28,551 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:27:28,713 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:27:29,522 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:27:29,529 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:27:30,064 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:27:30,740 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:27:31,055 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:27:31,093 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:27:31,197 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:27:31,201 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:27:31,228 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:27:31,229 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:27:31,574 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:27:31,578 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:27:31,581 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:27:31,586 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670963251585 with initial instances count: 3
+2022-12-13 14:27:31,589 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:27:31,591 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670963251591, current=UP, previous=STARTING]
+2022-12-13 14:27:31,593 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:27:31,625 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:27:31,627 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:27:31,651 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:27:31,856 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 8.517 seconds (process running for 9.497)
+2022-12-13 14:28:03,016 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:28:03,017 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670963283016, current=DOWN, previous=UP]
+2022-12-13 14:28:03,017 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:28:03,022 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:28:03,045 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:28:03,048 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:28:03,052 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:28:03,053 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:28:07,531 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:28:08,336 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:28:08,338 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:28:08,369 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:28:08,963 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:28:09,161 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 185 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:28:09,495 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:28:21,622 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:28:22,412 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:28:22,414 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:28:22,460 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:28:23,142 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:28:23,415 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 257 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:28:23,834 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:28:34,653 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:28:35,479 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:28:35,481 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:28:35,522 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:28:36,209 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:28:36,455 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 230 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:28:36,899 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:28:37,566 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:28:37,582 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:28:37,583 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:28:37,760 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:28:37,763 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2221 ms
+2022-12-13 14:28:37,821 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:28:38,123 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:28:38,125 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:28:38,146 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:28:38,380 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:28:56,252 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:28:57,084 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:28:57,085 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:28:57,118 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:28:57,722 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:28:57,898 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 164 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:28:58,240 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:28:58,743 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:28:58,754 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:28:58,755 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:28:58,892 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:28:58,894 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1757 ms
+2022-12-13 14:28:58,936 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:28:59,263 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:28:59,266 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:30:11,753 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:30:12,714 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:30:12,716 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:30:12,751 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:30:13,354 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:30:13,529 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 165 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:30:13,860 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:31:36,213 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:31:37,000 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:31:37,002 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:31:37,031 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:31:37,637 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:31:37,804 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 156 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:31:38,111 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:31:38,615 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:31:38,632 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:31:38,632 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:31:38,786 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:31:38,788 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1745 ms
+2022-12-13 14:31:38,829 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:31:39,060 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:31:39,062 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:31:39,078 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:31:39,211 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:31:39,295 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:31:39,495 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:31:39,637 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:31:40,346 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:31:40,353 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:31:40,824 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:31:41,433 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:31:41,672 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:31:41,701 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:31:41,779 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:31:41,784 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:31:41,809 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:31:41,809 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:31:41,810 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:31:41,810 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:31:41,810 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:31:41,811 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:31:41,811 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:31:42,114 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:31:42,117 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:31:42,119 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:31:42,126 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670963502125 with initial instances count: 2
+2022-12-13 14:31:42,131 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:31:42,132 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670963502132, current=UP, previous=STARTING]
+2022-12-13 14:31:42,134 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:31:42,168 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:31:42,170 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:31:42,189 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:31:42,365 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 7.701 seconds (process running for 8.437)
+2022-12-13 14:31:43,540 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:31:43,541 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670963503541, current=DOWN, previous=UP]
+2022-12-13 14:31:43,541 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:31:43,545 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:31:43,561 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:31:43,563 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:31:43,565 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:31:43,566 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:31:49,418 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:31:50,233 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:31:50,234 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:31:50,268 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:31:50,850 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:31:51,026 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 163 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:31:51,327 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:32:12,703 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:32:13,548 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:32:13,549 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:32:13,579 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:32:14,129 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:32:14,292 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 153 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:32:14,606 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:32:48,448 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:32:49,216 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:32:49,218 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:32:49,249 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:32:49,795 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:32:49,964 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 160 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:32:50,253 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:32:50,668 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:32:50,680 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:32:50,681 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:32:50,796 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:32:50,797 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1533 ms
+2022-12-13 14:32:50,829 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:32:51,058 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:32:51,061 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:32:51,076 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:32:51,240 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:32:51,320 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:32:51,510 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:32:51,679 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:32:52,435 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:32:52,444 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:45:49,893 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
+2022-12-13 14:45:50,484 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:45:50,651 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 159 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:45:50,938 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:45:51,349 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:45:51,360 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:45:51,361 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:45:51,471 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:45:51,472 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1562 ms
+2022-12-13 14:45:51,504 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:45:51,753 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:45:51,757 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:45:51,771 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:45:51,926 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:45:51,999 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:45:52,182 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:45:52,332 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:45:53,077 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:45:53,084 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:45:53,500 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:45:54,107 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:45:54,379 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:45:54,401 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:45:54,429 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:45:54,430 INFO c.n.d.DiscoveryClient [main] Client configured to neither register nor query for data.
+2022-12-13 14:45:54,438 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670964354436 with initial instances count: 0
+2022-12-13 14:45:54,444 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:45:54,464 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:45:54,465 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:45:54,669 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 6.251 seconds (process running for 7.835)
+2022-12-13 14:46:03,234 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 14:46:03,235 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-13 14:46:03,236 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Completed initialization in 1 ms
+2022-12-13 14:46:10,444 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:46:10,468 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:46:10,470 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:46:10,474 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:46:10,474 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 14:46:10,533 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Completed shut down of DiscoveryClient
+2022-12-13 14:46:25,363 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Fetching config from server at : http://localhost:9296
+2022-12-13 14:46:26,326 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [main] Located environment: name=ACCOUNT-SERVICE, profiles=[prod], label=null, version=72266f61ef8b724b08807b98576dee0fafc66d7e, state=null
+2022-12-13 14:46:26,327 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [main] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/ACCOUNT-SERVICE-prod.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IgorSky-m/training-diary-config/application.yml'}]
+2022-12-13 14:46:26,361 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "prod"
+2022-12-13 14:46:26,900 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 14:46:27,062 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 152 ms. Found 1 JPA repository interfaces.
+2022-12-13 14:46:27,369 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 14:46:27,790 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 14:46:27,800 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 14:46:27,800 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 14:46:27,914 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 14:46:27,915 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1536 ms
+2022-12-13 14:46:27,951 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 14:46:28,205 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 14:46:28,207 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 14:46:28,222 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 14:46:28,367 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 14:46:28,449 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 14:46:28,675 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 14:46:28,808 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 14:46:29,601 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 14:46:29,609 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:46:30,058 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 14:46:30,662 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 14:46:30,923 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 14:46:30,950 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 14:46:31,046 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 14:46:31,050 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2022-12-13 14:46:31,070 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2022-12-13 14:46:31,071 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2022-12-13 14:46:31,358 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2022-12-13 14:46:31,368 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2022-12-13 14:46:31,371 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-13 14:46:31,375 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670964391375 with initial instances count: 2
+2022-12-13 14:46:31,378 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 14:46:31,379 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1670964391379, current=UP, previous=STARTING]
+2022-12-13 14:46:31,381 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:46:31,406 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 14:46:31,407 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 14:46:31,432 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:46:31,599 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 7.719 seconds (process running for 8.446)
+2022-12-13 14:46:38,374 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 14:46:38,375 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1670964398375, current=DOWN, previous=UP]
+2022-12-13 14:46:38,375 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000: registering service...
+2022-12-13 14:46:38,380 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9000 - registration status: 204
+2022-12-13 14:46:38,396 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 14:46:38,398 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 14:46:38,400 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 14:46:38,400 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 15:05:29,093 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
+2022-12-13 15:05:29,898 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 15:05:30,068 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 160 ms. Found 1 JPA repository interfaces.
+2022-12-13 15:05:30,344 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 15:05:30,763 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 15:05:30,776 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 15:05:30,776 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 15:05:30,880 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 15:05:30,881 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1768 ms
+2022-12-13 15:05:30,916 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 15:05:31,170 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 15:05:31,173 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 15:05:31,188 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 15:05:31,342 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 15:05:31,409 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 15:05:31,592 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 15:05:31,774 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 15:05:32,543 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 15:05:32,554 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 15:05:32,993 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 15:05:33,580 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 15:05:33,868 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 15:05:33,898 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 15:05:33,927 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 15:05:33,928 INFO c.n.d.DiscoveryClient [main] Client configured to neither register nor query for data.
+2022-12-13 15:05:33,935 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670965533934 with initial instances count: 0
+2022-12-13 15:05:33,941 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 15:05:33,963 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 15:05:33,964 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 15:05:34,183 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 6.661 seconds (process running for 7.848)
+2022-12-13 15:05:44,283 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 15:05:44,284 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-12-13 15:05:44,285 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-2] Completed initialization in 1 ms
+2022-12-13 15:13:21,472 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
+2022-12-13 15:13:21,511 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 15:13:21,519 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2022-12-13 15:13:21,524 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2022-12-13 15:13:21,525 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
+2022-12-13 15:13:21,596 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Completed shut down of DiscoveryClient
+2022-12-13 15:13:56,354 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
+2022-12-13 15:13:57,286 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-13 15:13:57,542 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 243 ms. Found 1 JPA repository interfaces.
+2022-12-13 15:13:57,943 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=5c72a5ae-b19e-3633-a111-0c63d96ced07
+2022-12-13 15:13:58,593 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9000 (http)
+2022-12-13 15:13:58,606 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2022-12-13 15:13:58,606 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-13 15:13:58,737 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-12-13 15:13:58,738 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2353 ms
+2022-12-13 15:13:58,777 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2022-12-13 15:13:59,088 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:junit_db user=SA
+2022-12-13 15:13:59,091 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-12-13 15:13:59,106 INFO o.s.b.a.h.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:junit_db'
+2022-12-13 15:13:59,296 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-13 15:13:59,385 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2022-12-13 15:13:59,645 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-12-13 15:13:59,793 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-12-13 15:14:01,076 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-13 15:14:01,090 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-13 15:14:01,880 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-13 15:14:02,558 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2022-12-13 15:14:02,886 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-13 15:14:02,918 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2022-12-13 15:14:02,960 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2022-12-13 15:14:02,960 INFO c.n.d.DiscoveryClient [main] Client configured to neither register nor query for data.
+2022-12-13 15:14:02,969 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1670966042968 with initial instances count: 0
+2022-12-13 15:14:02,976 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2022-12-13 15:14:03,005 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9000 (http) with context path ''
+2022-12-13 15:14:03,007 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9000
+2022-12-13 15:14:03,272 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 8.603 seconds (process running for 9.79)
+2022-12-13 15:14:12,645 INFO o.a.j.l.DirectJDKLog [http-nio-9000-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 15:14:12,645 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-12-13 15:14:12,647 INFO o.s.w.s.FrameworkServlet [http-nio-9000-exec-1] Completed initialization in 1 ms
