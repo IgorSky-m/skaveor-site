@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -50,11 +51,11 @@ public class MyController {
 
     @PutMapping("/{id}")
     public IMyEntity update(@RequestBody MyEntity entity, @PathVariable UUID id) {
-        return service.update(id, entity);
+        return service.update(id, new Date(), entity);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
-        service.deleteById(id);
+    @DeleteMapping("/{id}/version/{version}")
+    public void delete(@PathVariable UUID id, @PathVariable Date version) {
+        service.delete(id, version);
     }
 }

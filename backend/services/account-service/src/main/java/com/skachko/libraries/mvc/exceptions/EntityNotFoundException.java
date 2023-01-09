@@ -1,6 +1,6 @@
 package com.skachko.libraries.mvc.exceptions;
 
-import com.skachko.libraries.search.config.advice.ExceptionHandlerAdvice;
+import com.skachko.libraries.search.advice.ExceptionHandlerAdvice;
 
 /**
  * Exception used when we can't find an entity from database

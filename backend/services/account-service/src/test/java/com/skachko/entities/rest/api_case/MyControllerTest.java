@@ -1,7 +1,7 @@
 package com.skachko.entities.rest.api_case;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.skachko.libraries.search.config.advice.ExceptionHandlerAdvice;
+import com.skachko.libraries.search.advice.ExceptionHandlerAdvice;
 import com.skachko.entities.rest.api_case.api.IMyService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

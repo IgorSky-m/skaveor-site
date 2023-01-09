@@ -2,7 +2,6 @@ package com.skachko.libraries.mvc.api;
 
 import com.skachko.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.libraries.mvc.exceptions.ServiceException;
-import com.skachko.libraries.mvc.api.IReadService;
 import com.skachko.libraries.search.api.ICriteriaToSpecificationConverter;
 import com.skachko.libraries.search.api.ISearchCriteria;
 import org.slf4j.Logger;

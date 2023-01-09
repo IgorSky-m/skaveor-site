@@ -29,11 +29,18 @@ public class MyEntity implements IMyEntity {
 
     private Date date;
 
+    private Date dtCreate;
+    private Date dtUpdate;
+    private String meta;
+
     public MyEntity(IMyEntity other){
         this.id = other.getId();
         this.name = other.getName();
         this.description = other.getDescription();
         this.number = other.getNumber();
         this.date = other.getDate();
+        this.dtCreate = other.getDtCreate();
+        this.dtUpdate = other.getDtUpdate();
+        this.meta = other.getMeta();
     }
 }

@@ -3,6 +3,7 @@ package com.skachko.libraries.mvc.api;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractBaseController<T, ID> {
@@ -29,14 +30,14 @@ public abstract class AbstractBaseController<T, ID> {
         return service.save(t);
     }
 
-    @PutMapping("/{id}")
-    public T update(@PathVariable ID id, @RequestBody T t) {
-        return service.update(id, t);
+    @PutMapping("/{id}/dt_update/{version}")
+    public T update(@PathVariable ID id, @PathVariable Date version, @RequestBody T t) {
+        return service.update(id, version, t);
     }
 
-    @DeleteMapping("/{id}")
-    public T deleteById(@PathVariable ID id){
-        return service.deleteById(id);
+    @DeleteMapping("/{id}/dt_update/{version}")
+    public T deleteById(@PathVariable ID id, @PathVariable Date version){
+        return service.delete(id, version);
     }
 
 }

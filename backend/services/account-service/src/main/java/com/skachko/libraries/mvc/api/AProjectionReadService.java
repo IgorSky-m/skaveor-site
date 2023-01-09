@@ -2,8 +2,6 @@ package com.skachko.libraries.mvc.api;
 
 import com.skachko.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.libraries.mvc.exceptions.ServiceException;
-import com.skachko.libraries.mvc.api.IIdentifiable;
-import com.skachko.libraries.mvc.api.IReadService;
 import com.skachko.libraries.search.api.ICriteriaToSpecificationConverter;
 import com.skachko.libraries.search.api.ISearchCriteria;
 import org.slf4j.Logger;
@@ -274,19 +272,29 @@ public abstract class AProjectionReadService<PROJECTION extends IIdentifiable<ID
     }
 
     protected List<CLS> convertToCollectionClass(Collection<PROJECTION> interfaces) {
-        return convertToCollectionClass(interfaces, ArrayList::new);
+        return convertToCollectionClass(interfaces, Function.identity(), ArrayList::new);
+    }
+
+    protected List<CLS> convertToCollectionClass(Collection<PROJECTION> interfaces, Function<CLS, CLS> customMapFunc) {
+        return convertToCollectionClass(interfaces, customMapFunc, ArrayList::new);
     }
 
     protected List<PROJECTION> convertToCollectionProjection(Collection<CLS> entities) {
-        return convertToCollectionProjection(entities, ArrayList::new);
+        return convertToCollectionProjection(entities, Function.identity(), ArrayList::new);
     }
 
-    protected <C extends Collection<CLS>> C convertToCollectionClass(Collection<PROJECTION> interfaces, Supplier<C> collectionSupplier) {
-        return interfaces.stream().map(getToClassFunc()).collect(Collectors.toCollection(collectionSupplier));
+    protected <C extends Collection<CLS>> C convertToCollectionClass(Collection<PROJECTION> interfaces, Function<CLS, CLS> customMapFunc, Supplier<C> collectionSupplier) {
+        return interfaces.stream()
+                .map(getToClassFunc())
+                .map(customMapFunc)
+                .collect(Collectors.toCollection(collectionSupplier));
     }
 
-    protected <C extends Collection<PROJECTION>> C convertToCollectionProjection(Collection<CLS> entities, Supplier<C> collectionSupplier) {
-        return entities.stream().map(getToProjectionFunc()).collect(Collectors.toCollection(collectionSupplier));
+    protected <C extends Collection<PROJECTION>> C convertToCollectionProjection(Collection<CLS> entities, Function<PROJECTION, PROJECTION> customMapFunc, Supplier<C> collectionSupplier) {
+        return entities.stream()
+                .map(getToProjectionFunc())
+                .map(customMapFunc)
+                .collect(Collectors.toCollection(collectionSupplier));
     }
 
 
