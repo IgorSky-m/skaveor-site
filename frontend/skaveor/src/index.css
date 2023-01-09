@@ -1,0 +1,67 @@
+body {
+  background-image: url("/public/img/background8.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.video-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: stretch;
+  width: 60%;
+  background-color: rgba(51, 53, 51, 0.7);
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
+}
+
+.video-block-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  padding: 20px;
+}
+
+.video-block-content {
+  width: 100vw;
+  padding: 3px;
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.game-name-title {
+  font-size: 32px;
+  margin: 10px 0 10px 0;
+}
+
+.text-description {
+  margin: 30px;
+}
+
+.game-name-words {
+  color: #f5cb5c;
+  text-shadow: 1px 1px 10px rgba(0, 78, 152, 1);
+}
+
+.advantages-block {
+  padding: 20px 0;
+  margin: 20px auto;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  background-color: rgba(51, 53, 51, 0.7);
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
+}

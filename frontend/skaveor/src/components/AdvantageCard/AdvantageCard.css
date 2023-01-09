@@ -1,0 +1,22 @@
+.advantage-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 5px 3px rgba(36, 36, 35, 0.3);
+  padding: 10px;
+  /* background-color: rgba(232, 237, 223, 0.3); */
+}
+
+.advantage-card-img {
+  padding-bottom: 15px;
+  max-width: 80px;
+  height: 80px;
+}
+
+.advantage-card-description-text {
+  padding: 0;
+  margin: 0;
+  color: rgba(245, 203, 92, 1);
+  text-shadow: 0 0 10px rgba(0, 78, 152, 1);
+}
