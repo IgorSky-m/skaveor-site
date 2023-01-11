@@ -4,6 +4,7 @@ import com.skachko.shop.catalog.service.entities.deal.dto.Deal;
 import com.skachko.shop.catalog.service.entities.deal.service.api.IDealService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.ABaseCRUDService;
 import com.skachko.shop.catalog.service.libraries.search.api.ACriteriaToSpecificationConverter;
+import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
@@ -18,9 +19,10 @@ public class DealService extends ABaseCRUDService<Deal, UUID> implements IDealSe
 
     public DealService(
             JpaRepositoryImplementation<Deal, UUID> repository,
-            MessageSource messageSource
+            MessageSource messageSource,
+            ICriteriaSortExtractor extractor
     ) {
-        super(repository, ACriteriaToSpecificationConverter.of(Deal.class), messageSource);
+        super(repository, ACriteriaToSpecificationConverter.of(Deal.class), messageSource, extractor);
     }
 
     @Override

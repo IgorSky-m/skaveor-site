@@ -31,7 +31,7 @@ public interface IReadService<T, ID> {
 
     List<T> findAll(ISearchCriteria criteria);
 
-    Page<T> findAll(ISearchCriteria criteria, Pageable pageable);
+    Page<T> findAll(ISearchCriteria criteria, int page, int pageSize);
 
     List<T> findAll(ISearchCriteria criteria, Sort sort);
 

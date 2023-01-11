@@ -2,15 +2,13 @@ package com.skachko.shop.catalog.service.libraries.mvc.api;
 
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ServiceException;
+import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
 import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,13 +24,18 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
     private final MessageSource messageSource;
 
     private final ICriteriaToSpecificationConverter<T> converter;
+    private final ICriteriaSortExtractor criteriaSortExtractor;
 
-
-    public ABaseReadService(JpaRepositoryImplementation<T, ID> repository, ICriteriaToSpecificationConverter<T> converter, MessageSource messageSource) {
+    public ABaseReadService(JpaRepositoryImplementation<T, ID> repository,
+                            ICriteriaToSpecificationConverter<T> converter,
+                            MessageSource messageSource,
+                            ICriteriaSortExtractor criteriaSortExtractor
+    ) {
         init(repository, messageSource);
         this.repository = repository;
         this.messageSource = messageSource;
         this.converter = converter;
+        this.criteriaSortExtractor = criteriaSortExtractor;
     }
 
     @Override
@@ -166,7 +169,7 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
     @Override
     public List<T> findAll(ISearchCriteria criteria) {
         try {
-            List<T> all = repository.findAll(converter.convert(criteria));
+            List<T> all = repository.findAll(converter.convert(criteria), getSort(criteria));
             all.forEach(this::initializeTableViewFields);
             return all;
         } catch (Exception e){
@@ -177,9 +180,9 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
     }
 
     @Override
-    public Page<T> findAll(ISearchCriteria criteria, Pageable pageable) {
+    public Page<T> findAll(ISearchCriteria criteria, int page, int size) {
         try {
-            return repository.findAll(converter.convert(criteria), pageable).map(e -> {
+            return repository.findAll(converter.convert(criteria), PageRequest.of(page, size, getSort(criteria))).map(e -> {
                 initializeTableViewFields(e);
                 return e;
             });
@@ -247,6 +250,21 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
         return converter;
     }
 
+    /**
+     * Use for initialize lazy fields in table view
+     * @param t
+     */
     protected void initializeTableViewFields(T t){}
+
+    /**
+     * * Use for initialize lazy (Hibernate.initialize() for example) fields in detailed view
+     * @param t
+     */
     protected void initializeDetailedViewFields(T t){}
+
+
+    protected Sort getSort(ISearchCriteria searchCriteria) {
+        return criteriaSortExtractor.getSort(searchCriteria)
+                .orElse(Sort.unsorted());
+    }
 }

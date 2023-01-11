@@ -3,6 +3,7 @@ package com.skachko.shop.catalog.service.libraries.mvc.api;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ServiceException;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ValidationException;
+import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
 import org.springframework.context.MessageSource;
@@ -18,8 +19,12 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
 
     private final IValidator<T, ID> validator;
 
-    public ABaseCRUDService(JpaRepositoryImplementation<T, ID> repository, ICriteriaToSpecificationConverter<T> converter, MessageSource messageSource) {
-        super(repository, converter, messageSource);
+    public ABaseCRUDService(JpaRepositoryImplementation<T, ID> repository,
+                            ICriteriaToSpecificationConverter<T> converter,
+                            MessageSource messageSource,
+                            ICriteriaSortExtractor criteriaSortExtractor
+    ) {
+        super(repository, converter, messageSource, criteriaSortExtractor);
         validator = new AValidator<T, ID>(messageSource) {};
     }
 
@@ -27,9 +32,10 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
             JpaRepositoryImplementation<T, ID> repository,
             ICriteriaToSpecificationConverter<T> converter,
             MessageSource messageSource,
-            IValidator<T, ID> validator
+            IValidator<T, ID> validator,
+            ICriteriaSortExtractor criteriaSortExtractor
     ) {
-        super(repository, converter, messageSource);
+        super(repository, converter, messageSource, criteriaSortExtractor);
         this.validator = validator;
     }
 
@@ -58,13 +64,12 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     @Transactional
     @Override
     public List<T> save(Collection<T> list) {
-       try {
-
-           final Date dtCreate = new Date();
+        Date date = new Date();
+        try {
 
            list.forEach(e -> {
                if (e.getDtCreate() == null) {
-                   e.setDtCreate(dtCreate);
+                   e.setDtCreate(date);
                }
                e.setDtUpdate(e.getDtCreate());
            });
@@ -116,18 +121,17 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
         return update(paramContainer.getParam(ID), version, t);
     }
 
+    //TODO Разобраться с delete
     @Transactional
     public T delete(ID id, Date version) {
+        Date date = new Date();
         try {
             T read = getById(id);
 
-            if (read.getDtUpdate().getTime() != version.getTime()){
-                throw new EntityNotFoundException();
-            }
+            read.setDtUpdate(date);
+            read.setDtDelete(date);
 
-            getRepository().deleteById(id);
-
-            return read;
+            return getRepository().save(read);
 
         } catch (EntityNotFoundException | ValidationException e) {
             throw e;
@@ -136,11 +140,6 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
             getLogger().error(msg);
             throw new ServiceException(msg);
         }
-    }
-
-    @Override
-    public T delete(IPathParamContainer<ID> paramContainer, Date version) {
-        return delete(paramContainer.getParam(ID), version);
     }
 
     @Transactional
@@ -160,7 +159,15 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
                 );
             }
 
-            getRepository().deleteAllById(ids);
+            final Date dtDelete = new Date();
+
+            founded.forEach(e -> {
+                e.setDtDelete(dtDelete);
+                e.setDtUpdate(dtDelete);
+            });
+
+            getRepository().saveAll(founded);
+
             return founded;
         } catch (ServiceException e){
             throw e;
@@ -170,6 +177,12 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
             throw new ServiceException(msg);
         }
 
+    }
+
+    @Transactional
+    @Override
+    public T delete(IPathParamContainer<ID> paramContainer, Date version) {
+        return delete(paramContainer.getParam(ID),version);
     }
 
     @Transactional

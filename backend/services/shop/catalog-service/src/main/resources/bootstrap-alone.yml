@@ -17,15 +17,19 @@ spring:
       enabled: false
   #  datasource props
   datasource:
-    url: 'jdbc:h2:mem:junit_db'
-    driverClassName: 'org.h2.Driver'
-    username: 'sa'
-    password: 'pass'
+#    url: 'jdbc:h2:mem:junit_db'
+#    driverClassName: 'org.h2.Driver'
+
+    url: 'jdbc:postgresql://localhost:6543/shop'
+    driverClassName: 'org.postgresql.Driver'
+    username: 'admin_test'
+    password: 'admin_test'
   #    jpa props
   jpa:
     hibernate:
-      ddl-auto: update
-    database-platform: 'org.hibernate.dialect.H2Dialect'
+      ddl-auto: create-drop
+#    database-platform: 'org.hibernate.dialect.H2Dialect'
+    database-platform: 'org.hibernate.dialect.PostgreSQLDialect'
     show_sql: true
   # /h2-console
   h2:

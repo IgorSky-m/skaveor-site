@@ -1,7 +1,6 @@
 package com.skachko.shop.catalog.service.entities.item.api;
 
-public enum EItemStatus {
-    DRAFT,
-    PUBLISHED,
-    CLOSED
+public enum EItemVisibility {
+    VISIBLE,
+    HIDDEN
 }

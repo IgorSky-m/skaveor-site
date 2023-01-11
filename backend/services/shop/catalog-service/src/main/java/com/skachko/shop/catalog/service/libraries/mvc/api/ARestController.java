@@ -6,6 +6,8 @@ import com.skachko.shop.catalog.service.libraries.filter.annotation.ResponseView
 import com.skachko.shop.catalog.service.libraries.mvc.annotations.ResolveParameters;
 import com.skachko.shop.catalog.service.libraries.search.annotations.ASearchCriteria;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -54,6 +56,16 @@ public abstract class ARestController<T, ID> {
     @DeleteMapping("/{id_key}/dt_update/{version}")
     public T deleteById(@ResolveParameters IPathParamContainer<ID> paramContainer, @PathVariable Date version){
         return service.delete(paramContainer, version);
+    }
+
+    @ResponseViewLevel(ViewConstraints.ViewLevel.TABLE)
+    @GetMapping("/page")
+    public Page<T> getPage(
+            @ASearchCriteria ISearchCriteria criteria,
+            @RequestParam int page,
+            @RequestParam int size
+            ) {
+        return service.findAll(criteria, page, size);
     }
 
 }

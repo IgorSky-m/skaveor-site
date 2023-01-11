@@ -1,8 +1,10 @@
 package com.skachko.shop.catalog.service.entities.item.dto;
 
+import com.skachko.shop.catalog.service.entities.caterogy.dto.Category;
 import com.skachko.shop.catalog.service.entities.characteristics.dto.Characteristics;
 import com.skachko.shop.catalog.service.entities.deal.dto.Deal;
-import com.skachko.shop.catalog.service.entities.item.api.EItemStatus;
+import com.skachko.shop.catalog.service.entities.item.api.EItemPrivacy;
+import com.skachko.shop.catalog.service.entities.item.api.EItemVisibility;
 import com.skachko.shop.catalog.service.libraries.filter.ViewConstraints;
 import com.skachko.shop.catalog.service.libraries.filter.annotation.FieldViewLevel;
 import com.skachko.shop.catalog.service.libraries.mvc.api.AEntity;
@@ -27,15 +29,20 @@ public class Item extends AEntity<UUID> {
 
     private String title;
     private String summary;
-    private String category;
+
+
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Deal.class)
+    private List<Category> category;
+
     private String type;
-    private EItemStatus status;
+    private EItemVisibility visibility;
+    private EItemPrivacy privacy;
     private BigDecimal price;
     private Date dtFrom;
     private Date dtTo;
     private String titlePicture;
 
-//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     @ElementCollection(fetch = FetchType.LAZY, targetClass = Deal.class)
     private List<Deal> deals;
 

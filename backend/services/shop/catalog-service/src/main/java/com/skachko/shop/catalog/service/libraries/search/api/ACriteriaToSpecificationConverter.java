@@ -33,13 +33,14 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
     }
 
     private Predicate build(ISearchCriteria criteria, Root<T> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
-
+        Predicate predicate = null;
         if (isNullOrEmpty(criteria.getSearchPredicate())) {
             //always true
-            return builder.and();
+            predicate = builder.and();
+        } else {
+            predicate = build(criteria.getSearchPredicate(), root, query, builder);
         }
-
-        return build(criteria.getSearchPredicate(), root, query, builder);
+        return predicate;
     }
 
     private Predicate build(ISearchPredicate predicate, Root<T> root, CriteriaQuery<?> query, CriteriaBuilder builder) {

@@ -1,5 +1,6 @@
 package com.skachko.shop.catalog.service.libraries.mvc.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,10 +18,13 @@ public abstract class AEntity<ID> implements IIdentifiable<ID> {
     @Column(name = ID)
     private ID id;
     @Column(name = DT_CREATE)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date dtCreate;
     @Column(name = DT_UPDATE)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date dtUpdate;
     @Column(name = DT_DELETE)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date dtDelete;
     @Column(name = META)
     private String meta;
