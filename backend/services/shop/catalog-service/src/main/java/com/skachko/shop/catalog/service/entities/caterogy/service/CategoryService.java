@@ -38,7 +38,7 @@ public class CategoryService extends ABaseCRUDService<Category, UUID> implements
 
     @Transactional
     @Override
-    public Category save(Category category) {
+    public Category save(Category category, Date dtCreate) {
 
         try {
            if (isParentInvalid(category)) {
@@ -53,13 +53,13 @@ public class CategoryService extends ABaseCRUDService<Category, UUID> implements
             throw new ServiceException(msg);
         }
 
-        return super.save(category);
+        return super.save(category, dtCreate);
     }
 
     //TODO refactor to struct validation message
     @Transactional
     @Override
-    public List<Category> save(Collection<Category> list) {
+    public List<Category> save(Collection<Category> list, Date dtCreate) {
         int i = 0;
         Set<Integer> invalidParentIndexes = new HashSet<>();
         try {
@@ -89,12 +89,12 @@ public class CategoryService extends ABaseCRUDService<Category, UUID> implements
             throw new ServiceException(msg);
         }
 
-        return super.save(list);
+        return super.save(list, dtCreate);
     }
 
     @Transactional
     @Override
-    public Category update(UUID uuid, Date version, Category category) {
+    public Category update(UUID uuid, Date version, Category category, Date dtUpdate) {
         try {
             if (isParentInvalid(category)) {
                 throw new ServiceException(getMessageSource()
@@ -107,7 +107,7 @@ public class CategoryService extends ABaseCRUDService<Category, UUID> implements
             getLogger().error(msg);
             throw new ServiceException(msg);
         }
-        return super.update(uuid, version, category);
+        return super.update(uuid, version, category, dtUpdate);
     }
 
     @Override

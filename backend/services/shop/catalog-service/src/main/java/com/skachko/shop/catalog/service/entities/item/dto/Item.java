@@ -29,11 +29,6 @@ public class Item extends AEntity<UUID> {
 
     private String title;
     private String summary;
-
-
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = Deal.class)
-    private List<Category> category;
-
     private String type;
     private EItemVisibility visibility;
     private EItemPrivacy privacy;
@@ -42,6 +37,8 @@ public class Item extends AEntity<UUID> {
     private Date dtTo;
     private String titlePicture;
 
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Deal.class)
+    private List<Category> category;
 
     @ElementCollection(fetch = FetchType.LAZY, targetClass = Deal.class)
     private List<Deal> deals;

@@ -25,7 +25,8 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
                             ICriteriaSortExtractor criteriaSortExtractor
     ) {
         super(repository, converter, messageSource, criteriaSortExtractor);
-        validator = new AValidator<T, ID>(messageSource) {};
+        validator = new AValidator<T, ID>(messageSource) {
+        };
     }
 
     public ABaseCRUDService(
@@ -42,11 +43,13 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     @Transactional
     @Override
     public T save(T t) {
-        try {
+        return this.save(t, new Date());
+    }
 
-            if (t.getDtCreate() == null) {
-                t.setDtCreate(new Date());
-            }
+    @Transactional
+    public T save(T t, Date date) {
+        try {
+            t.setDtCreate(date);
 
             t.setDtUpdate(t.getDtCreate());
 
@@ -54,7 +57,7 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
 
         } catch (EntityNotFoundException | ValidationException e) {
             throw e;
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.create.one", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
@@ -64,43 +67,48 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     @Transactional
     @Override
     public List<T> save(Collection<T> list) {
-        Date date = new Date();
-        try {
-
-           list.forEach(e -> {
-               if (e.getDtCreate() == null) {
-                   e.setDtCreate(date);
-               }
-               e.setDtUpdate(e.getDtCreate());
-           });
-
-            return getRepository().saveAll(list);
-
-       } catch (EntityNotFoundException | ValidationException e) {
-           throw e;
-       } catch (Exception e){
-           String msg = getMessageSource().getMessage("error.crud.create.list", null, LocaleContextHolder.getLocale());
-           getLogger().error(msg);
-           throw new ServiceException(msg);
-       }
+        return this.save(list, new Date());
     }
 
     @Transactional
+    public List<T> save(Collection<T> list, Date date) {
+        try {
+            list.forEach(e -> {
+                if (e.getDtCreate() == null) {
+                    e.setDtCreate(date);
+                }
+                e.setDtUpdate(e.getDtCreate());
+            });
+
+            return getRepository().saveAll(list);
+
+        } catch (EntityNotFoundException | ValidationException e) {
+            throw e;
+        } catch (Exception e) {
+            String msg = getMessageSource().getMessage("error.crud.create.list", null, LocaleContextHolder.getLocale());
+            getLogger().error(msg);
+            throw new ServiceException(msg);
+        }
+    }
+
+
+    @Transactional
     public T update(ID id, Date version, T t) {
+        return this.update(id, version, t, new Date());
+    }
+
+    @Transactional
+    public T update(ID id, Date version, T t, Date newDtUpdate) {
         try {
             T old = getById(id);
 
-            if (old.getDtUpdate().getTime() != version.getTime()){
+            if (old.getDtUpdate().getTime() != version.getTime()) {
                 throw new EntityNotFoundException();
             }
 
             t.setId(old.getId());
             t.setDtCreate(old.getDtCreate());
-
-            if (t.getDtUpdate() == null) {
-                t.setDtUpdate(new Date());
-            }
-
+            t.setDtUpdate(newDtUpdate);
             t.setDtDelete(old.getDtDelete());
             t.setMeta(old.getMeta());
 
@@ -108,7 +116,7 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
 
         } catch (EntityNotFoundException | ValidationException e) {
             throw e;
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.update.one", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
@@ -124,23 +132,28 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     //TODO Разобраться с delete
     @Transactional
     public T delete(ID id, Date version) {
-        Date date = new Date();
+       return this.delete(id, version, new Date());
+    }
+
+    @Transactional
+    public T delete(ID id, Date version, Date dtDelete) {
         try {
             T read = getById(id);
 
-            read.setDtUpdate(date);
-            read.setDtDelete(date);
+            read.setDtUpdate(dtDelete);
+            read.setDtDelete(dtDelete);
 
             return getRepository().save(read);
 
         } catch (EntityNotFoundException | ValidationException e) {
             throw e;
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.delete.one", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
         }
     }
+
 
     @Transactional
     public List<T> deleteAllById(Collection<ID> ids) {
@@ -169,9 +182,9 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
             getRepository().saveAll(founded);
 
             return founded;
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             throw e;
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.delete.list", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
@@ -182,7 +195,7 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     @Transactional
     @Override
     public T delete(IPathParamContainer<ID> paramContainer, Date version) {
-        return delete(paramContainer.getParam(ID),version);
+        return delete(paramContainer.getParam(ID), version);
     }
 
     @Transactional
@@ -190,7 +203,7 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
 
         try {
             return getRepository().delete(getConverter().convert(criteria));
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.delete.list", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
@@ -201,7 +214,7 @@ public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseR
     public void deleteAll() {
         try {
             getRepository().deleteAll();
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.delete.all", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);

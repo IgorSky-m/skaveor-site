@@ -76,7 +76,7 @@ class CategoryServiceTestCreate extends ACategoryServiceTest {
         Date expectedDtCreate = withDate.getDtCreate();
         Date expectedDtUpdate = withDate.getDtUpdate();
 
-        Category result = categoryService.save(withDate);
+        Category result = categoryService.save(withDate, withDateTestDate);
 
         assertNotNull(result.getDtCreate());
         assertNotNull(result.getDtUpdate());

@@ -36,8 +36,8 @@ public class Category extends AEntity<UUID> {
     private Category parentCategory;
 
     @FieldViewLevel(viewLevel = ViewConstraints.ViewLevel.DETAILED)
-    @Transient
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Transient
     private List<Category> subCategories;
 }
 
