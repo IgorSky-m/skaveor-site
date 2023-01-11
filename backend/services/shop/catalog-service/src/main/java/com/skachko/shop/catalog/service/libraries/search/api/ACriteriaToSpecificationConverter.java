@@ -152,6 +152,9 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
     }
 
     private T convert (EColumnType columnType, Object value) {
+        if (columnType.predicate().test(value.getClass())) {
+            return (T) value;
+        }
         return (T) columnType.getConvert().apply((String)value);
     }
 

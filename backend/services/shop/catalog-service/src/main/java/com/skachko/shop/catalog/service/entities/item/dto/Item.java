@@ -37,7 +37,8 @@ public class Item extends AEntity {
     private Date dtTo;
     private String titlePicture;
 
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = Category.class)
+//    @ElementCollection(fetch = FetchType.EAGER, targetClass = Category.class)
+    @ManyToMany(targetEntity = Category.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private List<Category> categories;
 
     @ElementCollection(fetch = FetchType.LAZY, targetClass = Deal.class)

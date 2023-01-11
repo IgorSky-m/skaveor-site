@@ -28,6 +28,10 @@ public enum EColumnType {
         return convert;
     }
 
+    public Predicate<Class<?>> predicate() {
+        return predicate;
+    }
+
     private static final Set<EColumnType> excludeRef = getExcludeRefValues();
 
     EColumnType(Predicate<Class<?>> predicate, Function<String, Object> convert) {
