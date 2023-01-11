@@ -11,7 +11,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/items")
 public class ItemRestController extends ARestController<Item, UUID> {
-
     public ItemRestController(IItemService service) {
         super(service);
     }

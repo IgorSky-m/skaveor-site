@@ -5,7 +5,7 @@ import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ValidationExcep
 import java.util.Collection;
 import java.util.Date;
 
-public interface IValidator<T extends AEntity<ID>, ID > {
+public interface IValidator<T extends AEntity, ID > {
 
     void validateCreate(T t) throws ValidationException;
     void validateGroupBeforeCreate(Collection<T> t) throws ValidationException;

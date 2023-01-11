@@ -16,7 +16,7 @@ import java.util.List;
 
 public abstract class ARestController<T, ID> {
 
-    private final ICRUDService<T, ID> service;
+    protected final ICRUDService<T, ID> service;
 
     public ARestController(ICRUDService<T, ID> service) {
         this.service = service;

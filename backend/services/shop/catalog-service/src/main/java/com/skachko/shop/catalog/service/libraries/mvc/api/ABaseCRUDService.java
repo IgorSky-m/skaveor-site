@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public abstract class ABaseCRUDService<T extends AEntity<ID>, ID> extends ABaseReadService<T, ID> implements ICRUDService<T, ID> {
+public abstract class ABaseCRUDService<T extends AEntity, ID> extends ABaseReadService<T, ID> implements ICRUDService<T, ID> {
 
     private final IValidator<T, ID> validator;
 

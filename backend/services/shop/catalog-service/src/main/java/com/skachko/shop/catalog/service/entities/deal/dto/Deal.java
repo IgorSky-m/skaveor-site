@@ -19,7 +19,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Deal extends AEntity<UUID> {
+public class Deal extends AEntity {
 
     private EDealType type;
     private EDealStatus status;

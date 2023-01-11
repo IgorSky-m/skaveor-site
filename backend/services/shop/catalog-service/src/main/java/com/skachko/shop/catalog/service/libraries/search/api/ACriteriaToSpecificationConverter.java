@@ -1,16 +1,17 @@
 package com.skachko.shop.catalog.service.libraries.search.api;
 
+import com.google.common.base.CaseFormat;
+import com.skachko.shop.catalog.service.libraries.mvc.api.AEntity;
 import com.skachko.shop.catalog.service.libraries.search.SearchExpressionValidator;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
+//TODO REWRITE
 public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaToSpecificationConverter<T> {
 
     private final EntityParameters<T> entityParameters;
@@ -89,125 +90,155 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
         final EComparisonOperator comparisonOperator = expression.getComparisonOperator();
         Object[] values = expression.getValues();
         String field = expression.getField();
+        Path<Object> path = null;
 
+        for (String s : expression.getField().split("\\.")) {
+            String lowerCamel = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, s);
+            path = path != null ? path.get(lowerCamel) : root.get(lowerCamel);
+            field = lowerCamel;
+        }
+        if (path == null) {
+            throw new IllegalArgumentException("path can't be null");
+        }
         return switch (comparisonOperator) {
-            case EQUAL -> builder.equal(root.get(field), values[0]);
-            case NOT_EQUAL -> builder.notEqual(root.get(field), values[0]);
-            case IN -> root.get(field).in(values);
-            case NOT_IN -> builder.not(root.get(field).in(values));
-            case BETWEEN -> between(builder, field, root, values[0], values[1]);
-            case LESS -> lessThan(builder, field, root, values[0]);
-            case GREATER -> greaterThan(builder, field, root, values[0]);
-            case LESS_OR_EQUAL -> lessOrEqualTo(builder, field, root, values[0]);
-            case GREATER_OR_EQUAL -> greaterOrEqualTo(builder, field, root, values[0]);
-            case IS_NULL -> builder.isNull(root.get(field));
-            case IS_NOT_NULL -> builder.isNotNull(root.get(field));
+            case EQUAL -> equal(field, builder, path, values[0]);
+            case NOT_EQUAL -> notEqual(field, builder, path, values[0]);
+            case IN -> in(field, path, values);
+            case NOT_IN -> builder.not(in(field, path, values));
+            case BETWEEN -> between(builder, field, path, values[0], values[1]);
+            case LESS -> lessThan(builder, field, path, values[0]);
+            case GREATER -> greaterThan(builder, field, path, values[0]);
+            case LESS_OR_EQUAL -> lessOrEqualTo(builder, field, path, values[0]);
+            case GREATER_OR_EQUAL -> greaterOrEqualTo(builder, field, path, values[0]);
+            case IS_NULL -> builder.isNull(path);
+            case IS_NOT_NULL -> builder.isNotNull(path);
         };
     }
 
-    private Predicate lessThan(CriteriaBuilder builder, String field, Root<T> root, Object objValue) {
+    private Predicate in(String field, Path<Object> path, Object[] values) {
+        EColumnType columnType = entityParameters.getColumn(field).columnType;
+        return path.in(Arrays.stream(values).map(e -> convert(columnType, e)).toArray());
+    }
+
+    private Predicate equal(String field, CriteriaBuilder builder, Path<Object> path, Object value) {
+        EColumnType columnType = entityParameters.getColumn(field).columnType;
+        return builder.equal(path, convert(columnType, value));
+    }
+
+    private Predicate notEqual(String field, CriteriaBuilder builder, Path<Object> path, Object value) {
+        EColumnType columnType = entityParameters.getColumn(field).columnType;
+        return builder.notEqual(path, convert(columnType, value));
+    }
+
+    private Predicate lessThan(CriteriaBuilder builder, String field, Path root, Object objValue) {
 
         Column column = entityParameters.getColumn(field);
         String value = (String) objValue;
-
         return switch (column.columnType) {
-            case BYTE -> builder.lessThan(root.get(field), Byte.valueOf(value));
-            case SHORT -> builder.lessThan(root.get(field), Short.valueOf(value));
-            case INTEGER -> builder.lessThan(root.get(field), Integer.valueOf(value));
-            case LONG -> builder.lessThan(root.get(field), Long.valueOf(value));
-            case FLOAT -> builder.lessThan(root.get(field), Float.valueOf(value));
-            case DOUBLE -> builder.lessThan(root.get(field), Double.valueOf(value));
-            case CHARACTER -> builder.lessThan(root.get(field), value.charAt(0));
-            case BOOLEAN -> builder.lessThan(root.get(field), Boolean.valueOf(value));
-            case STRING -> builder.lessThan(root.get(field), value);
-            case UUID -> builder.lessThan(root.get(field), UUID.fromString(value));
+            case BYTE -> builder.lessThan(root, (Byte)column.columnType.getConvert().apply(value));
+            case SHORT -> builder.lessThan(root, (Short) column.columnType.getConvert().apply(value));
+            case INTEGER -> builder.lessThan(root,(Integer) column.columnType.getConvert().apply(value));
+            case LONG -> builder.lessThan(root, (Long) column.columnType.getConvert().apply(value));
+            case FLOAT -> builder.lessThan(root, (Float) column.columnType.getConvert().apply(value));
+            case DOUBLE -> builder.lessThan(root, (Double) column.columnType.getConvert().apply(value));
+            case CHARACTER -> builder.lessThan(root, (Character) column.columnType.getConvert().apply(value));
+            case BOOLEAN -> builder.lessThan(root, (Boolean) column.columnType.getConvert().apply(value));
+            case STRING -> builder.lessThan(root, value);
+            case UUID -> builder.lessThan(root, (UUID) column.columnType.getConvert().apply(value));
+            case DATE -> builder.lessThan(root, (Date) column.columnType.getConvert().apply(value));
             default -> null;
         };
 
     }
 
-    private Predicate greaterThan(CriteriaBuilder builder, String field, Root<T> root, Object objValue) {
+    private T convert (EColumnType columnType, Object value) {
+        return (T) columnType.getConvert().apply((String)value);
+    }
+
+    private Predicate greaterThan(CriteriaBuilder builder, String field, Path root, Object objValue) {
 
         Column column = entityParameters.getColumn(field);
         String value = (String) objValue;
 
         return switch (column.columnType) {
-            case BYTE -> builder.greaterThan(root.get(field), Byte.valueOf(value));
-            case SHORT -> builder.greaterThan(root.get(field), Short.valueOf(value));
-            case INTEGER -> builder.greaterThan(root.get(field), Integer.valueOf(value));
-            case LONG -> builder.greaterThan(root.get(field), Long.valueOf(value));
-            case FLOAT -> builder.greaterThan(root.get(field), Float.valueOf(value));
-            case DOUBLE -> builder.greaterThan(root.get(field), Double.valueOf(value));
-            case CHARACTER -> builder.greaterThan(root.get(field), value.charAt(0));
-            case BOOLEAN -> builder.greaterThan(root.get(field), Boolean.valueOf(value));
-            case STRING -> builder.greaterThan(root.get(field), value);
-            case UUID -> builder.greaterThan(root.get(field), UUID.fromString(value));
+            case BYTE -> builder.greaterThan(root, (Byte)column.columnType.getConvert().apply(value));
+            case SHORT -> builder.greaterThan(root, (Short) column.columnType.getConvert().apply(value));
+            case INTEGER -> builder.greaterThan(root,(Integer) column.columnType.getConvert().apply(value));
+            case LONG -> builder.greaterThan(root, (Long) column.columnType.getConvert().apply(value));
+            case FLOAT -> builder.greaterThan(root, (Float) column.columnType.getConvert().apply(value));
+            case DOUBLE -> builder.greaterThan(root, (Double) column.columnType.getConvert().apply(value));
+            case CHARACTER -> builder.greaterThan(root, (Character) column.columnType.getConvert().apply(value));
+            case BOOLEAN -> builder.greaterThan(root, (Boolean) column.columnType.getConvert().apply(value));
+            case STRING -> builder.greaterThan(root, value);
+            case UUID -> builder.greaterThan(root, (UUID) column.columnType.getConvert().apply(value));
+            case DATE -> builder.greaterThan(root, (Date) column.columnType.getConvert().apply(value));
             default -> null;
         };
 
     }
 
-    private Predicate greaterOrEqualTo(CriteriaBuilder builder, String field, Root<T> root, Object objValue) {
+    private Predicate greaterOrEqualTo(CriteriaBuilder builder, String field, Path root, Object objValue) {
 
         Column column = entityParameters.getColumn(field);
         String value = (String) objValue;
 
         return switch (column.columnType) {
-            case BYTE -> builder.greaterThanOrEqualTo(root.get(field), Byte.valueOf(value));
-            case SHORT -> builder.greaterThanOrEqualTo(root.get(field), Short.valueOf(value));
-            case INTEGER -> builder.greaterThanOrEqualTo(root.get(field), Integer.valueOf(value));
-            case LONG -> builder.greaterThanOrEqualTo(root.get(field), Long.valueOf(value));
-            case FLOAT -> builder.greaterThanOrEqualTo(root.get(field), Float.valueOf(value));
-            case DOUBLE -> builder.greaterThanOrEqualTo(root.get(field), Double.valueOf(value));
-            case CHARACTER -> builder.greaterThanOrEqualTo(root.get(field), value.charAt(0));
-            case BOOLEAN -> builder.greaterThanOrEqualTo(root.get(field), Boolean.valueOf(value));
-            case STRING -> builder.greaterThanOrEqualTo(root.get(field), value);
-            case UUID -> builder.greaterThanOrEqualTo(root.get(field), UUID.fromString(value));
+            case BYTE -> builder.greaterThanOrEqualTo(root, (Byte)column.columnType.getConvert().apply(value));
+            case SHORT -> builder.greaterThanOrEqualTo(root, (Short) column.columnType.getConvert().apply(value));
+            case INTEGER -> builder.greaterThanOrEqualTo(root,(Integer) column.columnType.getConvert().apply(value));
+            case LONG -> builder.greaterThanOrEqualTo(root, (Long) column.columnType.getConvert().apply(value));
+            case FLOAT -> builder.greaterThanOrEqualTo(root, (Float) column.columnType.getConvert().apply(value));
+            case DOUBLE -> builder.greaterThanOrEqualTo(root, (Double) column.columnType.getConvert().apply(value));
+            case CHARACTER -> builder.greaterThanOrEqualTo(root, (Character) column.columnType.getConvert().apply(value));
+            case BOOLEAN -> builder.greaterThanOrEqualTo(root, (Boolean) column.columnType.getConvert().apply(value));
+            case STRING -> builder.greaterThanOrEqualTo(root, value);
+            case UUID -> builder.greaterThanOrEqualTo(root, (UUID) column.columnType.getConvert().apply(value));
+            case DATE -> builder.greaterThanOrEqualTo(root, (Date) column.columnType.getConvert().apply(value));
             default -> null;
         };
-
-
     }
 
-    private Predicate lessOrEqualTo(CriteriaBuilder builder, String field, Root<T> root, Object objValue) {
+    private Predicate lessOrEqualTo(CriteriaBuilder builder, String field, Path root, Object objValue) {
 
         Column column = entityParameters.getColumn(field);
         String value = (String) objValue;
 
         return switch (column.columnType) {
-            case BYTE -> builder.lessThanOrEqualTo(root.get(field), Byte.valueOf(value));
-            case SHORT -> builder.lessThanOrEqualTo(root.get(field), Short.valueOf(value));
-            case INTEGER -> builder.lessThanOrEqualTo(root.get(field), Integer.valueOf(value));
-            case LONG -> builder.lessThanOrEqualTo(root.get(field), Long.valueOf(value));
-            case FLOAT -> builder.lessThanOrEqualTo(root.get(field), Float.valueOf(value));
-            case DOUBLE -> builder.lessThanOrEqualTo(root.get(field), Double.valueOf(value));
-            case CHARACTER -> builder.lessThanOrEqualTo(root.get(field), value.charAt(0));
-            case BOOLEAN -> builder.lessThanOrEqualTo(root.get(field), Boolean.valueOf(value));
-            case STRING -> builder.lessThanOrEqualTo(root.get(field), value);
-            case UUID -> builder.lessThanOrEqualTo(root.get(field), UUID.fromString(value));
+            case BYTE -> builder.lessThanOrEqualTo(root, (Byte)column.columnType.getConvert().apply(value));
+            case SHORT -> builder.lessThanOrEqualTo(root, (Short) column.columnType.getConvert().apply(value));
+            case INTEGER -> builder.lessThanOrEqualTo(root,(Integer) column.columnType.getConvert().apply(value));
+            case LONG -> builder.lessThanOrEqualTo(root, (Long) column.columnType.getConvert().apply(value));
+            case FLOAT -> builder.lessThanOrEqualTo(root, (Float) column.columnType.getConvert().apply(value));
+            case DOUBLE -> builder.lessThanOrEqualTo(root, (Double) column.columnType.getConvert().apply(value));
+            case CHARACTER -> builder.lessThanOrEqualTo(root, (Character) column.columnType.getConvert().apply(value));
+            case BOOLEAN -> builder.lessThanOrEqualTo(root, (Boolean) column.columnType.getConvert().apply(value));
+            case STRING -> builder.lessThanOrEqualTo(root, value);
+            case UUID -> builder.lessThanOrEqualTo(root, (UUID) column.columnType.getConvert().apply(value));
+            case DATE -> builder.lessThanOrEqualTo(root, (Date) column.columnType.getConvert().apply(value));
             default -> null;
         };
 
 
     }
 
-    private Predicate between(CriteriaBuilder builder, String field, Root<T> root, Object objValue1, Object objValue2) {
+    private Predicate between(CriteriaBuilder builder, String field, Path root, Object objValue1, Object objValue2) {
 
         Column column = entityParameters.getColumn(field);
         String value1 = (String) objValue1;
         String value2 = (String) objValue2;
 
         return switch (column.columnType) {
-            case BYTE -> builder.between(root.get(field), Byte.valueOf(value1), Byte.valueOf(value2));
-            case SHORT -> builder.between(root.get(field), Short.valueOf(value1), Short.valueOf(value2));
-            case INTEGER -> builder.between(root.get(field), Integer.valueOf(value1), Integer.valueOf(value2));
-            case LONG -> builder.between(root.get(field), Long.valueOf(value1), Long.valueOf(value2));
-            case FLOAT -> builder.between(root.get(field), Float.valueOf(value1), Float.valueOf(value2));
-            case DOUBLE -> builder.between(root.get(field), Double.valueOf(value1), Double.valueOf(value2));
-            case CHARACTER -> builder.between(root.get(field), value1.charAt(0), value2.charAt(0));
-            case BOOLEAN -> builder.between(root.get(field), Boolean.valueOf(value1), Boolean.valueOf(value2));
-            case STRING -> builder.between(root.get(field), value1, value2);
-            case UUID -> builder.between(root.get(field), UUID.fromString(value1), UUID.fromString(value2));
+            case BYTE -> builder.between(root, Byte.valueOf(value1), Byte.valueOf(value2));
+            case SHORT -> builder.between(root, Short.valueOf(value1), Short.valueOf(value2));
+            case INTEGER -> builder.between(root, Integer.valueOf(value1), Integer.valueOf(value2));
+            case LONG -> builder.between(root, Long.valueOf(value1), Long.valueOf(value2));
+            case FLOAT -> builder.between(root, Float.valueOf(value1), Float.valueOf(value2));
+            case DOUBLE -> builder.between(root, Double.valueOf(value1), Double.valueOf(value2));
+            case CHARACTER -> builder.between(root, value1.charAt(0), value2.charAt(0));
+            case BOOLEAN -> builder.between(root, Boolean.valueOf(value1), Boolean.valueOf(value2));
+            case STRING -> builder.between(root, value1, value2);
+            case UUID -> builder.between(root, UUID.fromString(value1), UUID.fromString(value2));
+            case DATE -> builder.between(root, (Date) column.columnType.getConvert().apply(value1), (Date) column.columnType.getConvert().apply(value2));
             default -> null;
         };
 
@@ -231,22 +262,38 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
                 .getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
+
+
     private EntityParameters<T> initEntityParameters(Class<T> persistentClass) {
-
-        List<Column> columns = Arrays.stream(persistentClass.getDeclaredFields())
-                .map(e -> new Column(e.getName(), e.getType(), EColumnType.getColumnTypeByClass(e.getType())))
-                .toList();
-
-        return new EntityParameters<>(persistentClass, columns);
+        return new EntityParameters<>(persistentClass, getColumns(persistentClass));
     }
 
+
+    private List<Column> getColumns(Class<?> persistentClass){
+        List<Column> columns = Arrays.stream(persistentClass.getDeclaredFields())
+                .map(e -> new Column(e.getName(), e.getType(), EColumnType.getColumnTypeByClass(e.getType())))
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        if (!persistentClass.equals(AEntity.class)) {
+            columns.addAll(getColumns(persistentClass.getSuperclass()));
+        }
+
+        return columns;
+
+    }
+
+
     protected static final class EntityParameters<T> {
-        private Class<T> persistentClass;
-        private List<Column> columns;
+        private final Class<T> persistentClass;
+        private final List<Column> columns;
 
         public EntityParameters(Class<T> persistentClass, List<Column> columns) {
             this.persistentClass = persistentClass;
-            this.columns = columns;
+            this.columns = new ArrayList<>(columns);
+        }
+
+        private void addColumns(List<Column> columns) {
+            this.columns.addAll(columns);
         }
 
         private Column getColumn(String field) {
@@ -258,9 +305,11 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
     }
 
     protected static final class Column {
-        private String field;
+
         private Class<?> type;
-        private EColumnType columnType;
+        private final String field;
+
+        private final EColumnType columnType;
 
         public Column(String field, Class<?> type, EColumnType columnType) {
             this.field = field;
@@ -288,4 +337,6 @@ public abstract class ACriteriaToSpecificationConverter<T> implements ICriteriaT
             super(clazz, validator);
         }
     }
+
+
 }

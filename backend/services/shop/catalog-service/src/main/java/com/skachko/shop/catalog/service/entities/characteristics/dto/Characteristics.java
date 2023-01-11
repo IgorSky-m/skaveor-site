@@ -15,6 +15,6 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Characteristics extends AEntity<UUID> {
+public class Characteristics extends AEntity {
     private String description;
 }

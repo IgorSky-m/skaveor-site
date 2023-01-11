@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @MappedSuperclass
-public abstract class AEntity<ID> implements IIdentifiable<ID> {
+public abstract class AEntity implements IIdentifiable<UUID> {
     public static final String ID = "id";
     public static final String DT_CREATE = "dt_create";
     public static final String DT_UPDATE = "dt_update";
@@ -16,7 +17,7 @@ public abstract class AEntity<ID> implements IIdentifiable<ID> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = ID)
-    private ID id;
+    private UUID id;
     @Column(name = DT_CREATE)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date dtCreate;
@@ -30,12 +31,12 @@ public abstract class AEntity<ID> implements IIdentifiable<ID> {
     private String meta;
 
 
-    public ID getId() {
+    public UUID getId() {
         return id;
     }
 
 
-    public void setId(ID id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

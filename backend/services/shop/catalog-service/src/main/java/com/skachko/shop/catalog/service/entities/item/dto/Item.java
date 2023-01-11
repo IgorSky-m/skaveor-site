@@ -25,7 +25,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Item extends AEntity<UUID> {
+public class Item extends AEntity {
 
     private String title;
     private String summary;
@@ -37,8 +37,8 @@ public class Item extends AEntity<UUID> {
     private Date dtTo;
     private String titlePicture;
 
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = Deal.class)
-    private List<Category> category;
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Category.class)
+    private List<Category> categories;
 
     @ElementCollection(fetch = FetchType.LAZY, targetClass = Deal.class)
     private List<Deal> deals;

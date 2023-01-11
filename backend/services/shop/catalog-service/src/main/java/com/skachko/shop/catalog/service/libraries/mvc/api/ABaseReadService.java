@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -153,8 +154,13 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
 
     @Override
     public Optional<T> findOne(ISearchCriteria criteria) {
+        return this.findOne(converter.convert(criteria));
+    }
+
+
+    public Optional<T> findOne(Specification<T> specification) {
         try {
-            return repository.findOne(converter.convert(criteria))
+            return repository.findOne(specification)
                     .map(e -> {
                         initializeDetailedViewFields(e);
                         return e;
@@ -168,8 +174,13 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
 
     @Override
     public List<T> findAll(ISearchCriteria criteria) {
+        return this.findAll(converter.convert(criteria), getSort(criteria));
+    }
+
+
+    public List<T> findAll(Specification<T> specification, Sort sort) {
         try {
-            List<T> all = repository.findAll(converter.convert(criteria), getSort(criteria));
+            List<T> all = repository.findAll(specification, sort);
             all.forEach(this::initializeTableViewFields);
             return all;
         } catch (Exception e){
@@ -181,8 +192,12 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
 
     @Override
     public Page<T> findAll(ISearchCriteria criteria, int page, int size) {
+        return this.findAll(converter.convert(criteria), PageRequest.of(page, size, getSort(criteria)));
+    }
+
+    public Page<T> findAll(Specification<T> specification, Pageable pageable) {
         try {
-            return repository.findAll(converter.convert(criteria), PageRequest.of(page, size, getSort(criteria))).map(e -> {
+            return repository.findAll(specification, pageable).map(e -> {
                 initializeTableViewFields(e);
                 return e;
             });
@@ -192,6 +207,7 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
             throw new ServiceException(msg);
         }
     }
+
 
     @Override
     public List<T> findAll(ISearchCriteria criteria, Sort sort) {
@@ -252,13 +268,13 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
 
     /**
      * Use for initialize lazy fields in table view
-     * @param t
+     * @param t param
      */
     protected void initializeTableViewFields(T t){}
 
     /**
      * * Use for initialize lazy (Hibernate.initialize() for example) fields in detailed view
-     * @param t
+     * @param t param
      */
     protected void initializeDetailedViewFields(T t){}
 

@@ -22,7 +22,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Category extends AEntity<UUID> {
+public class Category extends AEntity {
 
     private String icon;
     private String name;

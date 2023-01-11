@@ -40,7 +40,7 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleServiceException(ServiceException e) {
         e.printStackTrace();
-        return e.getMessage() == null ?
+        return e.getMessage() != null ?
                 e.getMessage() :
                 messageSource.getMessage("error.rest.bad.request", null, LocaleContextHolder.getLocale());
     }

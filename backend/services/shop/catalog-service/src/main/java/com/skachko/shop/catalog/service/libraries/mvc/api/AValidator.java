@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public abstract class AValidator<T extends AEntity<ID>, ID > implements IValidator<T, ID>{
+public abstract class AValidator<T extends AEntity, ID > implements IValidator<T, ID>{
 
     private static final String GROUP_FIELD_PATTERN = "%s[%s]";
 

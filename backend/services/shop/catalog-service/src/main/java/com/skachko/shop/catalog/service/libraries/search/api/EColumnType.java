@@ -1,28 +1,38 @@
 package com.skachko.shop.catalog.service.libraries.search.api;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public enum EColumnType {
-    BYTE(e -> e != null && (e.isAssignableFrom(byte.class) || e.isAssignableFrom(Byte.class))),
-    SHORT(e -> e != null && ( e.isAssignableFrom(short.class) || e.isAssignableFrom(Short.class))),
-    INTEGER(e -> e != null && ( e.isAssignableFrom(int.class) || e.isAssignableFrom(Integer.class))),
-    LONG(e -> e != null && ( e.isAssignableFrom(long.class) || e.isAssignableFrom(Long.class))),
-    FLOAT(e -> e != null && ( e.isAssignableFrom(float.class) || e.isAssignableFrom(Float.class))),
-    DOUBLE(e -> e != null && ( e.isAssignableFrom(double.class) || e.isAssignableFrom(Double.class))),
-    BOOLEAN(e -> e != null && (e.isAssignableFrom(boolean.class) || e.isAssignableFrom(Boolean.class))),
-    CHARACTER(e -> e != null && ( e.isAssignableFrom(char.class) || e.isAssignableFrom(Character.class))),
-    STRING(e -> e != null && ( e.isAssignableFrom(String.class))),
-    UUID(e -> e != null && (e.isAssignableFrom(java.util.UUID.class))),
-    REF(e -> e != null && ( e.isAssignableFrom(Object.class)));
+    UUID(e -> e != null && (e.equals(java.util.UUID.class)), java.util.UUID::fromString),
+    BYTE(e -> e != null && (e.equals(byte.class) || e.equals(Byte.class)),Byte::valueOf),
+    SHORT(e -> e != null && ( e.equals(short.class) || e.equals(Short.class)), Short::valueOf),
+    INTEGER(e -> e != null && ( e.equals(int.class) || e.equals(Integer.class)), Integer::valueOf),
+    LONG(e -> e != null && ( e.equals(long.class) || e.equals(Long.class)), Long::valueOf),
+    FLOAT(e -> e != null && ( e.equals(float.class) || e.equals(Float.class)), Float::valueOf),
+    DOUBLE(e -> e != null && ( e.equals(double.class) || e.equals(Double.class)), Double::valueOf),
+    BOOLEAN(e -> e != null && (e.equals(boolean.class) || e.equals(Boolean.class)), Boolean::valueOf),
+    CHARACTER(e -> e != null && ( e.equals(char.class) || e.equals(Character.class)), s -> s.charAt(0)),
+    STRING(e -> e != null && ( e.equals(String.class)), s -> s),
+    DATE(e -> e != null && e.equals(Date.class), s -> new Date(Long.parseLong(s))),
+    REF(e -> e != null && ( e.equals(Object.class)), s -> s);
 
     private final Predicate<Class<?>> predicate;
 
+    private final Function<String, Object> convert;
+
+    public Function<String, Object> getConvert() {
+        return convert;
+    }
+
     private static final Set<EColumnType> excludeRef = getExcludeRefValues();
 
-    EColumnType(Predicate<Class<?>> predicate) {
+    EColumnType(Predicate<Class<?>> predicate, Function<String, Object> convert) {
         this.predicate = predicate;
+        this.convert = convert;
     }
 
 
