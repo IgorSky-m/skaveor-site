@@ -7,16 +7,14 @@ import com.skachko.shop.catalog.service.entities.item.service.api.IItemService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.ARestController;
 import com.skachko.shop.catalog.service.libraries.search.annotations.ASearchCriteria;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/categories")
+@CrossOrigin(origins = "*")
 public class CategoryController extends ARestController<Category, UUID> {
 
     private final IItemService itemService;

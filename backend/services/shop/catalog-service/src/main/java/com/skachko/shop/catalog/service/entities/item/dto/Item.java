@@ -16,7 +16,6 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Item DTO
@@ -37,7 +36,7 @@ public class Item extends AEntity {
     private Date dtTo;
     private String titlePicture;
 
-//    @ElementCollection(fetch = FetchType.EAGER, targetClass = Category.class)
+
     @ManyToMany(targetEntity = Category.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private List<Category> categories;
 

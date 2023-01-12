@@ -9,10 +9,13 @@ import News from "./pages/News";
 import Login from "./pages/Login";
 import Game from "./pages/Game";
 import Error from "./pages/Error";
-import Shop from "./pages/shop/Shop";
-import ShopSharedLayout from "./components/Shop/ShopSharedLayout/ShopSharedLayout";
+import Store from "./pages/store/Store";
+import StoreSharedLayout from "./components/Shop/StoreSharedLayout/StoreSharedLayout";
 import Signup from "./pages/Signup";
-
+import CategoriesSharedLayout from "./components/Shop/Categories/CategoriesSharedLayout";
+import StoreCategories from "./pages/store/categories/StoreCategories";
+import StoreCategory from "./pages/store/categories/StoreCategory";
+import StoreItems from "./pages/store/items/StoreItems";
 function App() {
   return (
     <BrowserRouter>
@@ -24,8 +27,15 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="game" element={<Game />} />
-          <Route path="store" element={<ShopSharedLayout />}>
-            {/* Shop pages */}
+
+          <Route path="store" element={<StoreSharedLayout />}>
+            <Route index element={<Store />} />
+            <Route path="categories" element={<CategoriesSharedLayout />}>
+              <Route index element={<StoreCategories />} />
+              <Route path=":categoryId" element={<StoreCategory />}>
+                <Route path="items" element={<StoreItems />} />
+              </Route>
+            </Route>
           </Route>
         </Route>
 

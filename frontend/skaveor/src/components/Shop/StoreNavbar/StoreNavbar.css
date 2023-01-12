@@ -1,0 +1,12 @@
+.store-navbar {
+  display: flex;
+  justify-content: space-around;
+
+  border: 1px solid black;
+
+  margin-bottom: 20px;
+}
+.store-navbar-block {
+  display: flex;
+  gap: 20px;
+}
