@@ -3,7 +3,7 @@ package com.skachko.shop.catalog.service.entities.characteristics.service;
 import com.skachko.shop.catalog.service.entities.characteristics.dto.Characteristics;
 import com.skachko.shop.catalog.service.entities.characteristics.service.api.ICharacteristicsService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.ABaseCRUDService;
-import com.skachko.shop.catalog.service.libraries.search.api.ACriteriaToSpecificationConverter;
+import com.skachko.shop.catalog.service.libraries.search.converter.api.ACriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;

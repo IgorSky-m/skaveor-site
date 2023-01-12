@@ -16,6 +16,7 @@ import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ValidationExcep
 import com.skachko.shop.catalog.service.libraries.search.SearchCriteria;
 import com.skachko.shop.catalog.service.libraries.search.SearchPredicate;
 import com.skachko.shop.catalog.service.libraries.search.api.*;
+import com.skachko.shop.catalog.service.libraries.search.converter.api.ACriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.support.utils.IsEmptyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;

@@ -1,7 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+/*
+<button
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}>
+        Hover over me!
+      </button>
+      {isShown && (
+        <div>
+          I'll appear when you hover over the button.
+        </div>
 
+*/
 const Navbar = ({ isTopOfPage }) => {
   return (
     <nav className={isTopOfPage ? "navbar navbar-top" : "navbar navbar-mini"}>

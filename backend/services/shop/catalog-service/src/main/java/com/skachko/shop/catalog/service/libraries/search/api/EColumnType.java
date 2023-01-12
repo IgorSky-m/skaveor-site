@@ -1,5 +1,6 @@
 package com.skachko.shop.catalog.service.libraries.search.api;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +9,8 @@ import java.util.function.Predicate;
 
 public enum EColumnType {
     UUID(e -> e != null && (e.equals(java.util.UUID.class)), java.util.UUID::fromString),
+    ENUM(e -> e != null && e.isEnum(), e -> e),
+    BIG_DECIMAL(e -> e != null && e.equals(BigDecimal.class), BigDecimal::new),
     BYTE(e -> e != null && (e.equals(byte.class) || e.equals(Byte.class)),Byte::valueOf),
     SHORT(e -> e != null && ( e.equals(short.class) || e.equals(Short.class)), Short::valueOf),
     INTEGER(e -> e != null && ( e.equals(int.class) || e.equals(Integer.class)), Integer::valueOf),
@@ -18,7 +21,7 @@ public enum EColumnType {
     CHARACTER(e -> e != null && ( e.equals(char.class) || e.equals(Character.class)), s -> s.charAt(0)),
     STRING(e -> e != null && ( e.equals(String.class)), s -> s),
     DATE(e -> e != null && e.equals(Date.class), s -> new Date(Long.parseLong(s))),
-    REF(e -> e != null && ( e.equals(Object.class)), s -> s);
+    REF(e -> e != null && ( Object.class.isAssignableFrom(e)), s -> s);
 
     private final Predicate<Class<?>> predicate;
 
@@ -41,6 +44,7 @@ public enum EColumnType {
 
 
     public static EColumnType getColumnTypeByClass(Class<?> clazz){
+
         EColumnType columnType = excludeRef.stream()
                 .filter(e -> e.predicate.test(clazz))
                 .findFirst()

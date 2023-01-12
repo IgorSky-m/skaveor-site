@@ -7,7 +7,7 @@ import com.skachko.shop.catalog.service.libraries.mvc.api.ABaseCRUDService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.AEntity;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ServiceException;
-import com.skachko.shop.catalog.service.libraries.search.api.ACriteriaToSpecificationConverter;
+import com.skachko.shop.catalog.service.libraries.search.converter.api.ACriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
 import lombok.extern.slf4j.Slf4j;
