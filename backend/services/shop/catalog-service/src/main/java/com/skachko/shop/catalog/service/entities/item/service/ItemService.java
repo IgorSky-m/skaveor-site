@@ -23,6 +23,8 @@ import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Service;
@@ -193,5 +195,14 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
                 .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
 
         return super.findAll(convert, getSort(criteria));
+    }
+
+    @Transactional
+    @Override
+    public Page<Item> findPageByCategory(ISearchCriteria criteria, UUID category, int page, int size) {
+        Specification<Item> convert = getConverter()
+                .convert(criteria)
+                .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
+        return super.findAll(convert, PageRequest.of(page, size, getSort(criteria)));
     }
 }

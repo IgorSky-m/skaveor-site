@@ -32,4 +32,23 @@ export default class ShopApi {
       .then((response) => response.json())
       .catch((error) => console.error(error));
   }
+
+  getCategoryItemsPage(categoryId) {
+    return fetch(
+      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}/page`
+    )
+      .then((response) => response.json())
+      .catch((error) => console.error(error));
+  }
+
+  getItem(itemId) {
+    console.log(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`);
+    return fetch(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .catch((error) => console.error(error));
+  }
 }

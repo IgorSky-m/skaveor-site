@@ -1,15 +1,16 @@
 package com.skachko.shop.catalog.service.entities.caterogy.service;
 
 import com.skachko.shop.catalog.service.entities.caterogy.dto.Category;
+import com.skachko.shop.catalog.service.entities.caterogy.dto.SubCategory;
 import com.skachko.shop.catalog.service.entities.caterogy.repository.ICategoryRepository;
 import com.skachko.shop.catalog.service.entities.caterogy.service.api.ICategoryService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.ABaseCRUDService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.AEntity;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.catalog.service.libraries.mvc.exceptions.ServiceException;
-import com.skachko.shop.catalog.service.libraries.search.converter.api.ACriteriaToSpecificationConverter;
 import com.skachko.shop.catalog.service.libraries.search.api.ICriteriaSortExtractor;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
+import com.skachko.shop.catalog.service.libraries.search.converter.api.ACriteriaToSpecificationConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
@@ -153,10 +154,12 @@ public class CategoryService extends ABaseCRUDService<Category, UUID> implements
         return false;
     }
 
-    private List<Category> findSubCategories(UUID id) {
+    private List<SubCategory> findSubCategories(UUID id) {
         return getRepository()
                 .findAll((root, query, builder) ->
                         builder.equal(root.get("parentCategory").get(AEntity.ID), id)
-                );
+                )
+                .stream().map(SubCategory::new)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

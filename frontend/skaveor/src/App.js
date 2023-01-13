@@ -15,7 +15,7 @@ import Signup from "./pages/Signup";
 import CategoriesSharedLayout from "./components/Shop/Categories/CategoriesSharedLayout";
 import StoreCategories from "./pages/store/categories/StoreCategories";
 import StoreCategory from "./pages/store/categories/StoreCategory";
-import StoreItems from "./pages/store/items/StoreItems";
+import Item from "./pages/store/items/Item";
 function App() {
   return (
     <BrowserRouter>
@@ -32,9 +32,10 @@ function App() {
             <Route index element={<Store />} />
             <Route path="categories" element={<CategoriesSharedLayout />}>
               <Route index element={<StoreCategories />} />
-              <Route path=":categoryId" element={<StoreCategory />}>
-                <Route path="items" element={<StoreItems />} />
-              </Route>
+              <Route path=":categoryId" element={<StoreCategory />} />
+            </Route>
+            <Route path="items">
+              <Route path=":itemId" element={<Item />} />
             </Route>
           </Route>
         </Route>

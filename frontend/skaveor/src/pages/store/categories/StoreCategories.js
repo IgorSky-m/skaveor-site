@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import StoreCategoryCard from "../../../components/StoreCategoryCard/StoreCategoryCard";
+import StoreCategoryCard from "../../../components/Shop/StoreCategoryCard/StoreCategoryCard";
 import ShopApi from "../../../services/shop/ShopRestService";
 
 const StoreCategories = () => {

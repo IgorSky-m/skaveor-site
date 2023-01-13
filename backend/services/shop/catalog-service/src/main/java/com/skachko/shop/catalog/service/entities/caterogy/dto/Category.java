@@ -13,7 +13,6 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Category of items in shop
@@ -38,7 +37,7 @@ public class Category extends AEntity {
     @FieldViewLevel(viewLevel = ViewConstraints.ViewLevel.DETAILED)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Transient
-    private List<Category> subCategories;
+    private List<SubCategory> subCategories;
 }
 
 

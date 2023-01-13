@@ -31,6 +31,16 @@ public abstract class AEntity implements IIdentifiable<UUID> {
     private String meta;
 
 
+    public AEntity(){}
+    public AEntity(AEntity entity){
+        this.id = entity.getId();
+        this.dtCreate = entity.getDtCreate();
+        this.dtUpdate = entity.getDtUpdate();
+        this.dtDelete = entity.getDtDelete();
+        this.meta = entity.getMeta();
+    }
+
+
     public UUID getId() {
         return id;
     }
