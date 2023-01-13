@@ -2,6 +2,7 @@ package com.skachko.shop.catalog.service.libraries.search.converter.api;
 
 import com.skachko.shop.catalog.service.libraries.search.api.EColumnType;
 import com.skachko.shop.catalog.service.libraries.search.converter.builders.APredicateBuilder;
+import com.skachko.shop.catalog.service.libraries.search.converter.builders.EnumPredicateBuilder;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -58,7 +59,7 @@ public abstract class CriteriaBuilderOperationsFactory {
                     put(EColumnType.FLOAT, new APredicateBuilder<>((o, c) -> ((Number) o).floatValue()) {});
                     put(EColumnType.DOUBLE, new APredicateBuilder<>((o, c) -> ((Number) o).doubleValue()) {});
                     put(EColumnType.BIG_DECIMAL, new APredicateBuilder<>((o, c) -> BigDecimal.valueOf(((Number) o).doubleValue())) {});
-//                    put(EColumnType.ENUM, new APredicateBuilder<>((o, c) -> Enum.valueOf((Class<? extends Enum>)c, (String) o)) {});
+                    put(EColumnType.ENUM, new EnumPredicateBuilder() {});
                     put(EColumnType.BOOLEAN, new APredicateBuilder<>((o, c) -> (Boolean) o) {});
                     put(EColumnType.CHARACTER, new APredicateBuilder<>((o, c) -> o != null ? ((String) o).charAt(0) : null) {});
                     put(EColumnType.STRING, new APredicateBuilder<>((o, c) -> (String) o) {});

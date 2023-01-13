@@ -24,7 +24,6 @@ public abstract class APredicateBuilder<T extends Comparable<? super T>> impleme
 
         EComparisonOperator comparisonOperator = expression.getComparisonOperator();
         Object[] values = expression.getValues();
-
         return switch (comparisonOperator) {
             case BETWEEN -> builder.between(path, convertFunc.apply(values[0], column.getType()), convertFunc.apply(values[1], column.getType()));
             case EQUAL -> builder.equal(path, convertFunc.apply(values[0], column.getType()));
