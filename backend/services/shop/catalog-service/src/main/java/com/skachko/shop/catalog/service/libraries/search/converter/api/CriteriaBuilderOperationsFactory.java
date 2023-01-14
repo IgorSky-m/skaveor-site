@@ -63,7 +63,13 @@ public abstract class CriteriaBuilderOperationsFactory {
                     put(EColumnType.BOOLEAN, new APredicateBuilder<>((o, c) -> (Boolean) o) {});
                     put(EColumnType.CHARACTER, new APredicateBuilder<>((o, c) -> o != null ? ((String) o).charAt(0) : null) {});
                     put(EColumnType.STRING, new APredicateBuilder<>((o, c) -> (String) o) {});
-                    put(EColumnType.UUID, new APredicateBuilder<>((o, c) -> UUID.fromString((String) o)) {});
+                    put(EColumnType.UUID, new APredicateBuilder<>((o, c) -> {
+                        if (o instanceof UUID) {
+                            return (UUID) o;
+                        } else if (o instanceof String) {
+                            return UUID.fromString((String) o);
+                        } else throw new IllegalArgumentException();
+                    }) {});
                     put(EColumnType.DATE, new APredicateBuilder<>((o, c) -> new Date(((Number)o).longValue())) {});
                 }}
         ) {

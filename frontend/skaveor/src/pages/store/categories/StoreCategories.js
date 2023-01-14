@@ -1,16 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import StoreCategoryCard from "../../../components/Shop/StoreCategoryCard/StoreCategoryCard";
-import ShopApi from "../../../services/shop/ShopRestService";
+import StoreApi from "../../../services/store/StoreRestService";
 
 const StoreCategories = () => {
-  const api = new ShopApi();
-
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState({ content: [] });
 
   useEffect(() => {
+    const api = new StoreApi();
     async function get() {
-      setCategories(await api.getCategories());
+      setCategories(await api.getCategoriesPage());
     }
     get();
   }, []);
@@ -18,7 +17,7 @@ const StoreCategories = () => {
   return (
     <>
       <h3>Categories</h3>
-      {categories.map((e) => {
+      {categories.content.map((e) => {
         return <StoreCategoryCard key={e.id} item={e} />;
       })}
     </>

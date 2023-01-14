@@ -16,6 +16,7 @@ import CategoriesSharedLayout from "./components/Shop/Categories/CategoriesShare
 import StoreCategories from "./pages/store/categories/StoreCategories";
 import StoreCategory from "./pages/store/categories/StoreCategory";
 import Item from "./pages/store/items/Item";
+import Deals from "./pages/store/deals/Deals";
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +38,7 @@ function App() {
             <Route path="items">
               <Route path=":itemId" element={<Item />} />
             </Route>
+            <Route path="deals" element={<Deals />} />
           </Route>
         </Route>
 

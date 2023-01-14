@@ -4,6 +4,7 @@ import com.skachko.shop.catalog.service.entities.caterogy.dto.Category;
 import com.skachko.shop.catalog.service.entities.caterogy.service.api.ICategoryService;
 import com.skachko.shop.catalog.service.entities.characteristics.dto.Characteristics;
 import com.skachko.shop.catalog.service.entities.characteristics.service.api.ICharacteristicsService;
+import com.skachko.shop.catalog.service.entities.deal.api.EDealType;
 import com.skachko.shop.catalog.service.entities.deal.dto.Deal;
 import com.skachko.shop.catalog.service.entities.deal.service.api.IDealService;
 import com.skachko.shop.catalog.service.entities.item.dto.Item;
@@ -108,12 +109,11 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
         dealService.save(deals);
 
 
-
         try {
             return getRepository().saveAll(list);
         } catch (EntityNotFoundException | ValidationException e) {
             throw e;
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = getMessageSource().getMessage("error.crud.create.list", null, LocaleContextHolder.getLocale());
             getLogger().error(msg);
             throw new ServiceException(msg);
@@ -127,6 +127,43 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
 
     //TODO UPDATE \ DELETE
 
+    @Override
+    public List<Item> findAllByCategory(ISearchCriteria criteria, UUID category) {
+        Specification<Item> convert = getConverter()
+                .convert(criteria)
+                .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
+
+        return super.findAll(convert, getSort(criteria));
+    }
+
+    @Transactional
+    @Override
+    public Page<Item> findPageByCategory(ISearchCriteria criteria, UUID category, int page, int size) {
+        Specification<Item> convert = getConverter()
+                .convert(criteria)
+                .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
+        return super.findAll(convert, PageRequest.of(page, size, getSort(criteria)));
+    }
+
+    @Override
+    public List<Item> findAllByDealType(EDealType type, ISearchCriteria criteria) {
+        Specification<Item> dealsSpec = getConverter()
+                .convert(criteria)
+                .and((r, c, b) -> b.equal(r.get("deals").get("type"), type));
+
+        return findAll(dealsSpec, getSort(criteria));
+    }
+
+    @Override
+    public Page<Item> findAllByDealType(EDealType type, ISearchCriteria criteria, int page, int size) {
+        Specification<Item> dealsSpec = getConverter()
+                .convert(criteria)
+                .and((r, c, b) -> b.equal(r.get("deals").get("type"), type));
+
+        return findAll(dealsSpec, PageRequest.of(page, size, getSort(criteria)));
+    }
+
+
 
     @Override
     protected Logger getLogger() {
@@ -137,6 +174,11 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
     protected void initializeDetailedViewFields(Item item) {
         Hibernate.initialize(item.getCharacteristics());
         Hibernate.initialize(item.getPictures());
+        Hibernate.initialize(item.getDeals());
+    }
+
+    @Override
+    protected void initializeTableViewFields(Item item){
         Hibernate.initialize(item.getDeals());
     }
 
@@ -166,7 +208,9 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
                 EComparisonOperator.IN,
                 categoryIdentifiers.toArray()
         );
-        pr.setSearchExpressions(new ArrayList<>() {{ add(exr);}});
+        pr.setSearchExpressions(new ArrayList<>() {{
+            add(exr);
+        }});
         cr.setSearchPredicate(pr);
 
         Set<UUID> existedCategories = categoryService.findAll(cr)
@@ -174,7 +218,7 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
                 .map(AEntity::getId)
                 .collect(Collectors.toCollection(HashSet::new));
 
-        if (!categoryIdentifiers.removeAll(existedCategories) || !categoryIdentifiers.isEmpty()){
+        if (!categoryIdentifiers.removeAll(existedCategories) || !categoryIdentifiers.isEmpty()) {
             throw new ServiceException(getMessageSource().getMessage(
                     "item.categories.not.exist",
                     new Object[]{
@@ -188,21 +232,4 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
     }
 
 
-    @Override
-    public List<Item> findAllByCategory(ISearchCriteria criteria, UUID category) {
-        Specification<Item> convert = getConverter()
-                .convert(criteria)
-                .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
-
-        return super.findAll(convert, getSort(criteria));
-    }
-
-    @Transactional
-    @Override
-    public Page<Item> findPageByCategory(ISearchCriteria criteria, UUID category, int page, int size) {
-        Specification<Item> convert = getConverter()
-                .convert(criteria)
-                .and((r, c, b) -> b.equal(r.get("categories").get(AEntity.ID), category));
-        return super.findAll(convert, PageRequest.of(page, size, getSort(criteria)));
-    }
 }

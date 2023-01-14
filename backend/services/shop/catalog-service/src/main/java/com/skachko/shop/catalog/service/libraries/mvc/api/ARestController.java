@@ -7,7 +7,6 @@ import com.skachko.shop.catalog.service.libraries.mvc.annotations.ResolveParamet
 import com.skachko.shop.catalog.service.libraries.search.annotations.ASearchCriteria;
 import com.skachko.shop.catalog.service.libraries.search.api.ISearchCriteria;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -62,10 +61,14 @@ public abstract class ARestController<T, ID> {
     @GetMapping("/page")
     public Page<T> getPage(
             @ASearchCriteria ISearchCriteria criteria,
-            @RequestParam int page,
-            @RequestParam int size
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
             ) {
         return service.findAll(criteria, page, size);
     }
 
+
+    protected ICRUDService<T, ID> getService(){
+        return service;
+    }
 }

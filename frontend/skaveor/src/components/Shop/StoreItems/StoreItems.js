@@ -1,20 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ShopApi from "../../../services/shop/ShopRestService";
 import ItemCard from "../ItemCard/ItemCard";
-const StoreItems = ({ category }) => {
+const StoreItems = ({ getItemsPage }) => {
   const [items, setItems] = useState({ content: [] });
-
-  const api = new ShopApi();
 
   useEffect(() => {
     async function getItems() {
-      setItems(await api.getCategoryItemsPage(category));
+      setItems(await getItemsPage());
     }
     getItems();
   }, []);
   //TODO add display cards switcher( blocks, rows, small blocks etc)
-  console.log(items.content);
   return (
     <div className="store-items">
       {items.content.map((e) => {

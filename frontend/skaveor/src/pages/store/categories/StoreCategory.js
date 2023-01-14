@@ -1,14 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ShopApi from "../../../services/shop/ShopRestService";
+import StoreApi from "../../../services/store/StoreRestService";
 import { useState, useEffect } from "react";
 import StoreItems from "../../../components/Shop/StoreItems/StoreItems";
 const StoreCategory = () => {
   const { categoryId } = useParams();
   const [category, setCategory] = useState({});
-
-  const api = new ShopApi();
-
+  const api = new StoreApi();
   useEffect(() => {
     async function getOne() {
       setCategory(await api.getCategory(categoryId));
@@ -24,7 +22,7 @@ const StoreCategory = () => {
       <h1>{category.name}</h1>
       <h3>{category.description}</h3>
       <p>Caregory items:</p>
-      <StoreItems category={categoryId} />
+      <StoreItems getItemsPage={() => api.getCategoryItemsPage(categoryId)} />
     </div>
   );
 };

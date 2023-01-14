@@ -56,6 +56,7 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
            T t = repository.findById(id)
                    .orElseThrow(EntityNotFoundException::new);
 
+           initializeTableViewFields(t);
            initializeDetailedViewFields(t);
 
            return t;
@@ -72,6 +73,7 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
     public Optional<T> findById(ID id) {
         try {
             return repository.findById(id).map(e -> {
+                initializeTableViewFields(e);
                 initializeDetailedViewFields(e);
                 return e;
             });
@@ -162,6 +164,7 @@ public abstract class ABaseReadService<T, ID> implements IReadService<T, ID> {
         try {
             return repository.findOne(specification)
                     .map(e -> {
+                        initializeTableViewFields(e);
                         initializeDetailedViewFields(e);
                         return e;
                     });

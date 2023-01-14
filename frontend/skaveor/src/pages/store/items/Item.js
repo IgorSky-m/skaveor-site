@@ -1,21 +1,20 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ShopApi from "../../../services/shop/ShopRestService";
+import StoreApi from "../../../services/store/StoreRestService";
 
 const Item = () => {
   const { itemId } = useParams();
   const [item, setItem] = useState();
 
   useEffect(() => {
-    const api = new ShopApi();
+    const api = new StoreApi();
     async function get() {
       setItem(await api.getItem(itemId));
     }
 
     get();
   }, []);
-  console.log(item);
   return (
     <>
       {item && (
@@ -27,7 +26,6 @@ const Item = () => {
             item.categories.map((e) => {
               return (
                 <Link to={`/store/categories/${e.id}`}>
-                  {" "}
                   <div>categories: {e.name}</div>
                 </Link>
               );
