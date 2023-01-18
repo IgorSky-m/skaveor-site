@@ -15,7 +15,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/categories")
-@CrossOrigin(origins = "*")
 public class CategoryController extends ARestController<Category, UUID> {
 
     private final IItemService itemService;

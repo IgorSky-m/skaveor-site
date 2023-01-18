@@ -1,6 +1,5 @@
 package com.skachko.shop.auth.service.utils;
 
-import com.skachko.shop.auth.service.entities.auth.dto.AuthRequest;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

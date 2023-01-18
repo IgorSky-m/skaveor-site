@@ -1,0 +1,93 @@
+package com.skachko.shop.auth.service.entities.auth.service;
+
+import com.skachko.shop.auth.service.entities.auth.dto.AuthRequest;
+import com.skachko.shop.auth.service.entities.auth.dto.AuthResponse;
+import com.skachko.shop.auth.service.entities.auth.service.api.IAuthHandlerService;
+import com.skachko.shop.auth.service.entities.auth.validator.api.IAuthValidator;
+import com.skachko.shop.auth.service.entities.user.api.EUserRole;
+import com.skachko.shop.auth.service.entities.user.dto.CustomUser;
+import com.skachko.shop.auth.service.entities.user.service.api.IUserService;
+import com.skachko.shop.auth.service.exceptions.AuthValidationException;
+import com.skachko.shop.auth.service.utils.JwtUtil;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collections;
+import java.util.Objects;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+public class AuthHandlerService implements IAuthHandlerService {
+
+    private final IUserService userService;
+    private final IAuthValidator validator;
+    private final MessageSource messageSource;
+
+    private final JwtUtil jwtUtil;
+
+    @Transactional(readOnly = true)
+    @Override
+    public AuthResponse login(AuthRequest request) {
+        validator.validate(request);
+
+        CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
+
+        if (userByEmail == null) {
+
+            throw new AuthValidationException(
+                    new AuthValidationException.ValueStructuredError(
+                            "email",
+                            messageSource.getMessage("auth.not.exist", null, LocaleContextHolder.getLocale()),
+                            request.getEmail()
+                    ));
+        }
+
+
+        if (!Objects.equals(userByEmail.getPassword(), encodePassword(request.getPassword()))) {
+            throw new AuthValidationException(
+                    new AuthValidationException.StructuredError(
+                            "password",
+                            messageSource.getMessage("auth.password.not.match", null, LocaleContextHolder.getLocale())
+                    ));
+        }
+
+
+        return new AuthResponse(jwtUtil.generateToken(userByEmail.getId().toString()));
+    }
+
+    @Transactional
+    @Override
+    public AuthResponse register(AuthRequest request) {
+        validator.validate(request);
+
+        CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
+        if (userByEmail != null) {
+
+            throw new AuthValidationException(
+                    new AuthValidationException.ValueStructuredError(
+                            "email",
+                            messageSource.getMessage("auth.exist", null, LocaleContextHolder.getLocale()),
+                            request.getEmail()
+                    ));
+        }
+
+        CustomUser savedUser = userService.save(CustomUser.builder()
+                .email(request.getEmail())
+                .password(encodePassword(request.getPassword()))
+                .roles(Collections.singleton(EUserRole.USER))
+                .build());
+
+        return new AuthResponse(jwtUtil.generateToken(savedUser.getId().toString()));
+    }
+
+
+    private String encodePassword(String password) {
+        return DigestUtils.sha3_256Hex(password);
+    }
+}
