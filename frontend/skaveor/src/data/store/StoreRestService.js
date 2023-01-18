@@ -1,6 +1,7 @@
+import { GATEWAY_API_ENTRANCE } from "../Constraints";
 export default class StoreApi {
   constructor() {
-    this.shopApiEndpoint = "http://localhost:9000";
+    this.shopApiEndpoint = GATEWAY_API_ENTRANCE;
     this.itemsPart = "items";
     this.dealsPart = "deals";
     this.categoriesPart = "categories";

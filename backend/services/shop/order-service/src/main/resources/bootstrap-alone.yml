@@ -2,9 +2,9 @@
 eureka:
   client:
 #    set false if you want to use without eureka
-    register-with-eureka: false
+    register-with-eureka: true
 #    set false if you want to use without eureka
-    fetch-registry: false
+    fetch-registry: true
     service-url:
 #      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
       defaultZone: http://localhost:8760/eureka

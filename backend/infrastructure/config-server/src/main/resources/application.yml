@@ -1,6 +1,10 @@
 server:
   port: 9296
-
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
+      defaultZone: http://localhost:8760/eureka
 spring:
   application:
     name: CONFIG-SERVER
@@ -9,7 +13,7 @@ spring:
       server:
         git:
           uri: https://github.com/IgorSky-m/training-diary-config
-          clone-on-start: true
+          clone-on-start: false
           username: ${GIT_USER}
           password: ${GIT_TOKEN}
           default-label: "main"

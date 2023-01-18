@@ -17,7 +17,7 @@ spring:
       probability: 1.0
 
   application:
-    name: ACCOUNT-SERVICE
+    name: PAYMENT-SERVICE
 
   cloud:
     function:

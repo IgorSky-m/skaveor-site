@@ -1,6 +1,7 @@
+import { GATEWAY_API_ENTRANCE } from "./Constraints";
 export default class OrderApi {
   constructor() {
-    this.apiEndpoint = "http://localhost:9002";
+    this.apiEndpoint = GATEWAY_API_ENTRANCE;
     this.orderPart = "order";
   }
 

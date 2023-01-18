@@ -16,7 +16,6 @@ import java.util.UUID;
 @RequestMapping("/order")
 @Log4j2
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class OrderController {
 
     private final IOrderHandleService orderService;
@@ -24,8 +23,8 @@ public class OrderController {
 
 
     @PostMapping("/place")
-    public ResponseEntity<PlacedOrderResponse> placeOrder(@RequestBody OrderRequest request) {
-        return new ResponseEntity<>(orderService.placeOrder(request), HttpStatus.CREATED);
+    public PlacedOrderResponse placeOrder(@RequestBody OrderRequest request, @RequestHeader String id) {
+        return orderService.placeOrder(request);
     }
 
     @GetMapping("/{orderId}")

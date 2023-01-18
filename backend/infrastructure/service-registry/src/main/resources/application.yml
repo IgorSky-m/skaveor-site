@@ -18,6 +18,7 @@ eureka:
   instance:
     hostname: localhost
   server:
+    renewalPercentThreshold: 0.85
   client:
     register-with-eureka: false
     fetch-registry: false
