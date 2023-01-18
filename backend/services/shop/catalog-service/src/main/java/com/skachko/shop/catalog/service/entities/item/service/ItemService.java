@@ -26,6 +26,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Service;
@@ -163,6 +164,22 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
         return findAll(dealsSpec, PageRequest.of(page, size, getSort(criteria)));
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<Item> search(String searchString) {
+        if (searchString == null || "".equals(searchString)) {
+            return Collections.EMPTY_LIST;
+        }
+        List<Item> title = findAll((r, c, b) -> b.like(r.get("title"), "%" + searchString + "%"), Sort.unsorted());
+        title.forEach(this::initializeTableViewFields);
+        return title;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existsById(UUID id) {
+        return getRepository().existsById(id);
+    }
 
 
     @Override
@@ -174,8 +191,10 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
     protected void initializeDetailedViewFields(Item item) {
         Hibernate.initialize(item.getCharacteristics());
         Hibernate.initialize(item.getPictures());
-        Hibernate.initialize(item.getDeals());
+
     }
+
+
 
     @Override
     protected void initializeTableViewFields(Item item){

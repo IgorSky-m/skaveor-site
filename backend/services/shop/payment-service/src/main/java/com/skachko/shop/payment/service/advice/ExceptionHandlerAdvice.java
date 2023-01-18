@@ -1,6 +1,7 @@
 package com.skachko.shop.payment.service.advice;
 
 import com.skachko.shop.payment.service.entities.payment.dto.ErrorResponse;
+import com.skachko.shop.payment.service.exceptions.PaymentDetailsException;
 import com.skachko.shop.payment.service.exceptions.PaymentException;
 import com.skachko.shop.payment.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.payment.service.libraries.mvc.exceptions.ServiceException;
@@ -55,6 +56,14 @@ public class ExceptionHandlerAdvice {
     public Collection<StructuredError> handleValidationException(ValidationException e) {
         return e.getErrors();
     }
+
+    @ResponseBody
+    @ExceptionHandler(PaymentDetailsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handlePaymentDetailsException(PaymentDetailsException e) {
+        return e.getMessage();
+    }
+
 
     @ResponseBody
     @ExceptionHandler(Exception.class)

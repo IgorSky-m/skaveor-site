@@ -2,13 +2,12 @@ package com.skachko.shop.order.service.entities.payment.dto;
 
 
 import com.skachko.shop.order.service.libraries.mvc.api.AEntity;
-import jakarta.persistence.Entity;
 import lombok.*;
 
 import java.time.Instant;
 import java.util.UUID;
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor

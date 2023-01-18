@@ -2,6 +2,7 @@ package com.skachko.shop.order.service.advice;
 
 import com.skachko.shop.order.service.entities.payment.dto.ErrorResponse;
 import com.skachko.shop.order.service.exceptions.OrderException;
+import com.skachko.shop.order.service.exceptions.OrderValidationException;
 import com.skachko.shop.order.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.order.service.libraries.mvc.exceptions.ServiceException;
 import com.skachko.shop.order.service.libraries.mvc.exceptions.StructuredError;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Exception handler for handle any controller exceptions
@@ -50,6 +53,19 @@ public class ExceptionHandlerAdvice {
 
 
     @ResponseBody
+    @ExceptionHandler(OrderValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public List<OrderValidationException.StructuredError> handleOrderValidationException(OrderValidationException e) {
+        return e.getStructuredErrors() != null ?
+                e.getStructuredErrors() :
+                Collections.singletonList(new OrderValidationException.StructuredError(
+                        "",
+                        messageSource.getMessage("validation.response.default.error", null, LocaleContextHolder.getLocale())
+                ));
+    }
+
+
+    @ResponseBody
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Collection<StructuredError> handleValidationException(ValidationException e) {
@@ -66,7 +82,7 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(OrderException.class)
     public ResponseEntity<ErrorResponse> handleProductServiceException(OrderException exception) {
-        return new ResponseEntity<>(new ErrorResponse().builder()
+        return new ResponseEntity<>(ErrorResponse.builder()
                 .errorMessage(exception.getMessage())
                 .errorCode(exception.getErrorCode())
                 .build(),

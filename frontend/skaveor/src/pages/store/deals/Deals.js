@@ -1,56 +1,40 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import StoreApi from "../../../services/store/StoreRestService";
-import StoreItems from "../../../components/Shop/StoreItems/StoreItems";
+import StoreApi from "../../../data/store/StoreRestService";
+import { Col, Container, Row } from "react-bootstrap";
+import DealCard from "../../../components/Shop/Deals/DealCard";
 
 const Deals = () => {
   const [dealTypes, setDealTypes] = useState([]);
-  const [storeItems, setStoreItems] = useState();
-  const [itemsVisibility, setItemsVisibility] = useState(false);
-  const [dealCategory, setDealCategory] = useState("FLASH");
-  const api = new StoreApi();
-
   useEffect(() => {
-    async function getDealTypes() {
+    const api = new StoreApi();
+    async function get() {
       setDealTypes(await api.getDealTypes());
     }
-
-    setStoreItems(
-      <StoreItems
-        key={dealCategory}
-        getItemsPage={() => api.getDealItems(dealCategory)}
-      />
-    );
-
-    getDealTypes();
-    console.log("render");
-  }, [dealCategory]);
-
-  const handleClick = (type) => {
-    console.log("curent: " + dealCategory);
-    console.log(type);
-    setDealCategory((prev) => {
-      if (prev !== type) {
-        return type;
-      }
-      return prev;
-    });
-  };
+    get();
+  }, []);
 
   return (
-    <>
-      <div>
-        {dealTypes.map((e) => {
-          return (
-            <Link onClick={() => handleClick(e)}>
-              <div key={e}>{e}</div>
-            </Link>
-          );
-        })}
-      </div>
-      <div>{storeItems}</div>
-    </>
+    <Container className="box-block mb-3 text-shadow-cls text-white">
+      {/* <div className="d-flex justify-content-center">
+        <h1 className="fs-2 text-white text-shadow-cls text-uppercase">
+          Deals
+        </h1>
+      </div> */}
+      <Row
+        md={3}
+        xs={1}
+        lg={3}
+        className="p-2 d-flex m-auto w-100"
+        style={{ minHeight: "80vh" }}
+      >
+        {dealTypes.map((e) => (
+          <Col xxl key={e} className="">
+            <DealCard key={e} deal={e} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

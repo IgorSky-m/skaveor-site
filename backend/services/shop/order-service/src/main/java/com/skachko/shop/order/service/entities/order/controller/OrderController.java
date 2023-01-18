@@ -2,6 +2,7 @@ package com.skachko.shop.order.service.entities.order.controller;
 
 import com.skachko.shop.order.service.entities.order.dto.OrderRequest;
 import com.skachko.shop.order.service.entities.order.dto.OrderResponse;
+import com.skachko.shop.order.service.entities.order.dto.PlacedOrderResponse;
 import com.skachko.shop.order.service.entities.order.service.api.IOrderHandleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,33 +16,20 @@ import java.util.UUID;
 @RequestMapping("/order")
 @Log4j2
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class OrderController {
 
     private final IOrderHandleService orderService;
 
+
+
     @PostMapping("/place")
-    public ResponseEntity<UUID> placeOrder(@RequestBody OrderRequest orderRequest) {
-
-        log.info("OrderController | placeOrder is called");
-
-        log.info("OrderController | placeOrder | orderRequest: {}", orderRequest.toString());
-
-        UUID orderId = orderService.placeOrder(orderRequest);
-        log.info("Order Id: {}", orderId);
-        return new ResponseEntity<>(orderId, HttpStatus.OK);
+    public ResponseEntity<PlacedOrderResponse> placeOrder(@RequestBody OrderRequest request) {
+        return new ResponseEntity<>(orderService.placeOrder(request), HttpStatus.CREATED);
     }
 
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable UUID orderId) {
-
-        log.info("OrderController | getOrderDetails is called");
-
-        OrderResponse orderResponse
-                = orderService.getOrderDetails(orderId);
-
-        log.info("OrderController | getOrderDetails | orderResponse : " + orderResponse.toString());
-
-        return new ResponseEntity<>(orderResponse,
-                HttpStatus.OK);
+        return ResponseEntity.ok(orderService.getOrderDetails(orderId));
     }
 }

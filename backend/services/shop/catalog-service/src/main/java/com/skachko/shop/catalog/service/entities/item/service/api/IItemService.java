@@ -15,4 +15,7 @@ public interface IItemService extends ICRUDService<Item, UUID> {
     Page<Item> findPageByCategory(ISearchCriteria criteria, UUID category, int page, int size);
     List<Item> findAllByDealType(EDealType type, ISearchCriteria criteria);
     Page<Item> findAllByDealType(EDealType type, ISearchCriteria criteria, int page, int size);
+
+    List<Item> search(String searchString);
+    boolean existsById(UUID id);
 }

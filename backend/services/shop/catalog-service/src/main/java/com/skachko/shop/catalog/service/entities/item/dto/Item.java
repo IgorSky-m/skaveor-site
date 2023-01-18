@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class Item extends AEntity {
     private String type;
     private EItemVisibility visibility;
     private EItemPrivacy privacy;
-    private BigDecimal price;
+    private Long price;
     private Date dtFrom;
     private Date dtTo;
     private String titlePicture;

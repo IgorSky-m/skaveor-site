@@ -1,7 +1,7 @@
 import React from "react";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import About from "./pages/About";
@@ -17,6 +17,10 @@ import StoreCategories from "./pages/store/categories/StoreCategories";
 import StoreCategory from "./pages/store/categories/StoreCategory";
 import Item from "./pages/store/items/Item";
 import Deals from "./pages/store/deals/Deals";
+import Deal from "./pages/store/deals/Deal";
+import Checkout from "./pages/store/Checkout";
+import OrderDetails from "./pages/store/OrderDetails";
+import SearchResult from "./pages/SearchResult";
 function App() {
   return (
     <BrowserRouter>
@@ -28,18 +32,23 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="game" element={<Game />} />
-
-          <Route path="store" element={<StoreSharedLayout />}>
-            <Route index element={<Store />} />
-            <Route path="categories" element={<CategoriesSharedLayout />}>
-              <Route index element={<StoreCategories />} />
-              <Route path=":categoryId" element={<StoreCategory />} />
-            </Route>
-            <Route path="items">
-              <Route path=":itemId" element={<Item />} />
-            </Route>
-            <Route path="deals" element={<Deals />} />
+        </Route>
+        <Route path="store" element={<StoreSharedLayout />}>
+          <Route index element={<Store />} />
+          <Route path="search" element={<SearchResult />} />
+          <Route path="categories" element={<CategoriesSharedLayout />}>
+            <Route index element={<StoreCategories />} />
+            <Route path=":categoryId" element={<StoreCategory />} />
           </Route>
+          <Route path="items">
+            <Route path=":itemId" element={<Item />} />
+          </Route>
+          <Route path="deals">
+            <Route index element={<Deals />} />
+            <Route path=":dealType" element={<Deal />} />
+          </Route>
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="order/:orderId" element={<OrderDetails />} />
         </Route>
 
         <Route to="*" element={<Error />} />

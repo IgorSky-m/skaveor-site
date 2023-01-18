@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import Button from "../../components/Button/Button";
 import YoutubeEmbed from "../../components/Video/Youtube/YoutubeEmbed";
 
-const Shop = () => {
+const Store = () => {
   return (
-    <>
+    <Container>
       <div className="video-block">
         <div className="video-block-content">
           <YoutubeEmbed embedId="4SaF2NBNb0Q" />
@@ -19,8 +20,8 @@ const Shop = () => {
         </div>
       </div>
       <div className="shop-preview-block"></div>
-    </>
+    </Container>
   );
 };
 
-export default Shop;
+export default Store;

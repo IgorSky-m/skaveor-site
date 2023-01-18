@@ -20,15 +20,15 @@ spring:
 #    url: 'jdbc:h2:mem:junit_db'
 #    driverClassName: 'org.h2.Driver'
 
-    url: 'jdbc:postgresql://localhost:6543/shop'
+    url: 'jdbc:postgresql://localhost:6543/order'
     driverClassName: 'org.postgresql.Driver'
     username: 'admin_test'
     password: 'admin_test'
   #    jpa props
   jpa:
     hibernate:
-#      ddl-auto: create-drop
-      ddl-auto: update
+      ddl-auto: create-drop
+#      ddl-auto: update
 #    database-platform: 'org.hibernate.dialect.H2Dialect'
     database-platform: 'org.hibernate.dialect.PostgreSQLDialect'
     show_sql: true

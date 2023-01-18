@@ -1,13 +1,14 @@
 package com.skachko.shop.order.service.entities.order.dto;
 
+import com.skachko.shop.order.service.entities.order.api.OrderStatus;
 import com.skachko.shop.order.service.entities.payment.api.PaymentMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -17,9 +18,9 @@ import java.util.UUID;
 public class OrderResponse {
     private UUID orderId;
     private Instant orderDate;
-    private String orderStatus;
+    private OrderStatus orderStatus;
     private long amount;
-    private ProductDetails productDetails;
+    private List<ProductDetails> productDetails;
     private PaymentDetails paymentDetails;
 
     @Data
@@ -27,11 +28,13 @@ public class OrderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ProductDetails {
-
-        private String productName;
-        private UUID productId;
+        private UUID id;
+        private String title;
+        private String type;
+        private String titlePicture;
+        private long amount;
         private long quantity;
-        private BigDecimal price;
+        //todo add quantity
     }
 
     @Data

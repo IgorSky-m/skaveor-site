@@ -1,9 +1,10 @@
 body {
-  background-image: url("/public/img/background8.webp");
+  background-image: url("/public/img/sci-bg-2.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
   background-attachment: fixed;
+
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -15,6 +16,110 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* -------------------------------- MY CUSTOM -------------------------------------------- */
+.text-shadow-cls {
+  text-shadow: 1px 1px 2px black;
+}
+
+.just-cont-end {
+  transform: 0.2s justify-content;
+}
+
+.just-cont-end:hover {
+  transform: 0.2s justify-content;
+  justify-content: end;
+}
+
+.op-block {
+  opacity: 1;
+  transform: 0.2s opacity;
+}
+
+.op-block:hover {
+  opacity: 0.5;
+  transform: 0.2s opacity;
+}
+
+.card-block {
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: 0.2s background-color;
+}
+.card-block:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.2s background-color;
+}
+
+.box-block {
+  background-color: rgba(51, 53, 51, 0.7);
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
+}
+
+.light-anim {
+  animation: light-shadow-content 10s ease-out;
+  animation-iteration-count: infinite;
+}
+
+.light-anim-pulse {
+  animation: light-shadow-content-pulse 5s ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes light-shadow-content {
+  0% {
+    box-shadow: 0px 0px 5px 3px rgba(255, 103, 0, 0.5);
+  }
+  25% {
+    box-shadow: 0px 0px 5px 3px rgba(0, 78, 152, 0.5);
+  }
+  50% {
+    box-shadow: 0px 0px 5px 3px rgba(255, 103, 0, 0.5);
+  }
+  75% {
+    box-shadow: 0px 0px 5px 3px rgba(245, 203, 92, 0.5);
+  }
+  100% {
+    box-shadow: 0px 0px 5px 3px rgba(255, 103, 0, 0.5);
+  }
+}
+
+@keyframes light-shadow-content-pulse {
+  0% {
+    box-shadow: 0px 0px 5px 3px rgba(255, 103, 0, 0.5);
+  }
+  25% {
+    box-shadow: 0px 0px 5px 3px rgba(245, 203, 92, 0.5);
+  }
+  50% {
+    box-shadow: 0px 0px 5px 3px rgba(232, 237, 223, 0.5);
+  }
+  75% {
+    box-shadow: 0px 0px 5px 3px rgba(245, 203, 92, 0.5);
+  }
+  100% {
+    box-shadow: 0px 0px 5px 3px rgba(255, 103, 0, 0.5);
+  }
+}
+
+.shadow-border-hv-secondary {
+  transition: 0.2s border;
+}
+
+.shadow-border-hv-secondary:hover {
+  transition: 0.2s border;
+  border: 1px solid gray;
+}
+
+.shadow-border-hv-white {
+  transition: 0.2s border;
+}
+
+.shadow-border-hv-white:hover {
+  border: 1px solid white;
+  transition: 0.2s border;
+}
+
+/* ---------------------------------------------------------------------------------------- */
 
 .video-block {
   display: flex;

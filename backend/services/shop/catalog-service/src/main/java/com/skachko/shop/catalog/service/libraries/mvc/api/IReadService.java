@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface IReadService<T, ID> {
 
