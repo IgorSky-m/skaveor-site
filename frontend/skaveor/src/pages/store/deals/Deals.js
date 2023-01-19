@@ -9,7 +9,12 @@ const Deals = () => {
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setDealTypes(await api.getDealTypes());
+      setDealTypes(
+        await api
+          .getDealTypes()
+          .then((response) => response.json())
+          .catch((error) => console.error(error))
+      );
     }
     get();
   }, []);

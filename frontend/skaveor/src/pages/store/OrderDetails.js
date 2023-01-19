@@ -8,7 +8,12 @@ const OrderDetails = () => {
   useEffect(() => {
     const api = new OrderApi();
     async function getOrder() {
-      setOrder(await api.getOrderDetails(orderId));
+      setOrder(
+        await api
+          .getOrderDetails(orderId)
+          .then((response) => response.json())
+          .catch((error) => console.error(error))
+      );
     }
 
     getOrder();

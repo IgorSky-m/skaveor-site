@@ -30,7 +30,12 @@ const Cart = ({ isOpen }) => {
       };
 
       async function getItems() {
-        setItems(await api.getItems(JSON.stringify(criteria)));
+        setItems(
+          await api
+            .getItems(JSON.stringify(criteria))
+            .then((response) => response.json())
+            .catch((error) => console.error(error))
+        );
       }
 
       getItems();

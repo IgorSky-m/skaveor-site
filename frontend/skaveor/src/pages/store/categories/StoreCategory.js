@@ -10,7 +10,12 @@ const StoreCategory = () => {
   const api = new StoreApi();
   useEffect(() => {
     async function getOne() {
-      setCategory(await api.getCategory(categoryId));
+      setCategory(
+        await api
+          .getCategory(categoryId)
+          .then((response) => response.json())
+          .catch((error) => console.error(error))
+      );
       return () => setCategory(null);
     }
     getOne();
@@ -21,7 +26,14 @@ const StoreCategory = () => {
       <div className="d-flex justify-content-center">
         <h1 className="fs-1 text-white text-uppercase">{category.name}</h1>
       </div>
-      <StoreItems getItemsPage={() => api.getCategoryItemsPage(categoryId)} />
+      <StoreItems
+        getItemsPage={() =>
+          api
+            .getCategoryItemsPage(categoryId)
+            .then((response) => response.json())
+            .catch((error) => console.error(error))
+        }
+      />
     </Container>
   );
 };

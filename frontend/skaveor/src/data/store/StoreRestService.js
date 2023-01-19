@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { GATEWAY_API_ENTRANCE } from "../Constraints";
 export default class StoreApi {
   constructor() {
@@ -5,7 +6,6 @@ export default class StoreApi {
     this.itemsPart = "items";
     this.dealsPart = "deals";
     this.categoriesPart = "categories";
-
     this.criteriaParamName = "criteria";
     this.dealTypeParamName = "type";
   }
@@ -18,9 +18,7 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getCategoriesPage(criteria) {
@@ -31,31 +29,25 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getCategory(categoryId) {
-    return fetch(`${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}`)
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    return fetch(
+      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}`
+    );
   }
 
   getCategoryItems(categoryId) {
     return fetch(
       `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}`
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getCategoryItemsPage(categoryId) {
     return fetch(
       `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}/page`
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getItems(criteria) {
@@ -66,9 +58,7 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getItemsPage(criteria) {
@@ -79,21 +69,15 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   getItem(itemId) {
-    return fetch(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`)
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    return fetch(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`);
   }
 
   getDealTypes() {
-    return fetch(`${this.shopApiEndpoint}/${this.dealsPart}/types`)
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    return fetch(`${this.shopApiEndpoint}/${this.dealsPart}/types`);
   }
 
   getDealItems(dealType, criteria) {
@@ -106,9 +90,7 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 
   searchItems(queryString) {
@@ -117,8 +99,6 @@ export default class StoreApi {
       {
         method: "GET",
       }
-    )
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    );
   }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-
 import ItemCard from "../ItemCard/ItemCard";
 const StoreItems = ({ getItemsPage, isList }) => {
   const [items, setItems] = useState(isList ? [] : { content: [] });

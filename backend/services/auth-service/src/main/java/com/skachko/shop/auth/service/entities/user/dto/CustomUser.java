@@ -19,6 +19,7 @@ import java.util.Set;
 public class CustomUser extends AEntity {
 
     private String email;
+    private String name;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;

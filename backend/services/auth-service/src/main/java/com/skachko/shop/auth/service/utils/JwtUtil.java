@@ -1,5 +1,6 @@
 package com.skachko.shop.auth.service.utils;
 
+import com.skachko.shop.auth.service.entities.user.dto.CustomUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -43,10 +44,11 @@ public class JwtUtil {
     }
 
 
-    public String generateToken(String id) {
+    public String generateToken(CustomUser user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("id", id);
-        return doGenerateToken(claims, id);
+        claims.put("id", user.getId());
+        claims.put("name", user.getName());
+        return doGenerateToken(claims, user.getId().toString());
     }
 
 

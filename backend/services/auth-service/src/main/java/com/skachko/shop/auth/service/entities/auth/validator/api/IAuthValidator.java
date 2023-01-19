@@ -1,8 +1,10 @@
 package com.skachko.shop.auth.service.entities.auth.validator.api;
 
-import com.skachko.shop.auth.service.entities.auth.dto.AuthRequest;
+import com.skachko.shop.auth.service.entities.auth.dto.AuthLoginRequest;
+import com.skachko.shop.auth.service.entities.auth.dto.AuthRegisterRequest;
 
-@FunctionalInterface
+
 public interface IAuthValidator {
-    void validate(AuthRequest request);
+    void validateLogin(AuthLoginRequest request);
+    void validateRegister(AuthRegisterRequest request);
 }

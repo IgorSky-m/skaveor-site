@@ -1,19 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useLogin } from "../../context/LoginContext";
 import "./Navbar.css";
-/*
-<button
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}>
-        Hover over me!
-      </button>
-      {isShown && (
-        <div>
-          I'll appear when you hover over the button.
-        </div>
 
-*/
 const Navbar = ({ isTopOfPage }) => {
+  const { logged, isLogged, openLogin, openRegister, logOut } = useLogin();
+  const navigate = useNavigate();
+
   return (
     <nav className={isTopOfPage ? "navbar navbar-top" : "navbar navbar-mini"}>
       <div className="navbar-section">
@@ -34,12 +27,32 @@ const Navbar = ({ isTopOfPage }) => {
         </NavLink>
       </div>
       <div className="navbar-section-login">
-        <NavLink className={getLinkClasses} to="/login">
-          Log in
-        </NavLink>
-        <NavLink className={getLinkClasses} to="/signup">
-          Sign up
-        </NavLink>
+        {!logged ? (
+          <>
+            <NavLink
+              end
+              className={getLinkClasses}
+              onClick={() => openLogin(false)}
+            >
+              Log in
+            </NavLink>
+            <NavLink
+              className={getLinkClasses}
+              onClick={() => openRegister(false)}
+            >
+              Sign up
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink
+              className={getLinkClasses}
+              onClick={() => logOut(() => navigate("fd"))}
+            >
+              Log out
+            </NavLink>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -1,6 +1,7 @@
 package com.skachko.shop.auth.service.entities.auth.service;
 
-import com.skachko.shop.auth.service.entities.auth.dto.AuthRequest;
+import com.skachko.shop.auth.service.entities.auth.dto.AuthLoginRequest;
+import com.skachko.shop.auth.service.entities.auth.dto.AuthRegisterRequest;
 import com.skachko.shop.auth.service.entities.auth.dto.AuthResponse;
 import com.skachko.shop.auth.service.entities.auth.service.api.IAuthHandlerService;
 import com.skachko.shop.auth.service.entities.auth.validator.api.IAuthValidator;
@@ -33,8 +34,8 @@ public class AuthHandlerService implements IAuthHandlerService {
 
     @Transactional(readOnly = true)
     @Override
-    public AuthResponse login(AuthRequest request) {
-        validator.validate(request);
+    public AuthResponse login(AuthLoginRequest request) {
+        validator.validateLogin(request);
 
         CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
 
@@ -49,6 +50,7 @@ public class AuthHandlerService implements IAuthHandlerService {
         }
 
 
+
         if (!Objects.equals(userByEmail.getPassword(), encodePassword(request.getPassword()))) {
             throw new AuthValidationException(
                     new AuthValidationException.StructuredError(
@@ -58,13 +60,13 @@ public class AuthHandlerService implements IAuthHandlerService {
         }
 
 
-        return new AuthResponse(jwtUtil.generateToken(userByEmail.getId().toString()));
+        return new AuthResponse(jwtUtil.generateToken(userByEmail));
     }
 
     @Transactional
     @Override
-    public AuthResponse register(AuthRequest request) {
-        validator.validate(request);
+    public AuthResponse register(AuthRegisterRequest request) {
+        validator.validateRegister(request);
 
         CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
         if (userByEmail != null) {
@@ -81,9 +83,10 @@ public class AuthHandlerService implements IAuthHandlerService {
                 .email(request.getEmail())
                 .password(encodePassword(request.getPassword()))
                 .roles(Collections.singleton(EUserRole.USER))
+                .name(request.getName())
                 .build());
 
-        return new AuthResponse(jwtUtil.generateToken(savedUser.getId().toString()));
+        return new AuthResponse(jwtUtil.generateToken(savedUser));
     }
 
 

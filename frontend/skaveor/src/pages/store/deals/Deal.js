@@ -14,7 +14,14 @@ const Deal = () => {
       <div className="d-flex justify-content-center">
         <h1 className="fs-1 text-white text-uppercase">{dealType}</h1>
       </div>
-      <StoreItems getItemsPage={() => api.getDealItems(dealType)} />
+      <StoreItems
+        getItemsPage={() =>
+          api
+            .getDealItems(dealType)
+            .then((response) => response.json())
+            .catch((error) => console.error(error))
+        }
+      />
     </Container>
   );
 };

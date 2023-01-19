@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/deals")
-@CrossOrigin(origins = "*")
 public class DealController {
 
     private final IDealService service;

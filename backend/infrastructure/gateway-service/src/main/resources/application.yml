@@ -11,6 +11,12 @@ spring:
     name: GATEWAY-SERVICE
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
       routes:
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
@@ -32,7 +38,7 @@ spring:
               args:
                 name: catalog-service
                 fallbackUri: forward:/fallback/catalog
-            - name: AuthenticationFilter
+#            - name: AuthenticationFilter
 
         - id: ORDER-SERVICE
           uri: lb://ORDER-SERVICE
@@ -43,7 +49,7 @@ spring:
               args:
                 name: order-service
                 fallbackUri: forward:/fallback/order
-            - name: AuthenticationFilter
+#            - name: AuthenticationFilter
 
 
 eureka:

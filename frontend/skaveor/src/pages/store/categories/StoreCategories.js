@@ -10,7 +10,12 @@ const StoreCategories = () => {
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setCategories(await api.getCategoriesPage());
+      setCategories(
+        await api
+          .getCategoriesPage()
+          .then((response) => response.json())
+          .catch((error) => console.error(error))
+      );
     }
     get();
   }, []);

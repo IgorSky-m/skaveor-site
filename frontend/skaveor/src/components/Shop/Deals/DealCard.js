@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Card, NavLink } from "react-bootstrap";
+import React from "react";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const DealCard = ({ deal }) => {
@@ -17,7 +17,6 @@ const DealCard = ({ deal }) => {
         <Card.Title className="text-uppercase mb-4">
           <span className="fs-2 text-shadow-cls">{deal}</span>
         </Card.Title>
-        {/* <Card.Text>{deal}</Card.Text> */}
       </Card.Body>
     </Card>
   );

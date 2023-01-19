@@ -34,7 +34,6 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    console.log(`field: ${name} changed, value: ${value}`);
     setFormData((prev) => {
       return { ...prev, [name]: value };
     });
@@ -64,15 +63,12 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
     };
     let statusCode;
     const resp = await api
-      .placeOrderPromise(orderRequest)
+      .placeOrder(orderRequest)
       .then((response) => {
         statusCode = response.status;
         return response.json();
       })
       .catch((error) => console.error(error));
-
-    console.log(resp);
-    console.log(statusCode);
 
     if (statusCode === 201) {
       if (resp.status === "PLACED") {

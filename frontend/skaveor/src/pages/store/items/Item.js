@@ -6,7 +6,7 @@ import { Button, Card, Container } from "react-bootstrap";
 import ImageComponent from "../../../components/Img/ImageComponent";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import formatCurrency from "../../../utilities/formatCurrency";
-const Item = ({ category }) => {
+const Item = () => {
   const { itemId } = useParams();
   const [item, setItem] = useState();
   const { getItemQuantity, increaseItemQuantity, decreaseItemQuantity } =
@@ -19,7 +19,12 @@ const Item = ({ category }) => {
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setItem(await api.getItem(itemId));
+      setItem(
+        await api
+          .getItem(itemId)
+          .then((response) => response.json())
+          .catch((error) => console.error(error))
+      );
     }
 
     get();

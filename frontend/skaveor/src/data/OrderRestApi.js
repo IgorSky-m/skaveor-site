@@ -5,7 +5,7 @@ export default class OrderApi {
     this.orderPart = "order";
   }
 
-  placeOrderPromise(request) {
+  placeOrder(request) {
     return fetch(`${this.apiEndpoint}/${this.orderPart}/place`, {
       method: "POST",
       headers: {
@@ -16,17 +16,9 @@ export default class OrderApi {
     });
   }
 
-  placeOrder(request) {
-    return this.placeOrderPromise(request)
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
-  }
-
   getOrderDetails(id) {
     return fetch(`${this.apiEndpoint}/${this.orderPart}/${id}`, {
       method: "GET",
-    })
-      .then((response) => response.json())
-      .catch((error) => console.error(error));
+    });
   }
 }

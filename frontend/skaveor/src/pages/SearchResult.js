@@ -15,7 +15,12 @@ const SearchResult = () => {
       </div>
       <StoreItemsPage
         isList={true}
-        getItemsPage={() => api.searchItems(searchWord)}
+        getItemsPage={() =>
+          api
+            .searchItems(searchWord)
+            .then((response) => response.json())
+            .catch((error) => console.error(error))
+        }
       />
     </Container>
   );

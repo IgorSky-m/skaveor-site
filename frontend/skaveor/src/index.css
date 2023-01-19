@@ -36,9 +36,37 @@ code {
   transform: 0.2s opacity;
 }
 
+.modal-rounded-0 {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
 .op-block:hover {
   opacity: 0.5;
   transform: 0.2s opacity;
+}
+
+.invalid-input {
+  border: 1px solid red !important;
+  box-shadow: 0 0 10px 1px red !important;
+  outline: none !important;
+  outline-offset: none !important;
+
+  /* box-shadow: none !important; */
+}
+
+.input-drk:focus {
+  border: 1px solid #f5cb5c !important;
+  box-shadow: 0 0 10px wheat !important;
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+.bg-rgba {
+  /* background-color: rgba(51, 53, 51, 0.7); */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .card-block {
@@ -53,6 +81,10 @@ code {
 .box-block {
   background-color: rgba(51, 53, 51, 0.7);
   box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
+}
+
+.box-shadow-white {
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 1);
 }
 
 .light-anim {
