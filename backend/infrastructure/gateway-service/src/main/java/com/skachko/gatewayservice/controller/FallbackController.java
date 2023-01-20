@@ -17,8 +17,12 @@ public class FallbackController {
     }
 
     @RequestMapping(value = "/auth" , method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
-
     public String authServiceFallback() {
         return "Authentication service taking longer than Expected. Please try again later";
+    }
+
+    @RequestMapping(value = "/news" , method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
+    public String newsServiceFallback() {
+        return "news service taking longer than Expected. Please try again later";
     }
 }

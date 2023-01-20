@@ -17,7 +17,7 @@ function ImageComponent({ title, pics }) {
 
   return (
     <>
-      <Container className="mb-2 box-block rounded-0">
+      <Container className="mb-2 box-block rounded-0 overflow-hidden">
         <Row className="rounded-0 p-2">
           <Col
             className="m-auto d-flex justify-content-md-center rounded-0"

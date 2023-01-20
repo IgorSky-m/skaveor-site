@@ -50,6 +50,16 @@ spring:
                 fallbackUri: forward:/fallback/order
             - name: AuthenticationFilter
 
+        - id: NEWS-SERVICE
+          uri: lb://NEWS-SERVICE
+          predicates:
+            - Path=/news/**, /advantages/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: auth-service
+                fallbackUri: forward:/fallback/news
+
 
 
 management:
@@ -91,6 +101,8 @@ resilience4j:
       catalog-service:
         baseConfig: default
       auth-service:
+        baseConfig: default
+      news-service:
         baseConfig: default
 
 jwt:

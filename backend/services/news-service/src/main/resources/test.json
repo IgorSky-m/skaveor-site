@@ -1,0 +1,1 @@
+{"search_predicate": {"condition_operator": "OR","search_expressions": [{"field": "number","comparison_operator": "IN","values": ["30"]},{"field": "description","comparison_operator": "EQUAL","values": ["desc3"] }]}}
