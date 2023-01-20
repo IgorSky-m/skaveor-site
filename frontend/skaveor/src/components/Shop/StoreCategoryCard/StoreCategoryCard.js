@@ -15,7 +15,10 @@ const StoreCategoryCard = ({ item }) => {
       />
 
       <Card.Body className="rounded-0 d-flex flex-column card-img-overlay border-0 card-block just-cont-end op-block">
-        <Card.Title className="text-uppercase mb-4">
+        <Card.Title
+          className="text-uppercase mb-3 text-shadow-cls"
+          style={{ fontFamily: "GameCube" }}
+        >
           <span className="fs-2">{item.name}</span>
         </Card.Title>
         <Card.Text>{item.description}</Card.Text>

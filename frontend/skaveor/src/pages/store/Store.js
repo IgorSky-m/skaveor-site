@@ -1,25 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import Button from "../../components/Button/Button";
-import YoutubeEmbed from "../../components/Video/Youtube/YoutubeEmbed";
-
+import NewsApi from "../../data/NewsApi";
+import ShopNewsCard from "../../components/Shop/ShopNewsCard";
 const Store = () => {
+  const [news, setNews] = useState([]);
+
+  const isPromo = (item) => {
+    return (
+      item.redirect_to_category ||
+      item.redirect_to_item ||
+      item.redirect_to_deal
+    );
+  };
+
+  useEffect(() => {
+    const api = new NewsApi();
+
+    async function getNews() {
+      const result = await api
+        .getNews()
+        .then((resp) => resp.json())
+        .catch((err) => console.log(err));
+
+      console.log(result);
+      if (result) {
+        setNews(result);
+      }
+    }
+
+    getNews();
+  }, []);
+
   return (
-    <Container>
-      <div className="video-block">
-        <div className="video-block-content">
-          <YoutubeEmbed embedId="4SaF2NBNb0Q" />
-        </div>
-        <div className="video-block-text">
-          <h3 className="text-title">Welcome to The</h3>
-          <h1 className="game-name-title">
-            <span className="game-name-words">Skaveor</span> game
-          </h1>
-          <h3 className="text-description">Lets enjoy & fun</h3>
-          <Button path="/game" buttonText="Start Game" />
-        </div>
-      </div>
-      <div className="shop-preview-block"></div>
+    <Container className=" d-flex mt-3 mb-5">
+      {news.map((e) => {
+        if (isPromo(e)) {
+          return <ShopNewsCard key={e.id} item={e} />;
+        }
+      })}
     </Container>
   );
 };

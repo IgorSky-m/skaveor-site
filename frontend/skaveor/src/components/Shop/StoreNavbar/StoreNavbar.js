@@ -12,12 +12,13 @@ const StoreNavbar = () => {
 
   return (
     <Navbar
-      className="shadow-lg mb-3 bg-dark"
+      className="shadow-lg mb-3 bg-dark text-uppercase"
       fixed="top"
       sticky="top"
       variant="dark"
+      style={{ fontFamily: "GameCube" }}
     >
-      <Nav className="me-auto p-3">
+      <Nav className="me-auto p-3 gap-4">
         <Nav.Link as={NavLink} to="/" end>
           Home
         </Nav.Link>
@@ -34,15 +35,15 @@ const StoreNavbar = () => {
       <Form className="d-flex m-3">
         <Form.Control
           type="search"
-          placeholder="Search"
-          className="me-1"
+          placeholder="SEARCH"
+          className="me-1 rounded-0"
           aria-label="Search"
           name="search"
           onChange={(event) => setSearch(event.target.value)}
           value={search}
         />
         <Button
-          variant="outline-secondary"
+          variant="outline-secondary rounded-0"
           onClick={() => navigate(`/store/search?q=${search}`)}
         >
           <svg

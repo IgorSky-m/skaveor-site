@@ -12,7 +12,7 @@ const Cart = ({ isOpen }) => {
   const { closeCart, cartItems, getItemQuantity } = useShoppingCart();
   const [items, setItems] = useState([]);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const { getAuthHeader } = useLogin();
+  const { getAuthHeader, openLogin } = useLogin();
   useEffect(() => {
     if (isOpen && cartItems.length !== 0) {
       const api = new StoreApi();
@@ -31,12 +31,21 @@ const Cart = ({ isOpen }) => {
       };
 
       async function getItems() {
-        setItems(
-          await api
-            .getItems(JSON.stringify(criteria), getAuthHeader())
-            .then((response) => response.json())
-            .catch((error) => console.error(error))
-        );
+        let status;
+
+        const result = await api
+          .getItems(JSON.stringify(criteria), getAuthHeader())
+          .then((response) => {
+            status = response.status;
+            return response.json();
+          })
+          .catch((error) => console.error(error));
+        if (status === 401) {
+          closeCart();
+          openLogin(false);
+        } else {
+          setItems(result);
+        }
       }
 
       getItems();

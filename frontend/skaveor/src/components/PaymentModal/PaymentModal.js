@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import formatCurrency from "../../utilities/formatCurrency";
 import OrderApi from "../../data/OrderRestApi";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
   const { cartItems, closeCart, clearCart } = useShoppingCart();
   const [showPaymentFailed, setShowPaymentFailed] = useState(false);
   const { getAuthHeader } = useLogin();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     products: [],
     phone: "",
@@ -27,9 +28,87 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
     state: "",
   });
 
+  const [classes, setClasses] = useState({
+    phone: "",
+    email: "",
+    card_number: "",
+    expire_date_m: "",
+    expire_date_y: "",
+    payment_mode: "",
+    card_name: "",
+    address_line_one: "",
+    address_line_two: "",
+    apt: "",
+    city: "",
+    state: "",
+  });
+
+  const [validationErrors, setValidationErrors] = useState({
+    phone: "",
+    email: "",
+    card_number: "",
+    expire_date_m: "",
+    expire_date_y: "",
+    payment_mode: "",
+    card_name: "",
+    address_line_one: "",
+    address_line_two: "",
+    apt: "",
+    city: "",
+    state: "",
+  });
+
   const navigate = useNavigate();
 
   const api = new OrderApi();
+
+  const isEmail = (email) =>
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+
+  const validateEmail = () => {
+    let msg;
+    let emailClasses;
+    if (formData.email === "") {
+      msg = "email empty";
+      emailClasses = "invalid-input";
+    } else if (!isEmail(formData.email)) {
+      msg = "invalid email";
+      emailClasses = "invalid-input";
+    } else {
+      msg = "";
+      emailClasses = "";
+    }
+    setValidationErrors((prev) => {
+      return { ...prev, email: msg };
+    });
+    setClasses((prev) => {
+      return { ...prev, email: emailClasses };
+    });
+  };
+
+  const isPhoneNumber = (phone) =>
+    /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phone);
+
+  const validatePhone = () => {
+    let msg;
+    let cls;
+    if (formData.phone === "") {
+      msg = "phone empty";
+      cls = "invalid-input";
+    } else if (!isPhoneNumber(formData.phone)) {
+      msg = "invalid phone";
+      cls = "invalid-input";
+    } else {
+      msg = "";
+      cls = "";
+    }
+    setValidationErrors((prev) => {
+      return { ...prev, phone: msg };
+    });
+    setClasses((prev) => {
+      return { ...prev, phone: cls };
+    });
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -39,16 +118,10 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
     });
   };
 
-  const handleNumberInput = (event) => {
-    const value = event.target.value;
-    event.target.value = value
-      .replace(/[^0-9.]/g, "")
-      .replace(/(\..*)\./g, "$1");
-  };
-
   async function handleSubmit(event) {
     //TODO validation before
     event.preventDefault();
+    setLoading(true);
 
     const orderRequest = {
       products: cartItems,
@@ -70,7 +143,7 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
       })
       .catch((error) => console.error(error));
 
-    if (statusCode === 200) {
+    if (statusCode === 200 || statusCode === 201) {
       if (resp.status === "PLACED") {
         onHide();
         closeCart();
@@ -80,6 +153,7 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
         setShowPaymentFailed(true);
       }
     }
+    setLoading(false);
   }
 
   return (
@@ -106,21 +180,27 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
                   autoFocus
                   name="email"
                   value={formData.email}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    validateEmail();
+                  }}
+                  className={classes.email}
                 />
               </Form.Group>
               <Form.Group className="mb-3  w-50 m-2" controlId="phone">
                 <Form.Label>Phone</Form.Label>
                 <Form.Control
-                  onInput={handleNumberInput}
                   maxLength={10}
                   type="tel"
                   inputMode="decimal"
-                  placeholder="(000) 000-0000"
+                  placeholder="000-000-0000"
                   value={formData.phone}
                   autoComplete="off"
                   name="phone"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    validatePhone();
+                  }}
                 />
               </Form.Group>
             </Form.Group>
@@ -133,7 +213,6 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
                 <Form.Label>Card number</Form.Label>
                 <Form.Control
                   type="text"
-                  onInput={handleNumberInput}
                   maxLength={16}
                   minLength={16}
                   placeholder="0000 0000 0000 0000"
@@ -145,7 +224,6 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
               <Form.Group className="mb-3 w-25 m-2" controlId="cvv">
                 <Form.Label>CVC \ CVV</Form.Label>
                 <Form.Control
-                  onInput={handleNumberInput}
                   maxLength={3}
                   minLength={3}
                   type="password"
@@ -170,7 +248,6 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
               <Form.Group className="mb-3 w-25 mt-2" controlId="expire_date_m">
                 <Form.Label>Expire date</Form.Label>
                 <Form.Control
-                  onInput={handleNumberInput}
                   maxLength={2}
                   type="text"
                   placeholder="MM"
@@ -185,7 +262,6 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
               >
                 <Form.Label></Form.Label>
                 <Form.Control
-                  onInput={handleNumberInput}
                   maxLength={2}
                   type="text"
                   placeholder="YY"
@@ -202,8 +278,23 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
           {`Total amount: `}
           <span className="fs-4">{formatCurrency(totalAmount)}</span>
         </div>
-        <Button type="submit" className="btn-success" onClick={handleSubmit}>
-          Place Order
+        <Button
+          disabled={loading}
+          type="submit"
+          className="btn-success"
+          onClick={handleSubmit}
+        >
+          {loading ? (
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+          ) : (
+            <>Place order</>
+          )}
         </Button>
         <Button className="btn-danger" onClick={onHide}>
           Close

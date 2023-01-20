@@ -10,13 +10,20 @@ const Home = ({ user }) => {
   const navigate = useNavigate();
   return (
     <Container className=" text-center align-items-center mt-3 d-flex justify-content-between flex-column">
-      {/* <ImageCarousel links={["/img/background.jpg", "/img/background2.webp"]} /> */}
       <VideoCarousel
         width="60%"
         height="300px"
         links={[
-          { src: "/video/promo/space.mp4" },
-          { src: "/video/promo/marines-2.mp4" },
+          {
+            src: "/video/promo/space.mp4",
+            label: "Hurry",
+            description: "Skaveor needs to your protection",
+          },
+          {
+            src: "/video/promo/marines-2.mp4",
+            label: "Biobots are Coming",
+            description: "Protect your land and fight agaist evil",
+          },
         ]}
       />
 

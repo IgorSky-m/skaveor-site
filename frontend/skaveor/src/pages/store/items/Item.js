@@ -66,7 +66,12 @@ const Item = () => {
           </div>
           <Container className=" d-flex flex-column justify-content-between align-items-center">
             <Container className="text-decoration-none d-flex flex-column justify-content-between align-items-center">
-              <h1 className="fs-1 text-uppercase">{item.title}</h1>
+              <h1
+                style={{ fontFamily: "Skygraze" }}
+                className="fs-1 text-uppercase mt-2 text-shadow-cls"
+              >
+                {item.title}
+              </h1>
               <div className="fs-4 mb-3 text-uppercase">{item.summary}</div>
               <h3 className="fs-5">Characteristics:</h3>
               <h3 className="fs-5">

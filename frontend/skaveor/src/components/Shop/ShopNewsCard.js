@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./NewsCard.css";
 
-const NewsCard = ({ item }) => {
+const ShopNewsCard = ({ item }) => {
   const [bodyStyle, setBodyStyle] = useState({});
   const [titleStyle, settitleStyle] = useState({ fontFamily: "Glitch" });
   const [descriptionStyle, setDescriptionStyle] = useState({
     position: "absolute",
-    width: "700px",
+    width: "300px",
     opacity: "0",
   });
 
@@ -23,9 +22,6 @@ const NewsCard = ({ item }) => {
     if (item.redirect_to_deal) {
       return `/store/deals/${item.redirect_to_deal}`;
     }
-
-    //todo self news
-    // return item.id;
     return "/news";
   };
 
@@ -33,18 +29,9 @@ const NewsCard = ({ item }) => {
     settitleStyle((prev) => {
       return {
         ...prev,
-        transform: "translate(0px, -150px)",
+        transform: "translate(0px, -80px)",
         opacity: "1",
         transition: "1s transform, 1s opacity",
-      };
-    });
-
-    setDescriptionStyle((prev) => {
-      return {
-        ...prev,
-        transform: "translate(0px, 50px)",
-        opacity: "1",
-        transition: "1s transform, 1.5s opacity",
       };
     });
 
@@ -55,6 +42,15 @@ const NewsCard = ({ item }) => {
         transition: "0.5s background-color",
       };
     });
+
+    setDescriptionStyle((prev) => {
+      return {
+        ...prev,
+        transform: "translate(0px, 100px)",
+        opacity: "1",
+        transition: "1s transform, 1.5s opacity",
+      };
+    });
   };
 
   const mouseLeave = (e) => {
@@ -62,18 +58,8 @@ const NewsCard = ({ item }) => {
       return {
         ...prev,
         transform: "translate(0px, 0px)",
-        opacity: "1",
+        opacity: "0.8",
         transition: "1s transform, 1s opacity",
-      };
-    });
-
-    setDescriptionStyle((prev) => {
-      return {
-        ...prev,
-        transform: "translate(0px, 0px)",
-        // transform: "translate(0px, 300px)",
-        opacity: "0",
-        transition: "1s transform, 0.5s opacity",
       };
     });
 
@@ -82,6 +68,15 @@ const NewsCard = ({ item }) => {
         ...prev,
         backgroundColor: "rgba(0, 0, 0, 0)",
         transition: "1s background-color",
+      };
+    });
+
+    setDescriptionStyle((prev) => {
+      return {
+        ...prev,
+        transform: "translate(0px, 0px)",
+        opacity: "0",
+        transition: "1s transform, 0.5s opacity",
       };
     });
   };
@@ -93,7 +88,7 @@ const NewsCard = ({ item }) => {
     <Card
       as={Link}
       to={getLink()}
-      className="h-100 p-3 bg-dark text-light rounded-0"
+      className="h-100 bg-dark text-light rounded-0"
       style={{ position: "relative" }}
     >
       <Card.Img
@@ -115,15 +110,13 @@ const NewsCard = ({ item }) => {
           className="text-uppercase mb-4 text-center"
         >
           <span className="fs-2 text-uppercase ">{item.title}</span>
-          <Card.Text className="fs-4">{item.summary}</Card.Text>
         </Card.Title>
-
-        <Card.Text style={descriptionStyle} className="appeared-text">
-          {item.description}
+        <Card.Text style={descriptionStyle} className="fs-4 text-center">
+          {item.summary}
         </Card.Text>
       </Card.Body>
     </Card>
   );
 };
 
-export default NewsCard;
+export default ShopNewsCard;

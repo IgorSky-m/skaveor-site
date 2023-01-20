@@ -31,7 +31,12 @@ const StoreCategories = () => {
   return (
     <Container className="box-block mb-3 d-flex flex-column justify-content-between text-shadow-cls">
       <div className="d-flex justify-content-center">
-        <h1 className="fs-1 text-white">Categories</h1>
+        <h1
+          className="fs-1 text-white text-uppercase mt-2 text-shadow-cls"
+          style={{ fontFamily: "Glitch" }}
+        >
+          Categories
+        </h1>
       </div>
       <Row md={1} xs={1} lg={2} className="g-3 m-auto w-100 mb-3">
         {categories.content.map((e) => (

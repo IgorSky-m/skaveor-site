@@ -28,7 +28,10 @@ const ItemCard = ({ item }) => {
           to={`/store/items/${item.id}`}
           className="d-flex flex-column card-img-overlay border-0 card-block rounded-0 op-block text-light text-decoration-none"
         >
-          <Card.Title className="d-flex justify-content-between align-items-baseline text-uppercase mb-4">
+          <Card.Title
+            style={{ fontFamily: "Skygraze" }}
+            className="d-flex justify-content-between align-items-baseline text-uppercase mb-4"
+          >
             <span className="fs-3">{item.title}</span>
             <span className="ms-2 text-muted">
               {formatCurrency(item.price)}
@@ -36,7 +39,11 @@ const ItemCard = ({ item }) => {
           </Card.Title>
           <div
             className="d-flex gap-3"
-            style={{ position: "absolute", bottom: "10px" }}
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              fontFamily: "Skygraze",
+            }}
           >
             {item.deals &&
               item.deals.map((e) => {
@@ -52,6 +59,7 @@ const ItemCard = ({ item }) => {
           <Button
             onClick={() => increaseItemQuantity(item.id)}
             className="w-100 rounded-0 bg-dark border-0 mt-1"
+            style={{ fontFamily: "Skygraze" }}
           >
             + Add To Cart
           </Button>
@@ -72,13 +80,17 @@ const ItemCard = ({ item }) => {
                   width: "2rem",
                   height: "2rem",
                   position: "relative",
+                  fontFamily: "Skygraze",
                 }}
                 variant="outline-light"
               >
                 -
               </Button>
               <div>
-                <span className="fs 5">{quantity}</span> in cart
+                <span style={{ fontFamily: "Skygraze" }} className="fs 5">
+                  {quantity}
+                </span>{" "}
+                in cart
               </div>
               <Button
                 onClick={() => increaseItemQuantity(item.id)}
@@ -88,6 +100,7 @@ const ItemCard = ({ item }) => {
                   width: "2rem",
                   height: "2rem",
                   position: "relative",
+                  fontFamily: "Skygraze",
                 }}
                 variant="outline-light"
               >

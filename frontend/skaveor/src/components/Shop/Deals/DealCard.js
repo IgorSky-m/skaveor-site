@@ -15,7 +15,12 @@ const DealCard = ({ deal }) => {
 
       <Card.Body className="rounded-0 d-flex flex-column card-img-overlay border-0 card-block op-block">
         <Card.Title className="text-uppercase mb-4">
-          <span className="fs-2 text-shadow-cls">{deal}</span>
+          <span
+            style={{ fontFamily: "Glitch" }}
+            className="fs-2 text-shadow-cls"
+          >
+            {deal}
+          </span>
         </Card.Title>
       </Card.Body>
     </Card>
