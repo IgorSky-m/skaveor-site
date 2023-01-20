@@ -56,6 +56,16 @@ public class NewsCardService extends ABaseCRUDService<NewsCard, UUID> implements
     }
 
     @Override
+    public NewsCard update(UUID uuid, Date version, NewsCard newsCard, Date newDtUpdate) {
+
+        NewsCard update = super.update(uuid, version, newsCard, newDtUpdate);
+        List<Image> images = imageRepository.saveAll(newsCard.getImages());
+        update.setImages(images);
+        return update;
+
+    }
+
+    @Override
     protected Logger getLogger() {
         return log;
     }

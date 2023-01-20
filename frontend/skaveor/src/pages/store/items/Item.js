@@ -53,7 +53,7 @@ const Item = () => {
                   return (
                     <div
                       key={e.type}
-                      className="bg-danger box-block light-anim-pulse text-light  p-1"
+                      className="bg-danger box-block light-anim-pulse text-light  p-1 mb-3 text-center"
                     >
                       {e.type}
                     </div>
@@ -67,11 +67,11 @@ const Item = () => {
           <Container className=" d-flex flex-column justify-content-between align-items-center">
             <Container className="text-decoration-none d-flex flex-column justify-content-between align-items-center">
               <h1 className="fs-1 text-uppercase">{item.title}</h1>
-              <div className="fs-4 mb-3">
-                {item.characteristics.description}
-              </div>
+              <div className="fs-4 mb-3 text-uppercase">{item.summary}</div>
               <h3 className="fs-5">Characteristics:</h3>
-              {/* //TODO characteristics */}
+              <h3 className="fs-5">
+                {item.characteristics && item.characteristics.description}
+              </h3>
             </Container>
 
             <Container className="d-flex flex-column justify-content-between align-items-center">

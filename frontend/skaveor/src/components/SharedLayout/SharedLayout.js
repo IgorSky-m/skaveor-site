@@ -5,7 +5,6 @@ import "./SharedLayout.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { Container } from "react-bootstrap";
-import VideoBackground from "../Background/VideoBackground";
 
 const SharedLayout = () => {
   const isTopOfPageNow = () => window.pageYOffset < 35;
@@ -30,7 +29,7 @@ const SharedLayout = () => {
   }, [isTopOfPage]);
 
   return (
-    <>
+    <Container className="p-0 m-0">
       <video autoPlay loop muted id="bg-video-2">
         <source
           id="bg-video-src-2"
@@ -39,12 +38,18 @@ const SharedLayout = () => {
         />
       </video>
 
-      <Container className="content-sec m-auto p-0">
+      <Container
+        className="content-sec m-auto"
+        style={{
+          // backgroundColor: "rgba(51, 53, 51, 0.5)",
+          paddingTop: "80px",
+        }}
+      >
         <Outlet />
       </Container>
       <Header className="z-index-top" isTopOfPage={isTopOfPage} />
       <Footer />
-    </>
+    </Container>
   );
 };
 

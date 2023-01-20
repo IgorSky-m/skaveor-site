@@ -6,22 +6,6 @@
   /* overflow: hidden; */
 }
 
-#bg-video-src {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#bg-video {
-  min-width: 1000px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 600px;
-  overflow: hidden;
-}
-
 #bg-video-src-2 {
   width: 100%;
   height: 100vh;
@@ -42,6 +26,6 @@
   position: absolute;
   width: 100% !important;
   height: 100% !important;
-  top: 85px;
+  top: 0px;
   left: 100px;
 }
