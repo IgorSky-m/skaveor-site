@@ -2,15 +2,17 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import StoreApi from "../../../data/store/StoreRestService";
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import ImageComponent from "../../../components/Img/ImageComponent";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import formatCurrency from "../../../utilities/formatCurrency";
+import { useLogin } from "../../../context/LoginContext";
 const Item = () => {
   const { itemId } = useParams();
   const [item, setItem] = useState();
   const { getItemQuantity, increaseItemQuantity, decreaseItemQuantity } =
     useShoppingCart();
+  const { getAuthHeader, logged, openLogin } = useLogin();
 
   let navigate = useNavigate();
 
@@ -19,16 +21,22 @@ const Item = () => {
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setItem(
-        await api
-          .getItem(itemId)
-          .then((response) => response.json())
-          .catch((error) => console.error(error))
-      );
+      let status;
+      const result = await api
+        .getItem(itemId, getAuthHeader())
+        .then((response) => {
+          status = response.status;
+          return response.json();
+        })
+        .catch((error) => console.error(error));
+      if (status === 401) {
+        openLogin();
+      } else {
+        setItem(result);
+      }
     }
-
     get();
-  }, []);
+  }, [logged]);
 
   return (
     <Container className="text-shadow-cls box-block  text-light">
@@ -43,7 +51,10 @@ const Item = () => {
               item.deals.map((e) => {
                 if (e.type !== null) {
                   return (
-                    <div className="bg-danger box-block light-anim-pulse text-light  p-1">
+                    <div
+                      key={e.type}
+                      className="bg-danger box-block light-anim-pulse text-light  p-1"
+                    >
                       {e.type}
                     </div>
                   );

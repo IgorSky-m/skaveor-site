@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import formatCurrency from "../../utilities/formatCurrency";
-import OrderApi from "../../data/OrderRestApi";
-import { useNavigate } from "react-router-dom";
-import { useShoppingCart } from "../../context/ShoppingCartContext";
+import React from "react";
+import { Button, Modal } from "react-bootstrap";
 
 export default function PaymentFailed({ show, onHide }) {
   return (

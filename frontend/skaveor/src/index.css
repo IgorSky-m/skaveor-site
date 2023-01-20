@@ -1,3 +1,18 @@
+@font-face {
+  font-family: Glitch;
+  src: url("/public/fonts/glitch_inside/Glitch\ inside.otf");
+}
+
+@font-face {
+  font-family: GameCube;
+  src: url("/public/fonts/gamecuben/GameCube.ttf");
+}
+
+@font-face {
+  font-family: Skygraze;
+  src: url("/public/fonts/skygraze/Skygraze.otf");
+}
+
 body {
   background-image: url("/public/img/sci-bg-2.jpg");
   background-repeat: no-repeat;

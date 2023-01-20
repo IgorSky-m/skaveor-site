@@ -3,8 +3,8 @@ server:
 eureka:
   client:
     service-url:
-      #      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
-      defaultZone: http://localhost:8760/eureka
+            defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
+#      defaultZone: http://localhost:8760/eureka
 spring:
   application:
     name: CONFIG-SERVER
@@ -12,8 +12,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/IgorSky-m/training-diary-config
-          clone-on-start: false
+          uri: https://github.com/IgorSky-m/skaveor-config
+          clone-on-start: true
           username: ${GIT_USER}
           password: ${GIT_TOKEN}
           default-label: "main"

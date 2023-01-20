@@ -4,22 +4,30 @@ import StoreApi from "../../../data/store/StoreRestService";
 import { useState, useEffect } from "react";
 import StoreItems from "../../../components/Shop/StoreItems/StoreItems";
 import { Container } from "react-bootstrap";
+import { useLogin } from "../../../context/LoginContext";
 const StoreCategory = () => {
   const { categoryId } = useParams();
   const [category, setCategory] = useState({});
+  const { getAuthHeader, logged, openLogin } = useLogin();
   const api = new StoreApi();
   useEffect(() => {
     async function getOne() {
-      setCategory(
-        await api
-          .getCategory(categoryId)
-          .then((response) => response.json())
-          .catch((error) => console.error(error))
-      );
-      return () => setCategory(null);
+      let status;
+      const result = await api
+        .getCategory(categoryId, getAuthHeader())
+        .then((response) => {
+          status = response.status;
+          return response.json();
+        })
+        .catch((error) => console.error(error));
+      if (status === 401) {
+        openLogin();
+      } else {
+        setCategory(result);
+      }
     }
     getOne();
-  }, []);
+  }, [logged]);
 
   return (
     <Container className="box-block text-white text-shadow-cls mb-3 p-3 rounded-0">
@@ -28,10 +36,7 @@ const StoreCategory = () => {
       </div>
       <StoreItems
         getItemsPage={() =>
-          api
-            .getCategoryItemsPage(categoryId)
-            .then((response) => response.json())
-            .catch((error) => console.error(error))
+          api.getCategoryItemsPage(categoryId, getAuthHeader())
         }
       />
     </Container>

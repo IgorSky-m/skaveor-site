@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+  Spinner,
+} from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../context/LoginContext";
 import AuthApi from "../../data/AuthApi";
+import Logo from "../Logo";
 export default function Signup({ show, onHide, goBack }) {
+  const [loading, setLoading] = useState(false);
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -86,6 +96,7 @@ export default function Signup({ show, onHide, goBack }) {
   };
 
   async function handleSubmit(event) {
+    setLoading(true);
     event.preventDefault();
 
     let responseCode = 200;
@@ -97,6 +108,7 @@ export default function Signup({ show, onHide, goBack }) {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
         //todo toast with exception
         return "";
       });
@@ -121,7 +133,7 @@ export default function Signup({ show, onHide, goBack }) {
         });
       }
     }
-
+    setLoading(false);
     //TODO validation before
   }
 
@@ -151,20 +163,16 @@ export default function Signup({ show, onHide, goBack }) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      className="modal-rounded-0 bg-rgba"
+      className="modal-rounded-0 mb-0 bg-rgba"
     >
       <div className=" ">
         <Modal.Header className=" text-white rounded-0 shadow-lg border-0 bg-dark box-block">
           <Container>
             <Row className=" d-flex flex-column  align-items-end justify-content-between">
               <Col className=" text-center fs-2 mb-5 text-uppercase">
-                <img
-                  src="/img/logo/skaveor-high-resolution-logo-color-on-transparent-background.png"
-                  alt="logo"
-                  style={{ width: "200px" }}
-                />
+                <Logo classes={"fs-2 mt-3 mb-0"} />
               </Col>
-              <Col className=" text-center mt-3 fs-5">Create your account</Col>
+              <Col className=" text-center mt-0 fs-5">Create your account</Col>
             </Row>
           </Container>
           <Modal.Title
@@ -274,12 +282,23 @@ export default function Signup({ show, onHide, goBack }) {
               )}
             </Form.Group>
             <Button
+              style={{ fontFamily: "GameCube" }}
               type="submit"
               className="btn-success rounded-0 mb-3 p-3 w-50 text-uppercase"
               onClick={handleSubmit}
               disabled={isDisabledButton()}
             >
-              Register
+              {loading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                <>Register</>
+              )}
             </Button>
           </Form>
         </Modal.Body>

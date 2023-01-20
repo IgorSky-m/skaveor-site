@@ -1,4 +1,16 @@
+.logo-setup {
+  border: 2px solid #f5cb5c;
+  border-bottom-right-radius: 20px;
+  text-decoration: none;
+  color: #ced4da;
+  background-color: rgba(51, 53, 51, 1);
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
+  text-shadow: -3px -3px 3px black;
+  font-family: "Glitch";
+}
+
 .header {
+  z-index: 1000;
   width: 100%;
   top: 0px;
   left: 0px;

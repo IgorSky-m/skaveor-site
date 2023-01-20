@@ -38,9 +38,7 @@ public class AuthenticationFilter implements GatewayFilter
                 return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
             }
 
-            final String header = this.getAuthHeader(request);
-            final String token = header != null && header.startsWith("Bearer") ? header.substring(7) :
-                    header;
+            final String token = getToken(request);
             try {
                 if (jwtUtil.isInvalid(token)) {
                     throw new IllegalArgumentException();
@@ -50,8 +48,23 @@ public class AuthenticationFilter implements GatewayFilter
             }
 
             this.populateRequestWithHeaders(exchange, token);
+
+        } else if (!this.isAuthMissing(request)) {
+            String token = getToken(request);
+            if (!jwtUtil.isInvalid(token)) {
+                this.populateRequestWithHeaders(exchange, token);
+            }
         }
+
+
         return chain.filter(exchange);
+    }
+
+    private String getToken(ServerHttpRequest request){
+        final String header = this.getAuthHeader(request);
+
+        return header != null && header.startsWith("Bearer") ? header.substring(7) :
+                header;
     }
 
 

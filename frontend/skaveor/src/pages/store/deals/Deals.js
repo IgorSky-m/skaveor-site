@@ -3,21 +3,30 @@ import { useEffect, useState } from "react";
 import StoreApi from "../../../data/store/StoreRestService";
 import { Col, Container, Row } from "react-bootstrap";
 import DealCard from "../../../components/Shop/Deals/DealCard";
+import { useLogin } from "../../../context/LoginContext";
 
 const Deals = () => {
   const [dealTypes, setDealTypes] = useState([]);
+  const { getAuthHeader, logged, openLogin } = useLogin();
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setDealTypes(
-        await api
-          .getDealTypes()
-          .then((response) => response.json())
-          .catch((error) => console.error(error))
-      );
+      let status;
+      const result = await api
+        .getDealTypes(getAuthHeader())
+        .then((response) => {
+          status = response.status;
+          return response.json();
+        })
+        .catch((error) => console.error(error));
+      if (status === 401) {
+        openLogin();
+      } else {
+        setDealTypes(result);
+      }
     }
     get();
-  }, []);
+  }, [logged]);
 
   return (
     <Container className="box-block mb-3 text-shadow-cls text-white">

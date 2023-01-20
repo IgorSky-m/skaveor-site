@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { GATEWAY_API_ENTRANCE } from "../Constraints";
 export default class StoreApi {
   constructor() {
@@ -10,77 +9,117 @@ export default class StoreApi {
     this.dealTypeParamName = "type";
   }
 
-  getCategories(criteria) {
+  getCategories(criteria, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.categoriesPart}?${
         this.criteriaParamName
       }=${encodeURIComponent(criteria ? criteria : "{}")}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }
 
-  getCategoriesPage(criteria) {
+  getCategoriesPage(criteria, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.categoriesPart}/page?${
         this.criteriaParamName
       }=${encodeURIComponent(criteria ? criteria : "{}")}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }
 
-  getCategory(categoryId) {
+  getCategory(categoryId, headers = {}) {
     return fetch(
-      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}`
+      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}`,
+      {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      }
     );
   }
 
-  getCategoryItems(categoryId) {
+  getCategoryItems(categoryId, headers = {}) {
     return fetch(
-      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}`
+      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}`,
+      {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      }
     );
   }
 
-  getCategoryItemsPage(categoryId) {
+  getCategoryItemsPage(categoryId, headers = {}) {
     return fetch(
-      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}/page`
+      `${this.shopApiEndpoint}/${this.categoriesPart}/${categoryId}/${this.itemsPart}/page`,
+      {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      }
     );
   }
 
-  getItems(criteria) {
+  getItems(criteria, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.itemsPart}?${
         this.criteriaParamName
       }=${encodeURIComponent(criteria ? criteria : "{}")}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }
 
-  getItemsPage(criteria) {
+  getItemsPage(criteria, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.itemsPart}/page?${
         this.criteriaParamName
       }=${encodeURIComponent(criteria ? criteria : "{}")}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }
 
-  getItem(itemId) {
-    return fetch(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`);
+  getItem(itemId, headers = {}) {
+    return fetch(`${this.shopApiEndpoint}/${this.itemsPart}/${itemId}`, {
+      method: "GET",
+      headers: {
+        ...headers,
+      },
+    });
   }
 
-  getDealTypes() {
-    return fetch(`${this.shopApiEndpoint}/${this.dealsPart}/types`);
+  getDealTypes(headers = {}) {
+    return fetch(`${this.shopApiEndpoint}/${this.dealsPart}/types`, {
+      method: "GET",
+      headers: {
+        ...headers,
+      },
+    });
   }
 
-  getDealItems(dealType, criteria) {
+  getDealItems(dealType, criteria, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.dealsPart}/page?${
         this.criteriaParamName
@@ -89,15 +128,21 @@ export default class StoreApi {
       }=${dealType}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }
 
-  searchItems(queryString) {
+  searchItems(queryString, headers = {}) {
     return fetch(
       `${this.shopApiEndpoint}/${this.itemsPart}/search?q=${queryString}`,
       {
         method: "GET",
+        headers: {
+          ...headers,
+        },
       }
     );
   }

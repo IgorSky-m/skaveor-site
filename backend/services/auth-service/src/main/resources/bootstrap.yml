@@ -15,7 +15,10 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
-
+  profiles:
+    active:
+      - alone
+  #      - stage
   application:
     name: AUTH-SERVICE
 
@@ -27,10 +30,18 @@ spring:
   banner:
     location: 'classpath:/banner/Banner.txt'
 
-  profiles:
-    active:
-      - alone
-#      - stage
+
+eureka:
+  client:
+    #    set false if you want to use without eureka
+    register-with-eureka: true
+    #    set false if you want to use without eureka
+    fetch-registry: true
+    service-url:
+      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
+  #      defaultZone: http://localhost:8760/eureka
+  instance:
+    hostname: localhost
 
 
 

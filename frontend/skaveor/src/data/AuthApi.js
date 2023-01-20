@@ -5,20 +5,22 @@ export default class AuthApi {
     this.authPart = "auth";
   }
 
-  validateToken(token) {
+  validateToken(token, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.authPart}/validate`, {
       method: "GET",
       headers: {
+        ...headers,
         Authorization: token,
         "Access-Control-Allow-Origin": "*",
       },
     });
   }
 
-  login(request) {
+  login(request, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.authPart}/login`, {
       method: "POST",
       headers: {
+        ...headers,
         Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -27,10 +29,11 @@ export default class AuthApi {
     });
   }
 
-  register(request) {
+  register(request, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.authPart}/register`, {
       method: "POST",
       headers: {
+        ...headers,
         Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

@@ -3,7 +3,7 @@ import { Button, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import formatCurrency from "../../../utilities/formatCurrency";
-// import "./ItemCard.css";
+
 const ItemCard = ({ item }) => {
   const {
     getItemQuantity,

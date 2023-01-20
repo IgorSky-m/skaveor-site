@@ -4,11 +4,15 @@ import { useLogin } from "../../context/LoginContext";
 import "./Navbar.css";
 
 const Navbar = ({ isTopOfPage }) => {
-  const { logged, isLogged, openLogin, openRegister, logOut } = useLogin();
+  const { logged, openLogin, openRegister, logOut } = useLogin();
   const navigate = useNavigate();
 
   return (
-    <nav className={isTopOfPage ? "navbar navbar-top" : "navbar navbar-mini"}>
+    <nav
+      className={`navbar-main text-uppercase ${
+        isTopOfPage ? "navbar navbar-top" : "navbar navbar-mini"
+      }`}
+    >
       <div className="navbar-section">
         <NavLink className={getLinkClasses} to="/">
           Home
@@ -45,10 +49,7 @@ const Navbar = ({ isTopOfPage }) => {
           </>
         ) : (
           <>
-            <NavLink
-              className={getLinkClasses}
-              onClick={() => logOut(() => navigate("fd"))}
-            >
+            <NavLink className={getLinkClasses} onClick={() => logOut()}>
               Log out
             </NavLink>
           </>

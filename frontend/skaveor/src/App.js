@@ -23,38 +23,40 @@ import SearchResult from "./pages/SearchResult";
 import { LoginProvider } from "./context/LoginContext";
 function App() {
   return (
-    <BrowserRouter>
-      <LoginProvider>
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="news" element={<News />} />
-            <Route path="game" element={<Game />} />
-          </Route>
-          <Route path="store" element={<StoreSharedLayout />}>
-            <Route index element={<Store />} />
-            <Route path="search" element={<SearchResult />} />
-            <Route path="categories" element={<CategoriesSharedLayout />}>
-              <Route index element={<StoreCategories />} />
-              <Route path=":categoryId" element={<StoreCategory />} />
+    <>
+      <BrowserRouter>
+        <LoginProvider>
+          <Routes>
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Home />} />
+              <Route path="home" element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="news" element={<News />} />
+              <Route path="game" element={<Game />} />
             </Route>
-            <Route path="items">
-              <Route path=":itemId" element={<Item />} />
+            <Route path="store" element={<StoreSharedLayout />}>
+              <Route index element={<Store />} />
+              <Route path="search" element={<SearchResult />} />
+              <Route path="categories" element={<CategoriesSharedLayout />}>
+                <Route index element={<StoreCategories />} />
+                <Route path=":categoryId" element={<StoreCategory />} />
+              </Route>
+              <Route path="items">
+                <Route path=":itemId" element={<Item />} />
+              </Route>
+              <Route path="deals">
+                <Route index element={<Deals />} />
+                <Route path=":dealType" element={<Deal />} />
+              </Route>
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="order/:orderId" element={<OrderDetails />} />
             </Route>
-            <Route path="deals">
-              <Route index element={<Deals />} />
-              <Route path=":dealType" element={<Deal />} />
-            </Route>
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="order/:orderId" element={<OrderDetails />} />
-          </Route>
 
-          <Route to="*" element={<Error />} />
-        </Routes>
-      </LoginProvider>
-    </BrowserRouter>
+            <Route to="*" element={<Error />} />
+          </Routes>
+        </LoginProvider>
+      </BrowserRouter>
+    </>
   );
 }
 

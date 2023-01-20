@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Logo from "../Logo";
 import Navbar from "../Navbar/Navbar";
 import "./Header.css";
 
@@ -9,15 +9,8 @@ const Header = ({ isTopOfPage }) => {
       id="header"
       className={isTopOfPage ? "header header-top" : "header header-mini"}
     >
-      <div className="header-logo-wrapper">
-        <Link to="/">
-          <img
-            className={isTopOfPage ? "header-logo-img" : "header-logo-img-mini"}
-            src="/img/logo/skaveor-high-resolution-logo-color-on-transparent-background.png"
-            alt="logo"
-          />
-        </Link>
-      </div>
+      <Logo />
+
       <Navbar isTopOfPage={isTopOfPage} />
     </header>
   );

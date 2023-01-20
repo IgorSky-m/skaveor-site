@@ -5,10 +5,11 @@ export default class OrderApi {
     this.orderPart = "order";
   }
 
-  placeOrder(request) {
+  placeOrder(request, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.orderPart}/place`, {
       method: "POST",
       headers: {
+        ...headers,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -16,9 +17,14 @@ export default class OrderApi {
     });
   }
 
-  getOrderDetails(id) {
+  getOrderDetails(id, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.orderPart}/${id}`, {
       method: "GET",
+      headers: {
+        ...headers,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     });
   }
 }

@@ -17,7 +17,6 @@ const StoreNavbar = () => {
       sticky="top"
       variant="dark"
     >
-      {/* <Container> */}
       <Nav className="me-auto p-3">
         <Nav.Link as={NavLink} to="/" end>
           Home

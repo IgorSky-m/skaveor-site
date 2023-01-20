@@ -37,20 +37,8 @@ public class JwtUtil {
     }
 
     public boolean isInvalid(String token) {
-        return this.isTokenExpired(token);
+        return token == null || "".equals(token) || this.isTokenExpired(token);
     }
 
-
-    public String generateToken(String usename) {
-        Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, usename);
-    }
-
-
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
-        return "Bearer " + Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(key, SignatureAlgorithm.HS256).compact();
-    }
 
 }

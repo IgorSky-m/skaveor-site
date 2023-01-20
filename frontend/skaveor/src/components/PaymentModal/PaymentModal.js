@@ -5,9 +5,12 @@ import OrderApi from "../../data/OrderRestApi";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import PaymentFailed from "./PaymentFailed";
+import { useLogin } from "../../context/LoginContext";
+
 export default function PaymentModal({ show, onHide, totalAmount }) {
   const { cartItems, closeCart, clearCart } = useShoppingCart();
   const [showPaymentFailed, setShowPaymentFailed] = useState(false);
+  const { getAuthHeader } = useLogin();
   const [formData, setFormData] = useState({
     products: [],
     phone: "",
@@ -24,10 +27,7 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
     state: "",
   });
 
-  let navigate = useNavigate();
-  const routeChange = (path) => {
-    navigate(path);
-  };
+  const navigate = useNavigate();
 
   const api = new OrderApi();
 
@@ -63,14 +63,14 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
     };
     let statusCode;
     const resp = await api
-      .placeOrder(orderRequest)
+      .placeOrder(orderRequest, getAuthHeader())
       .then((response) => {
         statusCode = response.status;
         return response.json();
       })
       .catch((error) => console.error(error));
 
-    if (statusCode === 201) {
+    if (statusCode === 200) {
       if (resp.status === "PLACED") {
         onHide();
         closeCart();

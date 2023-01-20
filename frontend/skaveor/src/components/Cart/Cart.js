@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Offcanvas, Stack } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { useLogin } from "../../context/LoginContext";
+
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import StoreApi from "../../data/store/StoreRestService";
 import formatCurrency from "../../utilities/formatCurrency";
@@ -11,7 +12,7 @@ const Cart = ({ isOpen }) => {
   const { closeCart, cartItems, getItemQuantity } = useShoppingCart();
   const [items, setItems] = useState([]);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [resultAmount, setResultAmount] = useState(0);
+  const { getAuthHeader } = useLogin();
   useEffect(() => {
     if (isOpen && cartItems.length !== 0) {
       const api = new StoreApi();
@@ -32,7 +33,7 @@ const Cart = ({ isOpen }) => {
       async function getItems() {
         setItems(
           await api
-            .getItems(JSON.stringify(criteria))
+            .getItems(JSON.stringify(criteria), getAuthHeader())
             .then((response) => response.json())
             .catch((error) => console.error(error))
         );

@@ -2,23 +2,31 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import StoreCategoryCard from "../../../components/Shop/StoreCategoryCard/StoreCategoryCard";
+import { useLogin } from "../../../context/LoginContext";
 import StoreApi from "../../../data/store/StoreRestService";
 
 const StoreCategories = () => {
   const [categories, setCategories] = useState({ content: [] });
-
+  const { getAuthHeader, openLogin, logged } = useLogin();
   useEffect(() => {
     const api = new StoreApi();
     async function get() {
-      setCategories(
-        await api
-          .getCategoriesPage()
-          .then((response) => response.json())
-          .catch((error) => console.error(error))
-      );
+      let status;
+      const result = await api
+        .getCategoriesPage(null, getAuthHeader())
+        .then((response) => {
+          status = response.status;
+          return response.json();
+        })
+        .catch((error) => console.error(error));
+      if (status === 401) {
+        openLogin();
+      } else {
+        setCategories(result);
+      }
     }
     get();
-  }, []);
+  }, [logged]);
   //TODO add display cards switcher( blocks, rows, small blocks etc)
   return (
     <Container className="box-block mb-3 d-flex flex-column justify-content-between text-shadow-cls">

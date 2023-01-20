@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLogin } from "../context/LoginContext";
 
 const Game = () => {
-  const { loginCheck, openLogin } = useLogin();
+  const { loginCheck } = useLogin();
 
   useEffect(() => {
     loginCheck();

@@ -13,6 +13,9 @@ const LoginContext = createContext({
   isLogged: () => false,
   logIn: (token) => {},
   loginCheck: () => {},
+  getAuthHeader: () => {
+    return { Authorization: "" };
+  },
 });
 
 export function useLogin() {
@@ -24,7 +27,7 @@ export function LoginProvider({ children }) {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [goBack, setGoBack] = useState(true);
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(token.Bearer !== "");
   const api = new AuthApi();
 
   const logIn = async (token) => {
@@ -44,6 +47,12 @@ export function LoginProvider({ children }) {
     if (isLoginOpen) {
       setIsLoginOpen(false);
     }
+  };
+
+  const getAuthHeader = () => {
+    return {
+      Authorization: token.Bearer,
+    };
   };
 
   const setGoBackOption = (goBack) => {
@@ -89,6 +98,7 @@ export function LoginProvider({ children }) {
         logIn,
         logOut,
         loginCheck,
+        getAuthHeader,
         logged,
       }}
     >
