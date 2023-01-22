@@ -34,7 +34,6 @@ export function ShoppingCartProvider({ children }) {
     return item !== undefined ? item.quantity : 0;
   }
   function increaseItemQuantity(id) {
-    console.log("increaseItemQuantity");
     setCartItems((currItems) => {
       if (currItems.find((e) => e.id === id) == null) {
         return [...cartItems, { id, quantity: 1 }];
@@ -47,7 +46,6 @@ export function ShoppingCartProvider({ children }) {
   }
 
   function decreaseItemQuantity(id) {
-    console.log("decreaseItemQuantity");
     setCartItems((currItems) => {
       if (currItems.find((e) => e.id === id)?.quantity === 1) {
         return currItems.filter((e) => e.id !== id);
@@ -60,12 +58,10 @@ export function ShoppingCartProvider({ children }) {
   }
 
   function removeFromCart(id) {
-    console.log("removeFromCart");
     setCartItems((currentItems) => currentItems.filter((e) => e.id !== id));
   }
 
   function setQuantity(id, quantity) {
-    console.log("decreaseItemQuantity");
     setCartItems((currItems) => {
       if (quantity === 0) {
         removeFromCart(id);

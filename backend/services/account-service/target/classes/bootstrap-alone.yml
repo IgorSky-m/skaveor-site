@@ -1,36 +1,22 @@
-
-eureka:
-  client:
-#    set false if you want to use without eureka
-    register-with-eureka: false
-#    set false if you want to use without eureka
-    fetch-registry: false
-    service-url:
-#      defaultZone: http://registry-server-1.com:8761/eureka, http://registry-server-2.com:8762/eureka, http://registry-server-3.com:8763/eureka
-      defaultZone: http://localhost:8760/eureka
-  instance:
-    hostname: localhost
-
 spring:
   cloud:
     config:
       enabled: false
   #  datasource props
   datasource:
-    url: 'jdbc:h2:mem:junit_db'
-    driverClassName: 'org.h2.Driver'
-    username: 'sa'
-    password: 'pass'
+
+    url: 'jdbc:postgresql://localhost:6543/account'
+    driverClassName: 'org.postgresql.Driver'
+    username: 'admin_test'
+    password: 'admin_test'
   #    jpa props
   jpa:
     hibernate:
+#      ddl-auto: create-drop
       ddl-auto: update
-    database-platform: 'org.hibernate.dialect.H2Dialect'
+    database-platform: 'org.hibernate.dialect.PostgreSQLDialect'
     show_sql: true
-  # /h2-console
-  h2:
-    console:
-      enabled: true
+
   mail:
     host: 'smtp.gmail.com'
     port: 587
@@ -60,3 +46,7 @@ logging:
   pattern:
     console: '[%d{yyyy-MM-dd HH:mm:ss}] [%thread] [%-5level] %logger{36} - %msg%n'
     file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{100} - %msg%n'
+
+
+jwt:
+  secret: ${JWT_SECRET}

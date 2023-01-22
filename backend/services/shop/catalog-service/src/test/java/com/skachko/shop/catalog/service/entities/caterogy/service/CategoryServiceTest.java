@@ -1,6 +1,7 @@
 package com.skachko.shop.catalog.service.entities.caterogy.service;
 
 import com.skachko.shop.catalog.service.entities.caterogy.dto.Category;
+import com.skachko.shop.catalog.service.entities.caterogy.dto.SubCategory;
 import com.skachko.shop.catalog.service.entities.caterogy.repository.ICategoryRepository;
 import com.skachko.shop.catalog.service.entities.caterogy.service.api.ACategoryServiceTest;
 import com.skachko.shop.catalog.service.entities.caterogy.service.api.ICategoryService;
@@ -59,8 +60,15 @@ public class CategoryServiceTest extends ACategoryServiceTest {
 
     @BeforeEach
     public void setup() {
-        categoryService.save(parent, dtCreateTest);
-        categoryService.save(new ArrayList<>(testCategories), dtCreateTest);
+        parent = categoryService.save(getTestCategory(), dtCreateTest);
+
+        List<Category> categories = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            categories.add(getTestCategory(parent, Integer.toString(i)));
+        }
+        List<Category> categories1 = categoryService.save(categories, dtCreateTest);
+        testCategories = new ArrayList<>(categories1);
+
     }
 
     @AfterEach
@@ -268,7 +276,7 @@ public class CategoryServiceTest extends ACategoryServiceTest {
         assertNotNull(testSubCategories.getSubCategories());
         assertEquals(testSubCategories.getSubCategories().size(), 1);
 
-        Category subCategory = testSubCategories.getSubCategories()
+        SubCategory subCategory = testSubCategories.getSubCategories()
                 .stream()
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);

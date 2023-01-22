@@ -4,6 +4,7 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Login/Signup";
 import AuthApi from "../data/AuthApi";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useShoppingCart } from "./ShoppingCartContext";
 
 const LoginContext = createContext({
   logOut: () => {},
@@ -85,6 +86,7 @@ export function LoginProvider({ children }) {
   const logOut = (navigate = () => {}) => {
     setToken({ Bearer: "" });
     setLogged(false);
+
     navigate();
   };
 

@@ -40,6 +40,7 @@ const StoreCategory = () => {
         </h1>
       </div>
       <StoreItems
+        filterProperty="title"
         getItemsPage={() =>
           api.getCategoryItemsPage(categoryId, getAuthHeader())
         }

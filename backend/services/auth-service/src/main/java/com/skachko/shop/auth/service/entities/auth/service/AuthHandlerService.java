@@ -37,7 +37,7 @@ public class AuthHandlerService implements IAuthHandlerService {
     public AuthResponse login(AuthLoginRequest request) {
         validator.validateLogin(request);
 
-        CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
+        CustomUser userByEmail = userService.getUserByEmail(request.getEmail(), encodePassword(request.getPassword()));
 
         if (userByEmail == null) {
 
@@ -68,8 +68,7 @@ public class AuthHandlerService implements IAuthHandlerService {
     public AuthResponse register(AuthRegisterRequest request) {
         validator.validateRegister(request);
 
-        CustomUser userByEmail = userService.getUserByEmail(request.getEmail());
-        if (userByEmail != null) {
+        if (!userService.isEmailExist(request.getEmail())) {
 
             throw new AuthValidationException(
                     new AuthValidationException.ValueStructuredError(

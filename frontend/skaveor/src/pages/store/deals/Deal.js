@@ -12,7 +12,12 @@ const Deal = () => {
   return (
     <Container className="box-block text-white text-shadow-cls mb-3 p-3 rounded-0">
       <div className="d-flex justify-content-center">
-        <h1 className="fs-1 text-white text-uppercase">{dealType}</h1>
+        <h1
+          className="fs-1 text-white text-uppercase"
+          style={{ fontFamily: "Glitch" }}
+        >
+          {dealType}
+        </h1>
       </div>
       <StoreItems
         secured={true}

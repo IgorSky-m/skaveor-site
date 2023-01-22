@@ -144,7 +144,7 @@ export default function PaymentModal({ show, onHide, totalAmount }) {
       .catch((error) => console.error(error));
 
     if (statusCode === 200 || statusCode === 201) {
-      if (resp.status === "PLACED") {
+      if (resp && resp.status === "PLACED") {
         onHide();
         closeCart();
         clearCart();

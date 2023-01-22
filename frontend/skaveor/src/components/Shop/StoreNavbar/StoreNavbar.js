@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { createSearchParams, NavLink, useNavigate } from "react-router-dom";
 import "./StoreNavbar.css";
 import { useState } from "react";
 import { Nav, Navbar, Button, Form } from "react-bootstrap";
@@ -34,7 +34,7 @@ const StoreNavbar = () => {
       </Nav>
       <Form className="d-flex m-3">
         <Form.Control
-          type="search"
+          type="text"
           placeholder="SEARCH"
           className="me-1 rounded-0"
           aria-label="Search"
@@ -44,7 +44,12 @@ const StoreNavbar = () => {
         />
         <Button
           variant="outline-secondary rounded-0"
-          onClick={() => navigate(`/store/search?q=${search}`)}
+          onClick={() =>
+            navigate({
+              pathname: "/store/search",
+              search: `?${createSearchParams({ s: search })}`,
+            })
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,50 @@
+
+eureka:
+  client:
+    #    set false if you want to use without eureka
+    register-with-eureka: false
+    #    set false if you want to use without eureka
+    fetch-registry: false
+
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    config:
+      enabled: false
+  #  datasource props
+  datasource:
+    url: 'jdbc:h2:mem:junit_db'
+    driverClassName: 'org.h2.Driver'
+    username: 'admin_test'
+    password: 'admin_test'
+  #    jpa props
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      database-platform: 'org.hibernate.dialect.H2Dialect'
+    show_sql: true
+  # /h2-console
+  h2:
+    console:
+      enabled: true
+
+
+# logging props
+logging:
+  custom:
+    smtp:
+      username: 'tt'
+      password: 'tt'
+      from: 'tt'
+      recipients:
+        SMTP-EMAIL-RECIPIENT-1: 'tt'
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.example: ERROR
+    org.hibernate: INFO
+  pattern:
+    console: '[%d{yyyy-MM-dd HH:mm:ss}] [%thread] [%-5level] %logger{36} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{100} - %msg%n'

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.skachko.shop</groupId>
-    <artifactId>payment-service</artifactId>
+    <artifactId>auth-service</artifactId>
     <description>shop payment module</description>
     <version>1.0-SNAPSHOT</version>
 
@@ -26,6 +26,11 @@
     </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

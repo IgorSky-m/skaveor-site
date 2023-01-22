@@ -39,7 +39,7 @@ const Cart = ({ isOpen }) => {
             status = response.status;
             return response.json();
           })
-          .catch((error) => console.error(error));
+          .catch((error) => console.log(error));
         if (status === 401) {
           closeCart();
           openLogin(false);

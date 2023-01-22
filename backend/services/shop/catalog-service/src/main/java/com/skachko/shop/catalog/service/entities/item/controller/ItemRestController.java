@@ -26,7 +26,7 @@ public class ItemRestController extends ARestController<Item, UUID> {
     }
 
     @GetMapping("/search")
-    public List<Item> search(@RequestParam(name = "q") String q) {
+    public List<Item> search(@RequestParam(name = "s") String q) {
         return itemService.search(q);
     }
 }

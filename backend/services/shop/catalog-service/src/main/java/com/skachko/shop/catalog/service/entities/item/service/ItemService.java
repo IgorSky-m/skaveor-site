@@ -167,6 +167,7 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
     @Transactional(readOnly = true)
     @Override
     public List<Item> search(String searchString) {
+        log.warn("search string: " + searchString);
         if (searchString == null || "".equals(searchString)) {
             return Collections.EMPTY_LIST;
         }

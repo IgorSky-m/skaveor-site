@@ -136,8 +136,11 @@ export default class StoreApi {
   }
 
   searchItems(queryString, headers = {}) {
+    console.log(queryString);
     return fetch(
-      `${this.shopApiEndpoint}/${this.itemsPart}/search?q=${queryString}`,
+      `${this.shopApiEndpoint}/${this.itemsPart}/search?${new URLSearchParams({
+        s: queryString,
+      }).toString()}`,
       {
         method: "GET",
         headers: {

@@ -48,7 +48,11 @@ const ItemCard = ({ item }) => {
             {item.deals &&
               item.deals.map((e) => {
                 if (e.type !== null) {
-                  return <div className="bg-danger p-1">{e.type}</div>;
+                  return (
+                    <div key={e.type} className="bg-danger p-1">
+                      {e.type}
+                    </div>
+                  );
                 }
               })}
           </div>
