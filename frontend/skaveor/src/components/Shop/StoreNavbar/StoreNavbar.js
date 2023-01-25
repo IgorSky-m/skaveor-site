@@ -4,6 +4,7 @@ import "./StoreNavbar.css";
 import { useState } from "react";
 import { Nav, Navbar, Button, Form } from "react-bootstrap";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
+import Logo from "../../Logo";
 
 const StoreNavbar = () => {
   const { openCart, cartQuantity } = useShoppingCart();
@@ -12,13 +13,14 @@ const StoreNavbar = () => {
 
   return (
     <Navbar
-      className="shadow-lg mb-3 bg-dark text-uppercase"
+      className="shadow-lg mb-3 bg-dark text-uppercase store-navbar p-2 gap-3"
       fixed="top"
       sticky="top"
       variant="dark"
-      style={{ fontFamily: "GameCube" }}
+      style={{ height: "55px", fontWeight: "500" }}
     >
-      <Nav className="me-auto p-3 gap-4">
+      <Logo classes="logo-store" />
+      <Nav className="me-auto p-4 gap-3">
         <Nav.Link as={NavLink} to="/" end>
           Home
         </Nav.Link>

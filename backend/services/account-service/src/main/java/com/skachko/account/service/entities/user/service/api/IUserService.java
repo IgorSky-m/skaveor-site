@@ -6,6 +6,7 @@ import com.skachko.account.service.entities.user.dto.UserRequest;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,4 +26,6 @@ public interface IUserService {
     CustomUser activate(UUID id, Date version);
 
     Boolean isEmailExist(String email);
+
+    List<CustomUser> findAll();
 }

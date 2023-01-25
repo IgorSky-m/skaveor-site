@@ -13,12 +13,14 @@ import com.skachko.account.service.libraries.mvc.exceptions.EntityNotFoundExcept
 import com.skachko.account.service.support.utils.IsEmptyUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -46,10 +48,12 @@ public class UserService implements IUserService {
     @Override
     public CustomUser save(CustomUser customUser) {
         Date date = new Date();
+
         try {
             validator.validateBeforeCreate(customUser);
             customUser.setDtCreate(date);
             customUser.setDtUpdate(date);
+            customUser.setPassword(encodePassword(customUser.getPassword()));
             return repository.save(customUser);
         } catch (AccountServiceValidationException e) {
             throw e;
@@ -76,6 +80,7 @@ public class UserService implements IUserService {
     public CustomUser getByRequest(UserRequest request) {
         try {
             validator.validateRequest(request);
+            request.setPassword(encodePassword(request.getPassword()));
             return repository.findOneByEmailAndPassword(request.getEmail(), request.getPassword())
                     .orElseThrow(EntityNotFoundException::new);
         } catch (EntityNotFoundException | AccountServiceValidationException e) {
@@ -104,7 +109,7 @@ public class UserService implements IUserService {
 
         existedUser.setDtUpdate(new Date());
         existedUser.setEmail(newUser.getEmail());
-        existedUser.setPassword(newUser.getPassword());
+        existedUser.setPassword(encodePassword(newUser.getPassword()));
         existedUser.setName(newUser.getName());
 
         return repository.save(existedUser);
@@ -178,6 +183,16 @@ public class UserService implements IUserService {
     public Boolean isEmailExist(String email) {
         return repository.findOneByEmail(email)
                 .isPresent();
+    }
+
+    @Override
+    public List<CustomUser> findAll() {
+        return repository.findAll();
+    }
+
+
+    private String encodePassword(String password) {
+        return DigestUtils.sha3_256Hex(password);
     }
 
 }

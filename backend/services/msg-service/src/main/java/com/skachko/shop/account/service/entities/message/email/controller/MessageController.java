@@ -1,4 +1,4 @@
-package com.skachko.shop.account.service.entities.message.email.controllerUser;
+package com.skachko.shop.account.service.entities.message.email.controller;
 
 import com.skachko.shop.account.service.entities.message.api.IMessageService;
 import com.skachko.shop.account.service.entities.message.dto.CustomUserMessage;
@@ -6,7 +6,7 @@ import com.skachko.shop.account.service.entities.message.dto.api.EMessageType;
 import com.skachko.shop.account.service.entities.message.email.dto.EmailMessageRequest;
 import com.skachko.shop.account.service.entities.message.email.service.api.IEmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
+import org.assertj.core.util.Arrays;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +22,7 @@ public class MessageController {
     private final IMessageService<EmailMessageRequest> service;
     private final IEmailService emailService;
 
-    @PostMapping(value = "/send", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/send")
     public void send(
             @RequestParam String receiver,
             @RequestParam String text,
@@ -36,7 +36,7 @@ public class MessageController {
                         .text(text)
                         .subject(subject)
                         .receiver(receiver)
-                        .files(emailService.convert(files))
+                        .files(emailService.convert(Arrays.array(files)))
                         .build(),
                 headers
         );

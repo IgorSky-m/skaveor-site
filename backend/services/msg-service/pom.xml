@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.skachko.shop</groupId>
-    <artifactId>account-service</artifactId>
-    <description>account module</description>
+    <artifactId>msg-service</artifactId>
+    <description>message module</description>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

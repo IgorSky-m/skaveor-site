@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-@FeignClient(name = "PAYMENT-SERVICE", url = "http://localhost:9001/payment")
+@FeignClient(name = "ACCOUNT-SERVICE", url = "http://localhost:9012")
 public interface IUserFeignClient {
 
 

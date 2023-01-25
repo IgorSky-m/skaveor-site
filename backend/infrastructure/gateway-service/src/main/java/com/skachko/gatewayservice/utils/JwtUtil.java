@@ -1,6 +1,7 @@
 package com.skachko.gatewayservice.utils;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,12 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 public class JwtUtil {
-    public static final long JWT_TOKEN_VALIDITY = 30 * 60 * 60;
+
     @Value("${jwt.secret}")
     private String secret;
 
@@ -37,8 +36,11 @@ public class JwtUtil {
     }
 
     public boolean isInvalid(String token) {
-        return token == null || "".equals(token) || this.isTokenExpired(token);
+        try {
+            return token == null || "".equals(token) || this.isTokenExpired(token);
+        } catch (Exception e){
+            return true;
+        }
     }
-
 
 }

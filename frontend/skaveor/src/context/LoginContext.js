@@ -1,10 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Login from "../components/Login/Login";
 import Signup from "../components/Login/Signup";
 import AuthApi from "../data/AuthApi";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { useShoppingCart } from "./ShoppingCartContext";
 
 const LoginContext = createContext({
   logOut: () => {},
@@ -14,6 +12,8 @@ const LoginContext = createContext({
   isLogged: () => false,
   logIn: (token) => {},
   loginCheck: () => {},
+  getRoles: () => [],
+  getPayload: () => {},
   getAuthHeader: () => {
     return { Authorization: "" };
   },
@@ -54,6 +54,14 @@ export function LoginProvider({ children }) {
     return {
       Authorization: token.Bearer,
     };
+  };
+
+  const getPayload = () => {
+    return api.getPayload(getAuthHeader());
+  };
+
+  const getRoles = () => {
+    return api.getRoles(getAuthHeader());
   };
 
   const setGoBackOption = (goBack) => {
@@ -101,6 +109,8 @@ export function LoginProvider({ children }) {
         logOut,
         loginCheck,
         getAuthHeader,
+        getPayload,
+        getRoles,
         logged,
       }}
     >

@@ -1,16 +1,5 @@
-.logo-setup {
-  border: 2px solid #f5cb5c;
-  border-bottom-right-radius: 20px;
-  text-decoration: none;
-  color: #ced4da;
-  background-color: rgba(51, 53, 51, 1);
-  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 1);
-  text-shadow: -3px -3px 3px black;
-  font-family: "Glitch";
-}
-
 .header {
-  z-index: 1000;
+  z-index: 1000 !important;
   width: 100%;
   top: 0px;
   left: 0px;
@@ -23,6 +12,7 @@
 }
 
 .header-mini {
+  z-index: 1000;
   height: 35px;
   padding: 10px 20px;
   background-color: rgba(51, 53, 51, 1);
@@ -32,18 +22,12 @@
 }
 
 .header-top {
-  height: 85px;
+  z-index: 1000;
+  height: 55px;
   background-color: rgba(51, 53, 51, 0.7);
-  padding: 20px;
+  padding: 0 20px;
 
   animation: header-top-transform-anim 0.3s ease-out;
-  animation-iteration-count: 1;
-}
-
-.header-logo-img {
-  width: 100px;
-  margin-right: 10px;
-  animation: logo-transform-anim 0.3s ease-out;
   animation-iteration-count: 1;
 }
 
@@ -62,7 +46,7 @@
   }
 
   100% {
-    height: 85px;
+    height: 55px;
     background-color: rgba(51, 53, 51, 0.7);
     padding: 20px;
   }
@@ -70,7 +54,7 @@
 
 @keyframes header-mini-transform-anim {
   0% {
-    height: 85px;
+    height: 55px;
     background-color: rgba(51, 53, 51, 0.7);
     padding: 20px;
   }

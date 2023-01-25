@@ -57,10 +57,18 @@ spring:
           filters:
             - name: CircuitBreaker
               args:
-                name: auth-service
+                name: news-service
                 fallbackUri: forward:/fallback/news
 
-
+        - id: MSG-SERVICE
+          uri: lb://MSG-SERVICE
+          predicates:
+            - Path=/messages/email/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: msg-service
+                fallbackUri: forward:/fallback/msg
 
 management:
   endpoints:

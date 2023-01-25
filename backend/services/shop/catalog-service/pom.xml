@@ -103,7 +103,6 @@
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -119,7 +118,6 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate5-jakarta</artifactId>
         </dependency>
-
 
     </dependencies>
 

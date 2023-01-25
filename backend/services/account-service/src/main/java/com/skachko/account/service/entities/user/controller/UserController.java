@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,6 +30,11 @@ public class UserController {
     @GetMapping("/{id}")
     public CustomUser getOne(@PathVariable UUID id) {
         return service.getOne(id);
+    }
+
+    @GetMapping
+    public List<CustomUser> getAll() {
+        return service.findAll();
     }
 
     @PutMapping("/{id}/dt_update/{version}")

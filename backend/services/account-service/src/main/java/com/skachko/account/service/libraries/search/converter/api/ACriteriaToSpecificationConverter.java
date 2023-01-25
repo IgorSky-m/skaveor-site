@@ -1,10 +1,9 @@
 package com.skachko.account.service.libraries.search.converter.api;
 
 import com.google.common.base.CaseFormat;
-import com.skachko.account.service.libraries.search.api.*;
 import com.skachko.account.service.libraries.mvc.api.AEntity;
 import com.skachko.account.service.libraries.search.SearchExpressionValidator;
-import com.skachko.shop.account.service.libraries.search.api.*;
+import com.skachko.account.service.libraries.search.api.*;
 import com.skachko.account.service.libraries.search.converter.Column;
 import jakarta.persistence.Transient;
 import jakarta.persistence.criteria.*;

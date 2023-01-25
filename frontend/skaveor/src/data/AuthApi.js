@@ -5,6 +5,24 @@ export default class AuthApi {
     this.authPart = "auth";
   }
 
+  getRoles(headers = {}) {
+    return fetch(`${this.apiEndpoint}/${this.authPart}/roles`, {
+      method: "GET",
+      headers: {
+        ...headers,
+      },
+    });
+  }
+
+  getPayload(headers = {}) {
+    return fetch(`${this.apiEndpoint}/${this.authPart}/payload`, {
+      method: "GET",
+      headers: {
+        ...headers,
+      },
+    });
+  }
+
   validateToken(token, headers = {}) {
     return fetch(`${this.apiEndpoint}/${this.authPart}/validate`, {
       method: "GET",

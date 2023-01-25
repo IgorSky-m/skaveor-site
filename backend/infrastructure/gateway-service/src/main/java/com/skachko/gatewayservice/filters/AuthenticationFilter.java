@@ -17,8 +17,7 @@ import reactor.core.publisher.Mono;
 @RefreshScope
 @Component
 public class AuthenticationFilter implements GatewayFilter
-        , GatewayFilterFactory<AuthenticationFilter.Config>
-{
+        , GatewayFilterFactory<AuthenticationFilter.Config> {
 
 
     private final RouterValidator routerValidator;//custom route validator
@@ -51,16 +50,17 @@ public class AuthenticationFilter implements GatewayFilter
 
         } else if (!this.isAuthMissing(request)) {
             String token = getToken(request);
+
             if (!jwtUtil.isInvalid(token)) {
                 this.populateRequestWithHeaders(exchange, token);
             }
-        }
 
+        }
 
         return chain.filter(exchange);
     }
 
-    private String getToken(ServerHttpRequest request){
+    private String getToken(ServerHttpRequest request) {
         final String header = this.getAuthHeader(request);
 
         return header != null && header.startsWith("Bearer") ? header.substring(7) :
@@ -87,6 +87,7 @@ public class AuthenticationFilter implements GatewayFilter
         exchange.getRequest().mutate()
                 .header("id", String.valueOf(claims.get("id")))
                 .header("role", String.valueOf(claims.get("role")))
+                .header("name", String.valueOf(claims.get("name")))
                 .build();
     }
 
@@ -105,7 +106,7 @@ public class AuthenticationFilter implements GatewayFilter
         return Config.class;
     }
 
-    static class Config{
+    static class Config {
         private final String name;
 
         public Config(String name) {

@@ -33,7 +33,7 @@ const SharedLayout = () => {
       <video autoPlay loop muted id="bg-video-2">
         <source
           id="bg-video-src-2"
-          src="/video/scifi-13-1280.mp4"
+          src="/video/scifi-6-1280.mp4"
           type="video/mp4"
         />
       </video>
@@ -41,7 +41,6 @@ const SharedLayout = () => {
       <Container
         className="content-sec m-auto"
         style={{
-          // backgroundColor: "rgba(51, 53, 51, 0.5)",
           paddingTop: "80px",
         }}
       >
