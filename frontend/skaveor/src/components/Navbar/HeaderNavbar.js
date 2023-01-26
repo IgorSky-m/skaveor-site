@@ -21,7 +21,7 @@ const HeaderNavbar = ({
   useEffect(() => {
     async function setPayload() {
       const currentPayload = await getPayload().then((resp) => resp.json());
-      console.log(currentPayload);
+
       if (currentPayload) {
         setName(currentPayload.name);
       } else {

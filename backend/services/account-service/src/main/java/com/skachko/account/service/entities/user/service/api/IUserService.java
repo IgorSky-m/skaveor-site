@@ -3,6 +3,8 @@ package com.skachko.account.service.entities.user.service.api;
 import com.skachko.account.service.entities.user.api.EUserRole;
 import com.skachko.account.service.entities.user.dto.CustomUser;
 import com.skachko.account.service.entities.user.dto.UserRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
@@ -28,4 +30,7 @@ public interface IUserService {
     Boolean isEmailExist(String email);
 
     List<CustomUser> findAll();
+
+
+    Page<CustomUser> getPage(int size, int page, String sortField, Sort.Direction direction);
 }

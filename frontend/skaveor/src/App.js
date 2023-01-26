@@ -25,6 +25,8 @@ import { AccountProvider } from "./context/AccountContext";
 import AdminSharedLayout from "./components/Admin/AdminSharedLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import Users from "./pages/Admin/Users";
+import Forbidden from "./pages/Forbidden";
 function App() {
   return (
     <>
@@ -35,12 +37,14 @@ function App() {
               <Routes>
                 <Route path="/" element={<SharedLayout />}>
                   <Route index element={<Home />} />
+                  <Route path="forbidden" element={<Forbidden />} />
                   <Route path="home" element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="news" element={<News />} />
                   <Route path="game" element={<Game />} />
                   <Route path="admin" element={<AdminSharedLayout />}>
                     <Route index element={<AdminDashboard />} />
+                    <Route path="users" element={<Users />} />
                   </Route>
                   <Route path="store">
                     <Route index element={<Store />} />

@@ -75,7 +75,7 @@ public class AuthHandlerService implements IAuthHandlerService {
 
     @Override
     public String[] getRoles(Map<String, String> headers) {
-        String role = headers.getOrDefault("role", null);
+        String role = headers.getOrDefault("roles", null);
         String[] substring;
         if (role != null) {
             substring = role.substring(1, role.length() - 1).split(", ");

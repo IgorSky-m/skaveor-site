@@ -5,6 +5,8 @@ import com.skachko.account.service.entities.user.dto.CustomUser;
 import com.skachko.account.service.entities.user.dto.UserRequest;
 import com.skachko.account.service.entities.user.service.api.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +24,9 @@ public class UserController {
 
 
     @PostMapping
-    public CustomUser create(@RequestBody CustomUser user){
+    public CustomUser create(@RequestBody CustomUser user) {
         return service.save(user);
-    };
+    }
 
 
     @GetMapping("/{id}")
@@ -37,23 +39,35 @@ public class UserController {
         return service.findAll();
     }
 
+    @GetMapping("/page")
+    public Page<CustomUser> getAll(
+            @RequestParam(required = false, defaultValue = "20") int size,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "dtCreate") String field,
+            @RequestParam(required = false, defaultValue = "ASC") Sort.Direction direction
+    ) {
+        return service.getPage(size, page, field, direction);
+    }
+
+
     @PutMapping("/{id}/dt_update/{version}")
     public CustomUser update(@RequestBody CustomUser newUser, @PathVariable UUID id, @PathVariable Date version) {
         return service.update(id, newUser, version);
     }
 
     @PutMapping("/{id}/dt_update/{version}/roles")
-    public CustomUser updateRoles(@PathVariable UUID id, @PathVariable Date version,@RequestBody Set<EUserRole> newRoles) {
+    public CustomUser updateRoles(@PathVariable UUID id, @PathVariable Date version, @RequestBody Set<EUserRole> newRoles) {
         return service.updateRoles(id, version, newRoles);
     }
 
     @PutMapping("/{id}/dt_update/{version}/deactivate")
-    public CustomUser deactivate(@PathVariable UUID id, @PathVariable Date version){
+    public CustomUser deactivate(@PathVariable UUID id, @PathVariable Date version) {
         return service.deactivate(id, version);
     }
 
+
     @PutMapping("/{id}/dt_update/{version}/activate")
-    public CustomUser activate(@PathVariable UUID id, @PathVariable Date version){
+    public CustomUser activate(@PathVariable UUID id, @PathVariable Date version) {
         return service.activate(id, version);
     }
 

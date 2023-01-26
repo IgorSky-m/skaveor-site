@@ -1,6 +1,7 @@
 package com.skachko.account.service.entities.user.service;
 
 
+import com.google.common.base.CaseFormat;
 import com.skachko.account.service.entities.user.api.EUserRole;
 import com.skachko.account.service.entities.user.dto.CustomUser;
 import com.skachko.account.service.entities.user.dto.UserRequest;
@@ -16,6 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -190,6 +194,17 @@ public class UserService implements IUserService {
         return repository.findAll();
     }
 
+    @Override
+    public Page<CustomUser> getPage(int size, int page, String sortField, Sort.Direction direction) {
+        try {
+            String formattedField = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, sortField);
+            return repository.findAll(PageRequest.of(page, size, Sort.by(direction, formattedField)));
+        } catch (Exception e) {
+            throw new AccountServiceException(
+                    messageSource.getMessage("error.crud.read.page", null, LocaleContextHolder.getLocale())
+            );
+        }
+    }
 
     private String encodePassword(String password) {
         return DigestUtils.sha3_256Hex(password);

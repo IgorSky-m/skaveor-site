@@ -5,8 +5,7 @@ import com.skachko.gatewayservice.validators.RouterValidator;
 import io.jsonwebtoken.Claims;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
-import org.springframework.cloud.gateway.filter.GatewayFilterChain;
-import org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -14,51 +13,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.*;
+
 @RefreshScope
 @Component
-public class AuthenticationFilter implements GatewayFilter
-        , GatewayFilterFactory<AuthenticationFilter.Config> {
-
+public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
     private final RouterValidator routerValidator;//custom route validator
     private final JwtUtil jwtUtil;
 
+
     public AuthenticationFilter(RouterValidator routerValidator, JwtUtil jwtUtil) {
+        super(Config.class);
         this.routerValidator = routerValidator;
         this.jwtUtil = jwtUtil;
+
     }
 
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest();
-
-        if (routerValidator.isSecured.test(request)) {
-            if (this.isAuthMissing(request)) {
-                return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
-            }
-
-            final String token = getToken(request);
-            try {
-                if (jwtUtil.isInvalid(token)) {
-                    throw new IllegalArgumentException();
-                }
-            } catch (Exception e) {
-                return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
-            }
-
-            this.populateRequestWithHeaders(exchange, token);
-
-        } else if (!this.isAuthMissing(request)) {
-            String token = getToken(request);
-
-            if (!jwtUtil.isInvalid(token)) {
-                this.populateRequestWithHeaders(exchange, token);
-            }
-
-        }
-
-        return chain.filter(exchange);
-    }
 
     private String getToken(ServerHttpRequest request) {
         final String header = this.getAuthHeader(request);
@@ -82,39 +53,96 @@ public class AuthenticationFilter implements GatewayFilter
         return !request.getHeaders().containsKey("Authorization");
     }
 
-    private void populateRequestWithHeaders(ServerWebExchange exchange, String token) {
+    private Map<String, Object> getPayload(String token) {
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
-        exchange.getRequest().mutate()
-                .header("id", String.valueOf(claims.get("id")))
-                .header("role", String.valueOf(claims.get("role")))
-                .header("name", String.valueOf(claims.get("name")))
-                .build();
+        return new HashMap<>() {{
+            put("id", claims.get("id"));
+            put("roles", claims.get("roles"));
+            put("name", claims.get("name"));
+        }};
     }
 
-    @Override
-    public Config newConfig() {
-        return new Config("AuthenticationFilter");
+    private void populateRequestWithHeaders(ServerWebExchange exchange, Map<String, Object> payload) {
+
+        ServerHttpRequest.Builder mutate = exchange.getRequest().mutate();
+        payload.forEach((k, v) -> mutate.header(k, String.valueOf(v)));
+        mutate.build();
     }
+
+
 
     @Override
     public GatewayFilter apply(Config config) {
-        return this;
+
+        return (exchange, chain) -> {
+            ServerHttpRequest request = exchange.getRequest();
+
+            if (routerValidator.isSecured.test(request)) {
+                if (this.isAuthMissing(request)) {
+                    return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
+                }
+
+                final String token = getToken(request);
+                try {
+                    if (jwtUtil.isInvalid(token)) {
+                        throw new IllegalArgumentException();
+                    }
+                } catch (Exception e) {
+                    return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
+                }
+
+                Map<String, Object> payload = getPayload(token);
+                if (isNotAllowed((List<String>)payload.get("roles"), config.allowedRoles)) {
+                    return this.onError(exchange, "Not Allowed", HttpStatus.FORBIDDEN);
+                }
+                this.populateRequestWithHeaders(exchange, payload);
+
+            } else if (!this.isAuthMissing(request)) {
+                String token = getToken(request);
+
+                if (!jwtUtil.isInvalid(token)) {
+                    Map<String, Object> payload = getPayload(token);
+                    if (isNotAllowed((List<String>)payload.get("roles"), config.allowedRoles)) {
+                        return this.onError(exchange, "Not Allowed", HttpStatus.FORBIDDEN);
+                    }
+                    this.populateRequestWithHeaders(exchange, payload);
+                }
+
+            }
+
+            return chain.filter(exchange);
+        };
     }
 
-    @Override
-    public Class<Config> getConfigClass() {
-        return Config.class;
+    private boolean isNotAllowed(List<String> roles, Set<String> allowedRoles) {
+        if (roles == null || roles.isEmpty()) {
+            return false;
+        }
+        return roles.stream()
+                .noneMatch(allowedRoles::contains);
     }
+
 
     static class Config {
-        private final String name;
+        private String name;
+        private Set<String> allowedRoles = new HashSet<>();
 
-        public Config(String name) {
+        public Config(){}
+
+        public void setName(String name) {
             this.name = name;
         }
 
         public String getName() {
             return name;
+        }
+
+        public Set<String> getAllowedRoles() {
+            return allowedRoles;
+        }
+
+        public void setAllowedRoles(Set<String> allowedRoles) {
+            this.allowedRoles = allowedRoles;
         }
     }
 }

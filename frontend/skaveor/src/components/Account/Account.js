@@ -132,7 +132,10 @@ const Account = ({ isOpen }) => {
             <Button
               variant="outline-secondary"
               className="d-flex align-items-center gap-2 text-start text-white rounded-0 border-0"
-              onClick={() => navigate("/admin")}
+              onClick={() => {
+                navigate("/admin");
+                closeAccount();
+              }}
             >
               <div className="  d-flex">
                 <svg
