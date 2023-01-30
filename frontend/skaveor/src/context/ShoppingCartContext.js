@@ -22,13 +22,11 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }) {
   const [cartItems, setCartItems] = useLocalStorage("cart-items", []);
   const [isOpen, setIsOpen] = useState(false);
-  const cartQuantity = cartItems.reduce(
-    (quantity, e) => e.quantity + quantity,
-    0
-  );
+  const cartQuantity = cartItems.reduce((quan, e) => e.quantity + quan, 0);
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+
   function getItemQuantity(id) {
     const item = cartItems.find((e) => e.id === id);
     return item !== undefined ? item.quantity : 0;

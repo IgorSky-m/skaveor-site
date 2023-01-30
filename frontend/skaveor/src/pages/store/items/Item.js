@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import StoreApi from "../../../data/store/StoreRestService";
+import StoreApi from "../../../data/StoreRestApi";
 import { Button, Container } from "react-bootstrap";
 import ImageComponent from "../../../components/Img/ImageComponent";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";

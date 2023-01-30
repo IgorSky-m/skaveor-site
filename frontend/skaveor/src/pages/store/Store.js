@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import NewsApi from "../../data/NewsApi";
-import ShopNewsCard from "../../components/Shop/ShopNewsCard";
+import ShopNewsCard from "../../components/Store/ShopNewsCard";
 const Store = () => {
   const [news, setNews] = useState([]);
 

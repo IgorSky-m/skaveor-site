@@ -2,10 +2,12 @@ package com.skachko.shop.auth.service.advice;
 
 import com.skachko.shop.auth.service.exceptions.AuthException;
 import com.skachko.shop.auth.service.exceptions.AuthValidationException;
+import com.skachko.shop.auth.service.exceptions.UnauthorizedException;
 import com.skachko.shop.auth.service.libraries.mvc.exceptions.EntityNotFoundException;
 import com.skachko.shop.auth.service.libraries.mvc.exceptions.ServiceException;
 import com.skachko.shop.auth.service.libraries.mvc.exceptions.StructuredError;
 import com.skachko.shop.auth.service.libraries.mvc.exceptions.ValidationException;
+import com.skachko.shop.auth.service.support.utils.IsEmptyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -36,6 +38,19 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String handleNotFoundException(EntityNotFoundException e) {
         return messageSource.getMessage("error.rest.not.found", null, LocaleContextHolder.getLocale());
+    }
+
+
+    @ResponseBody
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String handleUnauthorizedException(UnauthorizedException e) {
+        return IsEmptyUtil.isNullOrEmpty(e.getMessage()) ?
+                messageSource.getMessage(
+                        "unauthorized.error.default",
+                        null,
+                        LocaleContextHolder.getLocale())
+                : e.getMessage();
     }
 
     @ResponseBody

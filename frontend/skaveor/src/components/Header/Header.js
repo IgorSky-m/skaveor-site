@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "react-transition-group";
 import Logo from "../Logo";
 import HeaderNavbar from "../Navbar/HeaderNavbar";
-import StoreNavbarMini from "../Shop/StoreNavbar/StoreNavbarMini";
+import StoreNavbarMini from "../Store/StoreNavbar/StoreNavbarMini";
 import "./Header.css";
 
 const Header = ({ isTopOfPage }) => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
-import StoreItems from "../components/Shop/StoreItems/StoreItems";
+import StoreItems from "../components/Store/StoreItems/StoreItems";
 import { useLogin } from "../context/LoginContext";
-import StoreApi from "../data/store/StoreRestService";
+import StoreApi from "../data/StoreRestApi";
 const SearchResult = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");

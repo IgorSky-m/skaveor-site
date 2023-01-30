@@ -67,7 +67,7 @@ public class UserValidator implements IUserValidator {
 
         validateEmail(user.getEmail(), errors);
 
-        validatePassword(user.getPassword(), errors);
+       // validatePassword(user.getPassword(), errors);
 
         if (IsEmptyUtil.isNullOrEmpty(user.getRoles())) {
             errors.add(

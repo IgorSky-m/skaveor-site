@@ -1,5 +1,6 @@
-import { GATEWAY_API_ENTRANCE } from "../Constraints";
-export default class StoreApi {
+import { GATEWAY_API_ENTRANCE } from "./Constraints";
+
+export default class StoreRestApi {
   constructor() {
     this.shopApiEndpoint = GATEWAY_API_ENTRANCE;
     this.itemsPart = "items";

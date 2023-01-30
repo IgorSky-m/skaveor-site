@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import StoreApi from "../../../data/store/StoreRestService";
-import StoreItems from "../../../components/Shop/StoreItems/StoreItems";
+import StoreApi from "../../../data/StoreRestApi";
+import StoreItems from "../../../components/Store/StoreItems/StoreItems";
 import { Container } from "react-bootstrap";
 import { useLogin } from "../../../context/LoginContext";
 

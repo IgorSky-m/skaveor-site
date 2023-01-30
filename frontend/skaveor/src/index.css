@@ -224,6 +224,10 @@ code {
   margin: 30px;
 }
 
+.no-arrow-dropdown::after {
+  display: none !important;
+}
+
 .game-name-words {
   color: #f5cb5c;
   text-shadow: 1px 1px 10px rgba(0, 78, 152, 1);

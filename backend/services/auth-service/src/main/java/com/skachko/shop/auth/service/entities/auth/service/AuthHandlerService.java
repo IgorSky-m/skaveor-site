@@ -1,9 +1,6 @@
 package com.skachko.shop.auth.service.entities.auth.service;
 
-import com.skachko.shop.auth.service.entities.auth.dto.AuthHistory;
-import com.skachko.shop.auth.service.entities.auth.dto.AuthLoginRequest;
-import com.skachko.shop.auth.service.entities.auth.dto.AuthRegisterRequest;
-import com.skachko.shop.auth.service.entities.auth.dto.AuthResponse;
+import com.skachko.shop.auth.service.entities.auth.dto.*;
 import com.skachko.shop.auth.service.entities.auth.dto.api.EAuthAction;
 import com.skachko.shop.auth.service.entities.auth.service.api.IAuthHandlerService;
 import com.skachko.shop.auth.service.entities.auth.service.api.IAuthHistoryService;
@@ -12,7 +9,10 @@ import com.skachko.shop.auth.service.entities.user.api.EUserRole;
 import com.skachko.shop.auth.service.entities.user.dto.CustomUser;
 import com.skachko.shop.auth.service.entities.user.service.api.IUserService;
 import com.skachko.shop.auth.service.exceptions.AuthValidationException;
+import com.skachko.shop.auth.service.exceptions.UnauthorizedException;
+import com.skachko.shop.auth.service.support.utils.IsEmptyUtil;
 import com.skachko.shop.auth.service.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -67,7 +67,7 @@ public class AuthHandlerService implements IAuthHandlerService {
                 .build();
         CustomUser savedUser = userService.save(build);
 
-        createHistory(savedUser.getId(), savedUser.getDtCreate(), EAuthAction.REGISTER);
+        createHistory(savedUser.getId(), new Date(savedUser.getDtCreate()), EAuthAction.REGISTER);
 
 
         return new AuthResponse(jwtUtil.generateToken(savedUser));
@@ -75,10 +75,10 @@ public class AuthHandlerService implements IAuthHandlerService {
 
     @Override
     public String[] getRoles(Map<String, String> headers) {
-        String role = headers.getOrDefault("roles", null);
+        String roles = headers.getOrDefault("roles", null);
         String[] substring;
-        if (role != null) {
-            substring = role.substring(1, role.length() - 1).split(", ");
+        if (roles != null) {
+            substring = roles.split(",");
         } else {
             substring = new String[0];
         }
@@ -88,11 +88,76 @@ public class AuthHandlerService implements IAuthHandlerService {
 
     @Override
     public Map<String, Object> getPayload(Map<String, String> headers) {
+        isValid(headers);
         Map<String, Object> payload = new HashMap<>();
         payload.put("roles", getRoles(headers));
         payload.put("id", headers.getOrDefault("id", null));
         payload.put("name", headers.getOrDefault("name", null));
+        payload.put("version", headers.getOrDefault("version", null));
         return payload;
+    }
+
+    @Override
+    public ValidateTokenResult validateToken(String token) {
+        ValidateTokenResult.EValidateTokenResult result = ValidateTokenResult.EValidateTokenResult.SUCCESS;
+        String msg = null;
+        ValidateTokenResult.TokenPayload payload = null;
+
+        if (jwtUtil.isInvalid(token)) {
+            result = ValidateTokenResult.EValidateTokenResult.FAIL;
+            msg = messageSource.getMessage("unauthorized.error.invalid.header", null, LocaleContextHolder.getLocale());
+        } else {
+            Claims claims = jwtUtil.getAllClaimsFromToken(token);
+
+            try {
+                UUID id = UUID.fromString(claims.get("id", String.class));
+
+                CustomUser user = userService.getById(id);
+
+                Long version = claims.get("version", Long.class);
+
+                if (!Objects.equals(version, user.getDtUpdate())) {
+                    throw new UnauthorizedException();
+                }
+
+                payload = ValidateTokenResult.TokenPayload.builder()
+                        .id(id)
+                        .version(version)
+                        .name(claims.get("name", String.class))
+                        .roles((List<String>)claims.get("roles"))
+                        .build();
+
+            } catch (Exception e) {
+                result = ValidateTokenResult.EValidateTokenResult.FAIL;
+                msg = messageSource.getMessage("unauthorized.error.invalid.header", null, LocaleContextHolder.getLocale());
+            }
+        }
+
+        return ValidateTokenResult.builder()
+                .message(msg)
+                .result(result)
+                .payload(payload)
+                .build();
+    }
+
+    @Override
+    public void isValid(Map<String, String> headers) {
+
+        if (IsEmptyUtil.isNotNullOrEmpty(headers)) {
+            String id = headers.getOrDefault("id", null);
+            String date = headers.getOrDefault("version", null);
+            if (IsEmptyUtil.isNotNullOrEmpty(id) && IsEmptyUtil.isNotNullOrEmpty(date)) {
+                CustomUser user;
+                try {
+                    user = userService.getById(UUID.fromString(id));
+                } catch (Exception e) {
+                    throw new UnauthorizedException();
+                }
+                if (Long.parseLong(date) != user.getDtUpdate()) {
+                    throw new UnauthorizedException();
+                }
+            }
+        }
     }
 
     private void createHistory(UUID userId, Date date, EAuthAction action) {

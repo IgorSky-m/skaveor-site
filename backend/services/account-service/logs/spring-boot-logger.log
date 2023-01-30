@@ -1,279 +1,91 @@
-2023-01-25 09:42:45,738 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
-2023-01-25 09:43:02,277 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-01-25 09:43:02,850 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 552 ms. Found 1 JPA repository interfaces.
-2023-01-25 09:43:03,773 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
-2023-01-25 09:43:05,100 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9012 (http)
-2023-01-25 09:43:05,129 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2023-01-25 09:43:05,131 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
-2023-01-25 09:43:05,535 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2023-01-25 09:43:05,537 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 19764 ms
-2023-01-25 09:43:06,032 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-01-25 09:43:06,911 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
-2023-01-25 09:43:07,926 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-01-25 09:43:08,276 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2023-01-25 09:43:10,681 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27fc0217
-2023-01-25 09:43:10,685 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-01-25 09:43:11,175 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-01-25 09:43:15,532 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-01-25 09:43:15,553 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-01-25 09:43:17,674 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-01-25 09:43:20,925 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
-2023-01-25 09:43:22,647 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@1545ef47
-2023-01-25 09:43:22,695 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-01-25 09:43:22,758 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
-2023-01-25 09:43:22,993 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
-2023-01-25 09:43:23,003 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
-2023-01-25 09:43:23,066 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
-2023-01-25 09:43:23,067 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
-2023-01-25 09:43:23,068 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
-2023-01-25 09:43:23,069 INFO c.n.d.DiscoveryClient [main] Application is null : false
-2023-01-25 09:43:23,070 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
-2023-01-25 09:43:23,071 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
-2023-01-25 09:43:23,072 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
-2023-01-25 09:43:24,193 INFO c.n.d.DiscoveryClient [main] The response status is 200
-2023-01-25 09:43:24,201 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
-2023-01-25 09:43:24,207 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-01-25 09:43:24,215 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1674661404213 with initial instances count: 2
-2023-01-25 09:43:24,223 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
-2023-01-25 09:43:24,225 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1674661404225, current=UP, previous=STARTING]
-2023-01-25 09:43:24,245 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
-2023-01-25 09:43:24,339 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9012 (http) with context path ''
-2023-01-25 09:43:24,340 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9012
-2023-01-25 09:43:24,345 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012 - registration status: 204
-2023-01-25 09:43:25,247 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 44.083 seconds (process running for 46.427)
-2023-01-25 09:45:31,073 INFO o.a.j.l.DirectJDKLog [http-nio-9012-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-01-25 09:45:31,074 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-01-25 09:45:31,078 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-1] Completed initialization in 3 ms
-2023-01-25 09:48:23,081 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 09:53:23,087 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 09:58:23,091 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:03:23,104 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:08:23,149 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:13:23,168 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:18:23,175 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:23:23,186 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:28:23,187 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:33:23,188 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:38:23,196 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:43:23,210 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:48:23,224 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:53:23,226 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 10:58:23,237 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:03:23,246 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:08:23,251 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:13:23,252 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:18:23,265 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:23:23,277 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:28:23,457 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:33:23,458 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:38:23,476 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:43:23,477 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:48:23,478 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:53:23,483 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 11:58:23,497 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:03:23,512 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:08:23,525 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:13:23,531 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:18:23,543 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:23:23,555 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:28:23,563 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:33:23,572 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:38:23,580 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:43:23,592 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:48:23,598 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:53:23,603 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 12:58:23,619 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:03:23,627 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:08:23,803 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:13:23,809 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:18:23,877 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:23:23,978 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:28:23,993 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:33:24,003 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:38:24,016 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:43:24,025 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:48:24,033 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:53:24,034 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 13:58:24,047 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:03:24,053 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:08:24,055 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:13:24,063 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:18:24,073 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:23:24,094 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:28:24,206 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:33:24,211 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:38:24,222 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:43:24,236 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:48:24,251 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:53:24,258 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 14:58:24,264 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:03:24,269 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:08:24,282 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:13:24,285 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:18:24,300 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:23:24,331 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:28:24,346 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:33:24,353 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:38:24,358 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:43:24,360 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:48:24,367 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:53:24,382 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 15:58:24,386 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:03:24,399 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:08:24,402 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:13:24,410 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:18:24,509 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:23:24,514 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:28:24,517 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:33:24,523 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:38:24,534 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:43:24,548 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:48:24,702 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:53:24,706 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 16:58:24,712 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:03:24,720 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:08:24,721 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:13:24,723 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:18:24,735 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:23:24,740 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:28:24,761 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:33:24,796 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:38:24,824 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:43:24,857 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:48:24,878 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:53:24,897 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 17:58:24,916 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:03:24,944 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:08:24,962 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:13:24,975 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:18:24,993 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:23:25,014 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:28:25,037 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:33:25,050 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:38:25,058 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:43:25,066 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:48:25,087 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:53:25,098 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 18:58:25,113 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:03:25,128 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:08:25,148 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:13:25,154 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:18:25,169 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:23:25,215 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:28:25,226 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:33:25,237 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:36:09,141 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
-2023-01-25 19:36:14,932 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-01-25 19:36:15,316 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 363 ms. Found 1 JPA repository interfaces.
-2023-01-25 19:36:15,947 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
-2023-01-25 19:36:16,879 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9012 (http)
-2023-01-25 19:36:16,908 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2023-01-25 19:36:16,910 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
-2023-01-25 19:36:17,252 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2023-01-25 19:36:17,255 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 8080 ms
-2023-01-25 19:36:17,624 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-01-25 19:36:17,765 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
-2023-01-25 19:36:18,135 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-01-25 19:36:18,437 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2023-01-25 19:36:18,890 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2aa07d80
-2023-01-25 19:36:18,893 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-01-25 19:36:18,942 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-01-25 19:36:20,401 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-01-25 19:36:20,415 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-01-25 19:36:21,279 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-01-25 19:36:22,682 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
-2023-01-25 19:36:23,240 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@50ac63b2
-2023-01-25 19:36:23,266 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-01-25 19:36:23,312 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
-2023-01-25 19:36:23,468 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
-2023-01-25 19:36:23,486 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
-2023-01-25 19:36:23,525 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
-2023-01-25 19:36:23,526 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
-2023-01-25 19:36:23,526 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
-2023-01-25 19:36:23,527 INFO c.n.d.DiscoveryClient [main] Application is null : false
-2023-01-25 19:36:23,527 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
-2023-01-25 19:36:23,527 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
-2023-01-25 19:36:23,527 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
-2023-01-25 19:36:24,129 INFO c.n.d.DiscoveryClient [main] The response status is 200
-2023-01-25 19:36:24,133 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
-2023-01-25 19:36:24,137 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-01-25 19:36:24,142 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1674696984141 with initial instances count: 7
-2023-01-25 19:36:24,147 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
-2023-01-25 19:36:24,148 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1674696984148, current=UP, previous=STARTING]
-2023-01-25 19:36:24,151 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
-2023-01-25 19:36:24,186 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9012 (http) with context path ''
-2023-01-25 19:36:24,188 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9012
-2023-01-25 19:36:24,635 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 19.007 seconds (process running for 24.068)
-2023-01-25 19:36:25,304 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012 - registration status: 204
-2023-01-25 19:41:23,541 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:46:23,556 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:51:23,566 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 19:56:23,571 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:01:23,576 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:06:23,581 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:11:23,597 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:16:23,610 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:21:23,619 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:21:43,071 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
-2023-01-25 20:21:43,071 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1674699703071, current=DOWN, previous=UP]
-2023-01-25 20:21:43,072 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
-2023-01-25 20:21:43,093 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012 - registration status: 204
-2023-01-25 20:21:43,152 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-01-25 20:21:43,166 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2023-01-25 20:21:43,175 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
-2023-01-25 20:21:43,179 INFO c.n.d.DiscoveryClient [SpringApplicationShutdownHook] Shutting down DiscoveryClient ...
-2023-01-25 20:22:12,634 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
-2023-01-25 20:22:14,647 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-01-25 20:22:14,862 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 200 ms. Found 1 JPA repository interfaces.
-2023-01-25 20:22:15,287 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
-2023-01-25 20:22:15,936 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9012 (http)
-2023-01-25 20:22:15,951 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2023-01-25 20:22:15,952 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
-2023-01-25 20:22:16,123 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2023-01-25 20:22:16,125 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3474 ms
-2023-01-25 20:22:16,369 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-01-25 20:22:16,473 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
-2023-01-25 20:22:16,746 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-01-25 20:22:17,060 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2023-01-25 20:22:17,383 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@355493bf
-2023-01-25 20:22:17,386 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-01-25 20:22:17,430 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-01-25 20:22:19,021 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-01-25 20:22:19,032 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-01-25 20:22:20,033 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-01-25 20:22:21,337 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
-2023-01-25 20:22:21,873 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@457dc809
-2023-01-25 20:22:21,913 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-01-25 20:22:21,968 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
-2023-01-25 20:22:22,124 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
-2023-01-25 20:22:22,131 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
-2023-01-25 20:22:22,163 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
-2023-01-25 20:22:22,164 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
-2023-01-25 20:22:22,164 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
-2023-01-25 20:22:22,165 INFO c.n.d.DiscoveryClient [main] Application is null : false
-2023-01-25 20:22:22,165 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
-2023-01-25 20:22:22,165 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
-2023-01-25 20:22:22,165 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
-2023-01-25 20:22:22,804 INFO c.n.d.DiscoveryClient [main] The response status is 200
-2023-01-25 20:22:22,809 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
-2023-01-25 20:22:22,815 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-01-25 20:22:22,822 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1674699742820 with initial instances count: 7
-2023-01-25 20:22:22,828 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
-2023-01-25 20:22:22,829 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1674699742829, current=UP, previous=STARTING]
-2023-01-25 20:22:22,832 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
-2023-01-25 20:22:22,867 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9012 (http) with context path ''
-2023-01-25 20:22:22,871 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9012
-2023-01-25 20:22:23,090 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012 - registration status: 204
-2023-01-25 20:22:23,241 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 12.493 seconds (process running for 20.814)
-2023-01-25 20:27:22,178 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:32:22,182 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:37:22,187 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:38:22,456 INFO o.a.j.l.DirectJDKLog [http-nio-9012-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-01-25 20:38:22,456 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-01-25 20:38:22,458 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-1] Completed initialization in 1 ms
-2023-01-25 20:42:22,190 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:47:22,204 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:52:22,212 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-01-25 20:56:36,334 INFO o.s.c.n.e.s.EurekaServiceRegistry [SpringApplicationShutdownHook] Unregistering application ACCOUNT-SERVICE with eureka with status DOWN
-2023-01-25 20:56:36,335 INFO c.n.d.DiscoveryClient$3 [SpringApplicationShutdownHook] Saw local status change event StatusChangeEvent [timestamp=1674701796335, current=DOWN, previous=UP]
-2023-01-25 20:56:36,335 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
+2023-01-30 10:39:25,028 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
+2023-01-30 10:39:34,983 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-30 10:39:35,431 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 428 ms. Found 1 JPA repository interfaces.
+2023-01-30 10:39:36,494 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
+2023-01-30 10:39:38,038 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9012 (http)
+2023-01-30 10:39:38,062 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2023-01-30 10:39:38,064 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2023-01-30 10:39:38,407 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-01-30 10:39:38,410 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 13316 ms
+2023-01-30 10:39:38,973 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-30 10:39:39,284 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2023-01-30 10:39:39,830 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-01-30 10:39:40,198 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-01-30 10:39:44,727 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2aa07d80
+2023-01-30 10:39:44,731 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-01-30 10:39:47,946 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-30 10:39:55,289 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-30 10:39:55,305 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-30 10:39:58,103 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-30 10:40:00,173 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2023-01-30 10:40:01,280 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@17fa25f1
+2023-01-30 10:40:01,325 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-01-30 10:40:01,398 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2023-01-30 10:40:01,615 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2023-01-30 10:40:01,623 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2023-01-30 10:40:01,790 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2023-01-30 10:40:01,791 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2023-01-30 10:40:01,791 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2023-01-30 10:40:01,792 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2023-01-30 10:40:01,793 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2023-01-30 10:40:01,794 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2023-01-30 10:40:01,794 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2023-01-30 10:40:03,131 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2023-01-30 10:40:03,149 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2023-01-30 10:40:03,155 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-01-30 10:40:03,166 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1675096803165 with initial instances count: 5
+2023-01-30 10:40:03,195 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2023-01-30 10:40:03,197 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1675096803197, current=UP, previous=STARTING]
+2023-01-30 10:40:03,288 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9012 (http) with context path ''
+2023-01-30 10:40:03,289 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012: registering service...
+2023-01-30 10:40:03,292 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9012
+2023-01-30 10:40:03,447 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9012 - registration status: 204
+2023-01-30 10:40:04,221 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 45.951 seconds (process running for 50.838)
+2023-01-30 10:45:01,800 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 10:50:01,809 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 10:55:01,812 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:00:01,828 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:05:01,840 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:10:01,847 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:15:01,856 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:20:01,870 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:25:01,883 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:30:01,887 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:35:01,890 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:40:01,902 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:45:01,913 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:50:01,922 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 11:55:01,926 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:00:01,936 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:05:01,948 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:10:01,964 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:15:01,975 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:20:01,987 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:25:01,996 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:30:02,011 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:35:02,020 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:40:02,035 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:45:02,050 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:50:02,055 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 12:55:02,066 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:00:02,068 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:05:02,076 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:10:02,088 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:15:02,093 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:20:02,107 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:25:02,111 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:30:02,118 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:35:02,121 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:36:01,417 INFO o.a.j.l.DirectJDKLog [http-nio-9012-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-30 13:36:01,420 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-01-30 13:36:01,445 INFO o.s.w.s.FrameworkServlet [http-nio-9012-exec-2] Completed initialization in 23 ms
+2023-01-30 13:40:02,144 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:45:02,146 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:50:02,163 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 13:55:02,167 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:00:02,172 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:05:02,185 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:10:02,195 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:15:02,198 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:20:02,265 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-01-30 14:25:02,287 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration

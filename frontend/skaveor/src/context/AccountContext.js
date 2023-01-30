@@ -15,7 +15,7 @@ export function AccountProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [payload, setPayload] = useState({ name: "", id: "", roles: [] });
   const [isAdmin, setIsAdmin] = useState(false);
-  const { getPayload } = useLogin();
+  const { getPayload, logOut, openLogin } = useLogin();
   const openAccount = () => {
     async function getPl() {
       let status;
@@ -29,6 +29,9 @@ export function AccountProvider({ children }) {
         setPayload(response);
         setIsOpen(true);
         setIsAdmin(response.roles.includes("ADMIN"));
+      } else if (status === 401) {
+        logOut();
+        openLogin();
       }
     }
     getPl();

@@ -13,6 +13,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -49,6 +50,11 @@ public class UserService implements IUserService {
     public Boolean isEmailExist(String email) {
         return client.isEmailExist(email)
                 .getBody();
+    }
+
+    @Override
+    public CustomUser getById(UUID id) {
+        return client.getOne(id);
     }
 
 

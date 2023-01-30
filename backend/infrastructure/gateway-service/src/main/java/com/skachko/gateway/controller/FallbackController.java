@@ -1,4 +1,4 @@
-package com.skachko.gatewayservice.controller;
+package com.skachko.gateway.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

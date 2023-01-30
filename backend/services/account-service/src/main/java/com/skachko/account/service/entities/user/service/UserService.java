@@ -113,8 +113,11 @@ public class UserService implements IUserService {
 
         existedUser.setDtUpdate(new Date());
         existedUser.setEmail(newUser.getEmail());
-        existedUser.setPassword(encodePassword(newUser.getPassword()));
+        if (IsEmptyUtil.isNotNullOrEmpty(newUser.getPassword())){
+            existedUser.setPassword(encodePassword(newUser.getPassword()));
+        }
         existedUser.setName(newUser.getName());
+        existedUser.setRoles(newUser.getRoles());
 
         return repository.save(existedUser);
     }

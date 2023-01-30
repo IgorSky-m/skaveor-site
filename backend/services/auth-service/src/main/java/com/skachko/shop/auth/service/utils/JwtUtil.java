@@ -1,6 +1,8 @@
 package com.skachko.shop.auth.service.utils;
 
 import com.skachko.shop.auth.service.entities.user.dto.CustomUser;
+import com.skachko.shop.auth.service.exceptions.UnauthorizedException;
+import com.skachko.shop.auth.service.support.utils.IsEmptyUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -40,7 +42,11 @@ public class JwtUtil {
     }
 
     public boolean isInvalid(String token) {
-        return this.isTokenExpired(token);
+        try {
+            return IsEmptyUtil.isNullOrEmpty(token) || this.isTokenExpired(token);
+        } catch (Exception e){
+            return true;
+        }
     }
 
 
@@ -49,6 +55,7 @@ public class JwtUtil {
         claims.put("id", user.getId());
         claims.put("roles", user.getRoles());
         claims.put("name", user.getName());
+        claims.put("version", user.getDtUpdate());
         return doGenerateToken(claims, user.getId().toString());
     }
 

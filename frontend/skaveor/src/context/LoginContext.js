@@ -35,6 +35,7 @@ export function LoginProvider({ children }) {
     setToken({ Bearer: token });
     setLogged(true);
   };
+
   const openLogin = (goBack = true) => {
     setGoBackOption(goBack);
     setIsLoginOpen(true);

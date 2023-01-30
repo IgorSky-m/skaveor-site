@@ -15,8 +15,4 @@ public class NewsController extends ARestController<NewsCard, UUID> {
     public NewsController(INewsCardService service) {
         super(service);
     }
-
-
-
-
 }

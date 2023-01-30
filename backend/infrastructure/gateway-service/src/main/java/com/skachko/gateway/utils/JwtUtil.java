@@ -1,4 +1,4 @@
-package com.skachko.gatewayservice.utils;
+package com.skachko.gateway.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

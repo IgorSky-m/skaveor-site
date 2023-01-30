@@ -96,6 +96,14 @@ spring:
                 name: msg-service
                 fallbackUri: forward:/fallback/msg
 
+gateway:
+  service:
+    authentication:
+      filter:
+        endpoints:
+          open:
+            - '/auth/register'
+            - '/auth/login'
 
 management:
   endpoints:

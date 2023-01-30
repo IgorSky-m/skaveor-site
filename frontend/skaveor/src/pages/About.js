@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button, Container, Form, FormGroup } from "react-bootstrap";
+import { Button, Container, Form, FormGroup, NavLink } from "react-bootstrap";
 import MsgApi from "../data/MsgApi";
 const About = () => {
   const [about, setAbout] = useState({
@@ -67,24 +67,23 @@ const About = () => {
   };
 
   return (
-    <Container className="mt-3 text-center text-white text-shadow-cls">
-      <h1>
-        <span style={{ fontFamily: "Glitch" }}>Igar Skachko</span>
+    <Container className="bg-dark text-center text-white text-shadow-cls">
+      <h1 className="fs-2 m-0 mb-2 pt-3">
+        <span>Igar Skachko</span>
       </h1>
-      <h3> Fullstack developer</h3>
-      <a
-        className="text-white fs-4 "
-        href="https://www.linkedin.com/in/igar-skachko/"
+      <h3 className="m-0 mb-2 fs-4">Fullstack developer</h3>
+      <Form
+        className="mt-3 p-3 bg-dark rounded-0"
+        onSubmit={handleSubmit}
+        style={{ position: "relative" }}
       >
-        LinkedIn
-      </a>
-      <Form className="mt-3 p-3 bg-dark rounded-0" onSubmit={handleSubmit}>
+        <h3 className="m-0 mb-3 fs-5">Feedback form</h3>
         <Form.Group controlId="subject" className="mb-4">
           <Form.Label className="text-white">Subject</Form.Label>
           <Form.Control
             name="subject"
             as="select"
-            className="bg-dark rounded-0 text-white"
+            className={`bg-dark rounded-0 text-white p-2 input-drk`}
             value={about.subject}
             onChange={handleChange}
           >
@@ -93,10 +92,11 @@ const About = () => {
             <option value="Other">Other</option>
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Text</Form.Label>
+
+        <Form.Group controlId="ControlTextareaFed">
+          <Form.Label>Describe your feedback</Form.Label>
           <Form.Control
-            className="mb-3 bg-dark rounded-0 text-white"
+            className={`bg-dark rounded-0 text-white p-2 input-drk`}
             as="textarea"
             style={{ resize: "none" }}
             rows="3"
@@ -104,25 +104,19 @@ const About = () => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Form.Label>Reply to</Form.Label>
-        <Form.Group className="d-flex justify-content-between align-items-center gap-5 mb-3">
-          <div
-            className="d-flex justify-content-start gap-5"
-            style={{ width: "20%" }}
-          >
-            <Form.Label>Need reply?</Form.Label>
-            <Form.Switch
+
+        <Form.Group className="border d-flex justify-content-between align-items-center gap-5 mb-3 mt-3">
+          <Container className="d-flex border m-0 p-0 w-25 align-items-center  justify-content-start gap-5">
+            <Form.Label>Reply to</Form.Label>
+            <Form.Check
               onChange={flipReceiverSwitch}
-              type="switch"
-              className="mb-3 bg-dark rounded-0 text-white"
+              type="checkbox"
+              className=" bg-dark rounded-0 text-white"
               id="custom-switch"
               checked={receiverSwitch}
             />
-          </div>
-          <Form.Group
-            className=" d-flex justify-content-between"
-            style={{ width: "80%" }}
-          >
+          </Container>
+          <Form.Group className=" d-flex justify-content-between">
             <Form.Control
               onBlur={validateEmail}
               type="email"
@@ -132,7 +126,11 @@ const About = () => {
               autoComplete="off"
               name="receiver"
               value={about.receiver}
-              className={`mb-3 bg-dark rounded-0 text-white ${receiverClasses}`}
+              className={`bg-dark rounded-0  p-2 input-drk ${
+                receiverSwitch
+                  ? `${receiverClasses} text-white`
+                  : "text-secondary border-secondary"
+              }`}
               onChange={handleChange}
               style={{ position: "relative" }}
             />
@@ -141,27 +139,28 @@ const About = () => {
             )} */}
           </Form.Group>
         </Form.Group>
-
         <Button
-          style={{ backgroundColor: "rgba(0,0,0,0)" }}
+          style={{
+            backgroundColor: "rgba(0,0,0,0)",
+          }}
           className="p-0 text-white border-0"
           onClick={handlePick}
         >
           <svg
             fill="white"
-            height="50px"
-            width="50px"
+            height="30px"
+            width="30px"
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 490.955 490.955"
             stroke="#ffff"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
@@ -183,6 +182,7 @@ const About = () => {
             onChange={(e) => setFiles(e.target.files)}
           />
         </Form.Group>
+
         <Button type="submit" className="mt-3">
           Submit
         </Button>

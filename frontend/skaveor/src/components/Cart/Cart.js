@@ -3,7 +3,7 @@ import { Button, Container, Offcanvas, Stack } from "react-bootstrap";
 import { useLogin } from "../../context/LoginContext";
 
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import StoreApi from "../../data/store/StoreRestService";
+import StoreApi from "../../data/StoreRestApi";
 import formatCurrency from "../../utilities/formatCurrency";
 import PaymentModal from "../PaymentModal/PaymentModal";
 import CartItem from "./CartItem";

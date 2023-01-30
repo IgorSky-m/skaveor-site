@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import StoreApi from "../../../data/store/StoreRestService";
+import StoreApi from "../../../data/StoreRestApi";
 import { Col, Container, Row } from "react-bootstrap";
-import DealCard from "../../../components/Shop/Deals/DealCard";
+import DealCard from "../../../components/Store/Deals/DealCard";
 import { useLogin } from "../../../context/LoginContext";
 
 const Deals = () => {
