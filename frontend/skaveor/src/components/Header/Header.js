@@ -8,6 +8,15 @@ import "./Header.css";
 const Header = ({ isTopOfPage }) => {
   const [active, setActive] = useState("home");
   const [over, setOver] = useState("home");
+  const setActiveLink = (activeLink) => {
+    console.log("active: " + activeLink);
+    setActive(activeLink);
+  };
+
+  const setOverLink = (overLink) => {
+    console.log("over: " + overLink);
+    setOver(overLink);
+  };
   return (
     <header
       id="header"
@@ -17,9 +26,9 @@ const Header = ({ isTopOfPage }) => {
 
       <HeaderNavbar
         isTopOfPage={isTopOfPage}
-        setActive={setActive}
+        setActive={setActiveLink}
         active={active}
-        setOver={setOver}
+        setOver={setOverLink}
       />
       <Transition
         timeout={300}

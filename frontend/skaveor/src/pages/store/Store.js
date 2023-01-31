@@ -21,8 +21,6 @@ const Store = () => {
         .getNews()
         .then((resp) => resp.json())
         .catch((err) => console.log(err));
-
-      console.log(result);
       if (result) {
         setNews(result);
       }

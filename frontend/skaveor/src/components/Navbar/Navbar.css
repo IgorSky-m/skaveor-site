@@ -1,1 +1,51 @@
+.card-button.entering {
+  animation: card-button-entering 0.5s forwards;
+}
+.card-button.entered {
+  animation: card-button-entered 0.5s forwards;
+}
 
+.card-button.exiting {
+  animation: card-button-exiting 0.5s forwards;
+}
+
+.card-button.exited {
+  animation: card-button-exited 0.5s forwards;
+}
+
+@keyframes card-button-entering {
+  0% {
+    transform: translate(300px, 0px);
+    opacity: 0;
+  }
+  60% {
+    /* opacity: 0.3; */
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes card-button-entered {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes card-button-exiting {
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  50% {
+    /* opacity: 0.3; */
+  }
+  100% {
+    transform: translate(300px, 0px);
+    opacity: 0;
+  }
+}

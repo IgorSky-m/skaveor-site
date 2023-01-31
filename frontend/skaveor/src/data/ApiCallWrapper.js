@@ -3,6 +3,7 @@ export default async function wrapApiCall(
   apply = (result) => {},
   unauthorized = (result) => {},
   forbidden = (result) => {},
+  other = (status, result) => {},
   error = (err) => console.error(err)
 ) {
   let status;
@@ -19,6 +20,8 @@ export default async function wrapApiCall(
     unauthorized(result);
   } else if (status === 403) {
     forbidden(result);
+  } else {
+    other(status, result);
   }
 
   return result;

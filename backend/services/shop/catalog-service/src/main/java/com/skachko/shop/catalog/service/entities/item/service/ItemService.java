@@ -8,6 +8,7 @@ import com.skachko.shop.catalog.service.entities.deal.api.EDealType;
 import com.skachko.shop.catalog.service.entities.deal.dto.Deal;
 import com.skachko.shop.catalog.service.entities.deal.service.api.IDealService;
 import com.skachko.shop.catalog.service.entities.item.dto.Item;
+import com.skachko.shop.catalog.service.entities.item.dto.Item_;
 import com.skachko.shop.catalog.service.entities.item.service.api.IItemService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.ABaseCRUDService;
 import com.skachko.shop.catalog.service.libraries.mvc.api.AEntity;
@@ -171,7 +172,7 @@ public class ItemService extends ABaseCRUDService<Item, UUID> implements IItemSe
         if (searchString == null || "".equals(searchString)) {
             return Collections.EMPTY_LIST;
         }
-        List<Item> title = findAll((r, c, b) -> b.like(r.get("title"), "%" + searchString + "%"), Sort.unsorted());
+        List<Item> title = findAll((r, c, b) -> b.like(b.lower(r.get(Item_.title)), "%" + searchString.toLowerCase() + "%"), Sort.unsorted());
         title.forEach(this::initializeTableViewFields);
         return title;
     }

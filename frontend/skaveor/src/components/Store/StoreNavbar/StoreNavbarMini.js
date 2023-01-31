@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
-import { createSearchParams, NavLink, useNavigate } from "react-router-dom";
+import {
+  createSearchParams,
+  useSearchParams,
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
 import "./StoreNavbar.css";
 import { useState } from "react";
 import { Nav, Navbar, Button, Form } from "react-bootstrap";
-import { useShoppingCart } from "../../../context/ShoppingCartContext";
 
 const StoreNavbarMini = ({ state, pathPrefix }) => {
-  const { openCart, cartQuantity } = useShoppingCart();
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [currentState, setCurrentState] = useState("");
   useEffect(() => {
     setCurrentState(state);
-
     return () => {};
   }, []);
 
@@ -34,14 +37,33 @@ const StoreNavbarMini = ({ state, pathPrefix }) => {
           Deals
         </Nav.Link>
       </Nav>
-      <Form className="d-flex m-3">
+      <Form
+        className="d-flex m-3"
+        onSubmit={(event) => {
+          event.preventDefault();
+          navigate({
+            pathname: "/store/search",
+            search: `?${createSearchParams({ s: search })}`,
+          });
+        }}
+      >
         <Form.Control
           type="text"
           placeholder="SEARCH"
           className="me-1 rounded-0"
           aria-label="Search"
           name="search"
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(event) => {
+            setSearch(event.target.value);
+            if (event.target.value.length >= 2) {
+              setSearchParams((nextInit, prev) => {
+                return {
+                  ...prev,
+                  s: event.target.value,
+                };
+              });
+            }
+          }}
           value={search}
         />
         <Button

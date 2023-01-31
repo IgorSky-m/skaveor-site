@@ -29,7 +29,6 @@ const Home = ({ user }) => {
 
       <div className="advantages-block" style={{ fontFamily: "Skygraze" }}>
         {advantages.map((e) => {
-          console.log(e);
           return <AdvantageCard key={e.id} item={e} />;
         })}
       </div>

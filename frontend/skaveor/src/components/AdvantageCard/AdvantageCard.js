@@ -5,7 +5,6 @@ const DEFAULT_ALT_TEXT = "game advantage description";
 const NO_IMAGE_URL = "no-Image-Icon.png";
 
 const AdvantageCard = ({ item: { img, alt, description } }) => {
-  console.log(img);
   return (
     <div className="advantage-card">
       <img

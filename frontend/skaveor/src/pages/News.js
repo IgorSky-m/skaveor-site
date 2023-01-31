@@ -14,7 +14,6 @@ export const News = () => {
         .then((resp) => resp.json())
         .catch((err) => console.log(err));
 
-      console.log(result);
       if (result) {
         setNews(result);
       }

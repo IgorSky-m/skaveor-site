@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Stack } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { useLogin } from "../../context/LoginContext";
+import wrap from "../../utilities/ApiCallWrapper";
 const AdminDashboard = () => {
+  const { getRoles, logIn } = useLogin();
+  const navigate = useNavigate();
+  const [showPanel, setShowPanel] = useState(false);
+  const forbidden = () => {
+    navigate("/forbidden");
+  };
+
+  useEffect(() => {
+    wrap(getRoles)
+      .success((roles) => {
+        if (!roles.includes("ADMIN")) {
+          forbidden();
+        } else {
+          showPanel(true);
+        }
+      })
+      .unauthorized(logIn)
+      .forbidden(forbidden)
+      .excute();
+
+    return () => {};
+  }, []);
+
   return (
-    <Container>
+    <Container hidden={!showPanel}>
       <div className="p-4">
         <h1 className="fs-3 text-white text-center">Admin panel</h1>
       </div>

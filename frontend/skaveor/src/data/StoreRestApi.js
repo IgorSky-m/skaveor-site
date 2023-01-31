@@ -137,7 +137,7 @@ export default class StoreRestApi {
   }
 
   searchItems(queryString, headers = {}) {
-    console.log(queryString);
+    console.log("qs: " + queryString);
     return fetch(
       `${this.shopApiEndpoint}/${this.itemsPart}/search?${new URLSearchParams({
         s: queryString,
