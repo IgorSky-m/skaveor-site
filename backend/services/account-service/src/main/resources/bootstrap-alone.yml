@@ -5,7 +5,7 @@ spring:
   #  datasource props
   datasource:
 
-    url: 'jdbc:postgresql://localhost:6543/account'
+    url: 'jdbc:postgresql://localhost:6543/accounts'
     driverClassName: 'org.postgresql.Driver'
     username: 'admin_test'
     password: 'admin_test'

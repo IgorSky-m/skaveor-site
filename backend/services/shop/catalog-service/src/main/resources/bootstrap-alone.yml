@@ -20,7 +20,7 @@ spring:
 #    url: 'jdbc:h2:mem:junit_db'
 #    driverClassName: 'org.h2.Driver'
 
-    url: 'jdbc:postgresql://localhost:6543/shop'
+    url: 'jdbc:postgresql://localhost:6543/catalogs'
     driverClassName: 'org.postgresql.Driver'
     username: 'admin_test'
     password: 'admin_test'

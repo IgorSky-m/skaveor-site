@@ -1,4 +1,4 @@
-package com.slachko.registry.server;
+package com.skachko.registry.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
