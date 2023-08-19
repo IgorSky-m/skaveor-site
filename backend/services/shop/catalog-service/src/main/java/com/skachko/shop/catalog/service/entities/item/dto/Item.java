@@ -16,6 +16,7 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Item DTO
  */
@@ -23,6 +24,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "items")
 public class Item extends AEntity {
 
     private String title;

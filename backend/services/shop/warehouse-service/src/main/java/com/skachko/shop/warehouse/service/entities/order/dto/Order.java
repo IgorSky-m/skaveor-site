@@ -2,6 +2,7 @@ package com.skachko.shop.warehouse.service.entities.order.dto;
 
 import com.skachko.shop.warehouse.service.libraries.mvc.api.AEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.time.Instant;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "orders")
 public class Order extends AEntity {
 
 

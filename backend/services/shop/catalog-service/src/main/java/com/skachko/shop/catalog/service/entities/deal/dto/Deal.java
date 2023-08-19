@@ -19,6 +19,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "deals")
 public class Deal extends AEntity {
 
     private EDealType type;

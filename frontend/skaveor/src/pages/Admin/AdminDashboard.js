@@ -17,7 +17,7 @@ const AdminDashboard = () => {
         if (!roles.includes("ADMIN")) {
           forbidden();
         } else {
-          showPanel(true);
+          setShowPanel(true);
         }
       })
       .unauthorized(logIn)

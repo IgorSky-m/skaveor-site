@@ -21,12 +21,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "categories")
 public class Category extends AEntity {
 
     private String icon;
     private String name;
     private String description;
+    @Enumerated(value = EnumType.STRING)
     private ECategoryVisibility visibility;
+    @Enumerated(value = EnumType.STRING)
     private ECategoryPrivacyType privacy;
     private Date dtFrom;
     private Date dtTo;

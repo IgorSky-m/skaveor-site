@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.UUID;
 
-@FeignClient(name = "PAYMENT-SERVICE", url = "http://localhost:9001/payment")
+@FeignClient(name = "PAYMENT-SERVICE", url = "http://localhost:9041/payment")
 public interface IPaymentServiceClient {
 
     @PostMapping
@@ -20,4 +20,5 @@ public interface IPaymentServiceClient {
 
     @GetMapping("/order/{orderId}")
     ResponseEntity<PaymentResponse> getPaymentDetailsByOrderId(@PathVariable UUID orderId);
+
 }
