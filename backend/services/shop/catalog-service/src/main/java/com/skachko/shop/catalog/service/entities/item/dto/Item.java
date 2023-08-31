@@ -30,13 +30,17 @@ public class Item extends AEntity {
     private String title;
     private String summary;
     private String type;
-    private EItemVisibility visibility;
-    private EItemPrivacy privacy;
     private Long price;
     private Date dtFrom;
     private Date dtTo;
+    //TODO create image class with type or table with relation img - type (title, usual etc)
     private String titlePicture;
 
+    @Enumerated(EnumType.STRING)
+    private EItemVisibility visibility;
+
+    @Enumerated(EnumType.STRING)
+    private EItemPrivacy privacy;
 
     @ManyToMany(targetEntity = Category.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private List<Category> categories;

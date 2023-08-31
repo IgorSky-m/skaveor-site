@@ -5,6 +5,7 @@ import com.skachko.account.service.entities.user.api.EUserRole;
 import com.skachko.account.service.libraries.mvc.api.AEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Tables;
 
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "users")
 public class CustomUser extends AEntity {
 
     private String email;
@@ -22,9 +24,7 @@ public class CustomUser extends AEntity {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-
-
     @ElementCollection(fetch = FetchType.EAGER, targetClass = EUserRole.class)
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Set<EUserRole> roles;
 }

@@ -1,73 +1,72 @@
-2023-08-19 16:12:01,292 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
-2023-08-19 16:12:01,883 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-19 16:12:02,046 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 150 ms. Found 1 JPA repository interfaces.
-2023-08-19 16:12:02,338 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
-2023-08-19 16:12:02,742 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9019 (http)
-2023-08-19 16:12:02,762 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2023-08-19 16:12:02,763 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
-2023-08-19 16:12:02,901 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2023-08-19 16:12:02,902 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1592 ms
-2023-08-19 16:12:03,104 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-08-19 16:12:03,185 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
-2023-08-19 16:12:03,379 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-08-19 16:12:03,523 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2023-08-19 16:12:03,692 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7482309c
-2023-08-19 16:12:03,694 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-08-19 16:12:03,734 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-08-19 16:12:04,499 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-19 16:12:04,506 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-08-19 16:12:05,094 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-08-19 16:12:05,711 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
-2023-08-19 16:12:05,914 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@25ee3cd6
-2023-08-19 16:12:05,931 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2023-08-19 16:12:05,955 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
-2023-08-19 16:12:06,046 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
-2023-08-19 16:12:06,051 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
-2023-08-19 16:12:06,077 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
-2023-08-19 16:12:06,077 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
-2023-08-19 16:12:06,077 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
-2023-08-19 16:12:06,077 INFO c.n.d.DiscoveryClient [main] Application is null : false
-2023-08-19 16:12:06,078 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
-2023-08-19 16:12:06,078 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
-2023-08-19 16:12:06,078 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
-2023-08-19 16:12:06,353 INFO c.n.d.DiscoveryClient [main] The response status is 200
-2023-08-19 16:12:06,355 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
-2023-08-19 16:12:06,357 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
-2023-08-19 16:12:06,361 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1692479526360 with initial instances count: 2
-2023-08-19 16:12:06,364 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
-2023-08-19 16:12:06,365 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1692479526365, current=UP, previous=STARTING]
-2023-08-19 16:12:06,366 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9019: registering service...
-2023-08-19 16:12:06,386 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9019 (http) with context path ''
-2023-08-19 16:12:06,387 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9019
-2023-08-19 16:12:06,398 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9019 - registration status: 204
-2023-08-19 16:12:06,495 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 6.186 seconds (process running for 6.933)
-2023-08-19 16:13:56,776 INFO o.a.j.l.DirectJDKLog [http-nio-9019-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-08-19 16:13:56,776 INFO o.s.w.s.FrameworkServlet [http-nio-9019-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-08-19 16:13:56,780 INFO o.s.w.s.FrameworkServlet [http-nio-9019-exec-1] Completed initialization in 3 ms
-2023-08-19 16:17:06,087 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:22:06,098 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:27:06,101 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:32:06,104 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:37:06,118 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:42:06,134 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:47:06,146 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:52:06,153 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 16:57:06,162 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:02:06,177 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:07:06,190 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:12:06,205 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:17:06,213 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:22:06,224 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:27:06,240 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:32:06,250 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:37:06,253 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:42:06,267 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:47:06,280 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:52:06,295 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 17:57:06,302 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:02:06,305 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:07:06,308 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:12:06,313 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:17:06,327 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:22:06,334 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
-2023-08-19 18:27:06,350 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:04:40,747 INFO o.s.b.SpringApplication [main] The following 1 profile is active: "alone"
+2023-08-31 10:04:42,850 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-31 10:04:43,434 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 566 ms. Found 1 JPA repository interfaces.
+2023-08-31 10:04:44,657 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=dd80f4a8-fbfc-3ef3-943e-d85c03aaa789
+2023-08-31 10:04:46,083 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 9019 (http)
+2023-08-31 10:04:46,117 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-31 10:04:46,121 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.1]
+2023-08-31 10:04:46,544 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-31 10:04:46,546 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 5744 ms
+2023-08-31 10:04:47,162 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-31 10:04:47,333 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.1.5.Final
+2023-08-31 10:04:47,874 WARN o.h.b.i.MetadataBuilderImpl$MetadataBuildingOptionsImpl [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-08-31 10:04:48,293 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-31 10:04:49,105 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27fc0217
+2023-08-31 10:04:49,109 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-31 10:04:49,218 INFO o.h.e.j.d.i.DialectFactoryImpl [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-08-31 10:04:52,993 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-31 10:04:53,021 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-31 10:04:54,587 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-31 10:04:56,520 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2023-08-31 10:04:57,388 INFO o.s.c.f.w.m.FunctionHandlerMapping [main] FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@50ac63b2
+2023-08-31 10:04:57,465 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-08-31 10:04:57,658 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2023-08-31 10:04:58,004 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2023-08-31 10:04:58,041 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2023-08-31 10:04:58,105 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2023-08-31 10:04:58,106 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2023-08-31 10:04:58,106 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2023-08-31 10:04:58,106 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2023-08-31 10:04:58,107 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2023-08-31 10:04:58,107 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2023-08-31 10:04:58,107 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2023-08-31 10:04:59,725 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2023-08-31 10:04:59,738 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2023-08-31 10:04:59,743 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-08-31 10:04:59,758 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1693494299750 with initial instances count: 2
+2023-08-31 10:04:59,777 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application ACCOUNT-SERVICE with eureka with status UP
+2023-08-31 10:04:59,781 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1693494299781, current=UP, previous=STARTING]
+2023-08-31 10:04:59,783 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9019: registering service...
+2023-08-31 10:04:59,863 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 9019 (http) with context path ''
+2023-08-31 10:04:59,865 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 9019
+2023-08-31 10:04:59,873 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_ACCOUNT-SERVICE/host.docker.internal:ACCOUNT-SERVICE:9019 - registration status: 204
+2023-08-31 10:05:00,138 INFO o.s.b.StartupInfoLogger [main] Started AccountService in 24.101 seconds (process running for 26.838)
+2023-08-31 10:07:51,708 INFO o.a.j.l.DirectJDKLog [http-nio-9019-exec-6] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-31 10:07:51,709 INFO o.s.w.s.FrameworkServlet [http-nio-9019-exec-6] Initializing Servlet 'dispatcherServlet'
+2023-08-31 10:07:51,710 INFO o.s.w.s.FrameworkServlet [http-nio-9019-exec-6] Completed initialization in 1 ms
+2023-08-31 10:09:58,118 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:14:58,122 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:19:58,136 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:24:58,147 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:29:58,150 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:34:58,152 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:39:58,161 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:44:58,165 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:45:43,948 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@21303985 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,950 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5e3acfb3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,950 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@78dc8f2b (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,951 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@58006da4 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,951 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@693bf570 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,952 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6174e8b3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,952 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7d4d9661 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,953 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@267ba921 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,954 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@105d58eb (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:45:43,954 WARN c.z.h.p.PoolBase [http-nio-9019-exec-4] HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@56aa1b23 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2023-08-31 10:49:58,173 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:54:58,187 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 10:59:58,200 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 11:04:58,211 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 11:09:58,218 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 11:14:58,222 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 11:19:58,234 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-08-31 11:24:58,241 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration

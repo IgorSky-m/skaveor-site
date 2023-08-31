@@ -209,6 +209,8 @@ public class UserService implements IUserService {
         }
     }
 
+
+    //TODO replace for strong encode func
     private String encodePassword(String password) {
         return DigestUtils.sha3_256Hex(password);
     }

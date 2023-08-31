@@ -33,6 +33,7 @@ public class DealService extends ABaseCRUDService<Deal, UUID> implements IDealSe
         return log;
     }
 
+    //TODO replace enum to return list of current deals
     @Override
     public List<String> geDealTypes() {
         return Arrays.stream(EDealType.values())

@@ -31,6 +31,8 @@ public class NewsCard extends AEntity {
     @ElementCollection(fetch = FetchType.EAGER, targetClass = Image.class)
     private List<Image> images;
 
+    //TODO replace to ONE variable represent redirect type (like CATEGORY, ITEM, DEAL, NONE)
+    //TODO add another variable redirect URL
     private String redirectToCategory;
     private String redirectToItem;
     private String redirectToDeal;

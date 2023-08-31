@@ -1,3 +1,5 @@
+\c catalogs;
+
 insert into categories values (
 '2f729dce-3ee1-11ee-be56-0242ac120001', 
 	'2023-08-19 16:13:57.039' , 
@@ -70,3 +72,26 @@ insert into categories values (
 	
 );
 
+
+
+
+
+INSERT INTO item (id, dt_create, dt_delete, dt_update, meta, dt_from, dt_to, price, privacy, summary, title, title_picture, type, visibility, characteristics_id)
+VALUES
+(
+    '5f729dce-3ee1-11ee-be56-0242ac120000',
+    '2023-08-31 00:00:00',
+    NULL, 
+    '2023-08-31 00:00:00',
+    NULL, 
+    '2023-08-31 00:00:00', 
+    NULL,
+    10000, 
+    'PUBLIC',
+    'A powerful weapon for futuristic battles.',
+    'Sci-Fi Game Weapon',
+    'https://i.pinimg.com/originals/47/33/1d/47331dcf38b84b9d0287a9bbb851c81e.jpg', 
+    'Weapon', -- Replace with the item type
+    1, -- Replace with the appropriate visibility level
+    'characteristics_uuid_here' -- Replace with the UUID of associated characteristics, if applicable
+);
