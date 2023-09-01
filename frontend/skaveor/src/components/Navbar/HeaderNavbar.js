@@ -122,7 +122,7 @@ const HeaderNavbar = ({
 
           {/* //------------------------ */}
           <Container className="d-flex justify-content-end m-0 p-0 gap-3">
-            <Transition in={active === "store"} timeout={transitionTimeout}>
+            <Transition in={active === "store" && logged} timeout={transitionTimeout}>
               {(state) => (
                 <Button
                   onClick={openCart}
@@ -168,15 +168,15 @@ const HeaderNavbar = ({
                 <Button
                   onClick={() => openLogin(false)}
                   style={{
-                    width: "2.7rem",
+                    width: "4rem",
                     height: "2.7rem",
                     position: "relative",
                   }}
                   variant="outline-secondary"
                   // variant="outline-light"
                   className="rounded-0 d-flex align-items-center border-0"
-                >
-                  <svg
+                > Login
+                  {/* <svg
                     fill="currentColor"
                     viewBox="0 -4 22 30"
                     xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@ const HeaderNavbar = ({
                     <g id="SVGRepo_iconCarrier">
                       <path d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z"></path>
                     </g>
-                  </svg>
+                  </svg> */}
                 </Button>
               </>
             ) : (

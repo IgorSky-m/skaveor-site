@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import { Container } from "react-bootstrap";
 
 const SharedLayout = () => {
-  const isTopOfPageNow = () => window.pageYOffset < 35;
+  const isTopOfPageNow = () => window.scrollY < 35;
 
   const [isTopOfPage, setIsTopOfPage] = React.useState(isTopOfPageNow());
 

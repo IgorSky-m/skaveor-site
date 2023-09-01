@@ -14,8 +14,11 @@ const StoreNavbarMini = ({ state, pathPrefix }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentState, setCurrentState] = useState("");
+  const [currentPathPrefix, setCurrentPathPrefix] = useState("");
   useEffect(() => {
     setCurrentState(state);
+    setCurrentPathPrefix(pathPrefix);
+    
     return () => {};
   }, []);
 

@@ -95,8 +95,9 @@ export function LoginProvider({ children }) {
   const logOut = (navigate = () => {}) => {
     setToken({ Bearer: "" });
     setLogged(false);
-
+    
     navigate();
+
   };
 
   return (

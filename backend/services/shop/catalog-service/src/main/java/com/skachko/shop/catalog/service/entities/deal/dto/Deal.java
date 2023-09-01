@@ -22,12 +22,17 @@ import java.util.UUID;
 @Table(name = "deals")
 public class Deal extends AEntity {
 
-    private EDealType type;
-    private EDealStatus status;
     private boolean limitedTimeDealTimer;
     private Date dtFrom;
     private Date dtTo;
     private boolean discountEnabled;
     private BigDecimal discountPercent;
+
+    @Enumerated(EnumType.STRING)
+    private EDealType type;
+
+    @Enumerated(EnumType.STRING)
+    private EDealStatus status;
+
 
 }
